@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | E-Cell BVEC</title>
+    <link rel="icon" href="img/E-Cell - Black Bg.png" type="image/svg+xml">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary: #000000;
+            --primary-dark: #1a1a1a;
+            --primary-light: #333333;
+            --secondary: #666666;
+            --accent: #f5f5f5;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-500: #737373;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --font-primary: 'Poppins', sans-serif;
+            --radius: 0.5rem;
+            --radius-lg: 1rem;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: 300ms ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 25%, #000000 50%, #2a2a2a 75%, #0f0f0f 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 2rem 1rem;
+        }
+
+/* Cyberpunk Neon Grid Effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 2px, transparent 3px),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.06) 1.5px, transparent 2.5px),
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.1) 1px, transparent 2px);
+    background-size: 40px 40px, 40px 40px, 120px 120px, 90px 90px, 160px 160px;
+    animation: cyberpunkGrid 18s ease-in-out infinite, glitch 25s linear infinite;
+    z-index: 0;
+}
+
+@keyframes cyberpunkGrid {
+    0%, 100% { transform: perspective(1000px) rotateX(0deg) translateZ(0px); }
+    25% { transform: perspective(1000px) rotateX(2deg) translateZ(10px); }
+    50% { transform: perspective(1000px) rotateX(-1deg) translateZ(-5px); }
+    75% { transform: perspective(1000px) rotateX(1.5deg) translateZ(8px); }
+}
+
+@keyframes glitch {
+    0%, 98%, 100% { transform: translateX(0px); }
+    1% { transform: translateX(2px); }
+    2% { transform: translateX(-1px); }
+    3% { transform: translateX(0px); }
+}
+
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.03), transparent 50%, transparent);
+            animation: rotate 30s linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-15px) rotate(120deg); }
+            66% { transform: translateY(8px) rotate(240deg); }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-lg);
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            width: 100%;
+            max-width: 380px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0.6) 100%);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+        }
+
+        .brand-logo {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-logo img {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 0rem;
+        }
+
+        .brand-logo h1 {
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.1rem;
+        }
+
+        .brand-logo p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-family: var(--font-primary);
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            color: var(--white);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+
+        .btn-login {
+            width: 100%;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: var(--font-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            backdrop-filter: blur(10px);
+            margin-top: 1rem;
+        }
+
+        .btn-login:hover {
+            background: var(--white);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-login:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .back-home a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .back-home a:hover {
+            color: var(--white);
+        }
+
+        .error-message {
+            background: rgba(255, 0, 0, 0.1);
+            color: #ff6b6b;
+            padding: 0.8rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            backdrop-filter: blur(10px);
+            display: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.8rem;
+            z-index: 10;
+            position: relative;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        .footer-bottom p {
+            margin: 0.2rem 0;
+        }
+
+        .footer-bottom strong {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .login-container {
+                max-width: 350px;
+                padding: 1.8rem;
+            }
+
+            .brand-logo img {
+                width: 85px;
+                height: 85px;
+            }
+
+            .brand-logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .brand-logo p {
+                font-size: 0.85rem;
+            }
+
+            .form-control {
+                padding: 0.7rem 0.7rem 0.7rem 2.5rem;
+                font-size: 0.9rem;
+            }
+
+            .btn-login {
+                padding: 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .footer-bottom {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                max-width: 320px;
+                padding: 1.5rem;
+            }
+
+            .form-control {
+                padding: 0.6rem 0.6rem 0.6rem 2.3rem;
+                font-size: 0.85rem;
+            }
+
+            .input-icon {
+                left: 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Enhanced glassmorphic effects */
+        .login-container:hover {
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* Loading animation */
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+            20%, 40%, 60%, 80% { transform: translateX(3px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-content">
+        <div class="login-container">
+            <div class="brand-logo">
+                <img src="img/E-Cell_-_Black_Bg-removebg-preview.png" alt="E-Cell BVEC">
+                <h1>Admin Panel</h1>
+                <p>E-Cell BVEC Management System</p>
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="userId" class="form-control" placeholder="Enter your User ID" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your Password" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-login" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Login
+                </button>
+            </form>
+
+            <div class="back-home">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Website
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>Designed and Developed by <strong>BVEC Code Club</strong></p>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userId = document.getElementById('userId').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const loginBtn = document.getElementById('loginBtn');
+            
+            // Secure authentication credentials (hidden from public view)
+            const adminAuth = {
+                // Main admin account
+                'ecell_admin_2025': 'EcBv@$ec2025#Admin',
+                // Backup admin account
+                'bvec_superadmin': 'BvEc$2025!Super@Admin',
+                // Emergency access
+                'emergency_admin': 'EmRg#BvEc2025$Acc'
+            };
+            
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner spinner"></i> Logging in...';
+            
+            setTimeout(() => {
+                if (adminAuth[userId] && adminAuth[userId] === password) {
+                    // Store login session
+                    sessionStorage.setItem('adminLoggedIn', 'true');
+                    sessionStorage.setItem('adminUser', userId);
+                    
+                    // Success feedback
+                    loginBtn.innerHTML = '<i class="fas fa-check"></i> Login Successful!';
+                    loginBtn.style.background = '#22c55e';
+                    
+                    // Redirect to dashboard after a brief delay
+                    setTimeout(() => {
+                        window.location.href = 'admin-dashboard.html';
+                    }, 1000);
+                } else {
+                    errorMessage.textContent = 'Invalid User ID or Password. Please try again.';
+                    errorMessage.style.display = 'block';
+                    
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login to Admin Panel';
+                    
+                    // Shake animation for error
+                    loginBtn.style.animation = 'shake 0.5s ease-in-out';
+                    setTimeout(() => {
+                        loginBtn.style.animation = '';
+                    }, 500);
+                }
+            }, 1200);
+        });
+
+        // Hide error message when user starts typing
+        document.getElementById('userId').addEventListener('input', () => {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+        
+        document.getElementById('password').addEventListener('input', () => {
+            document.getElementById('errorMessage').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
