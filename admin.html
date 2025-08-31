@@ -54,39 +54,38 @@
             padding: 2rem 1rem;
         }
 
-/* Cyberpunk Neon Grid Effect */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 2px, transparent 3px),
-        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.06) 1.5px, transparent 2.5px),
-        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.1) 1px, transparent 2px);
-    background-size: 40px 40px, 40px 40px, 120px 120px, 90px 90px, 160px 160px;
-    animation: cyberpunkGrid 18s ease-in-out infinite, glitch 25s linear infinite;
-    z-index: 0;
-}
+        /* Cyberpunk Neon Grid Effect */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 2px, transparent 3px),
+                radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.06) 1.5px, transparent 2.5px),
+                radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.1) 1px, transparent 2px);
+            background-size: 40px 40px, 40px 40px, 120px 120px, 90px 90px, 160px 160px;
+            animation: cyberpunkGrid 18s ease-in-out infinite, glitch 25s linear infinite;
+            z-index: 0;
+        }
 
-@keyframes cyberpunkGrid {
-    0%, 100% { transform: perspective(1000px) rotateX(0deg) translateZ(0px); }
-    25% { transform: perspective(1000px) rotateX(2deg) translateZ(10px); }
-    50% { transform: perspective(1000px) rotateX(-1deg) translateZ(-5px); }
-    75% { transform: perspective(1000px) rotateX(1.5deg) translateZ(8px); }
-}
+        @keyframes cyberpunkGrid {
+            0%, 100% { transform: perspective(1000px) rotateX(0deg) translateZ(0px); }
+            25% { transform: perspective(1000px) rotateX(2deg) translateZ(10px); }
+            50% { transform: perspective(1000px) rotateX(-1deg) translateZ(-5px); }
+            75% { transform: perspective(1000px) rotateX(1.5deg) translateZ(8px); }
+        }
 
-@keyframes glitch {
-    0%, 98%, 100% { transform: translateX(0px); }
-    1% { transform: translateX(2px); }
-    2% { transform: translateX(-1px); }
-    3% { transform: translateX(0px); }
-}
-
+        @keyframes glitch {
+            0%, 98%, 100% { transform: translateX(0px); }
+            1% { transform: translateX(2px); }
+            2% { transform: translateX(-1px); }
+            3% { transform: translateX(0px); }
+        }
 
         body::after {
             content: '';
@@ -437,14 +436,10 @@ body::before {
             const errorMessage = document.getElementById('errorMessage');
             const loginBtn = document.getElementById('loginBtn');
             
-            // Secure authentication credentials (hidden from public view)
+            // Updated authentication credentials
             const adminAuth = {
-                // Main admin account
-                'ecell_admin_2025': 'EcBv@$ec2025#Admin',
-                // Backup admin account
-                'bvec_superadmin': 'BvEc$2025!Super@Admin',
-                // Emergency access
-                'emergency_admin': 'EmRg#BvEc2025$Acc'
+                // Your specified credentials
+                'ecellbvec2025@#OnexMedia': '123@#A34425Onexmedia'
             };
             
             loginBtn.disabled = true;
@@ -469,7 +464,7 @@ body::before {
                     errorMessage.style.display = 'block';
                     
                     loginBtn.disabled = false;
-                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login to Admin Panel';
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
                     
                     // Shake animation for error
                     loginBtn.style.animation = 'shake 0.5s ease-in-out';
