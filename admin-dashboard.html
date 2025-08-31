@@ -2820,3 +2820,659 @@
             if (confirm('Are you sure you want to delete this image?')) {
                 galleryImages = galleryImages.filter(image => image.id !== id);
                 loadGallery();
+                showToast('Image deleted successfully', 'success');
+            }
+        }
+
+        function duplicateNotice(id) {
+            const notice = notices.find(n => n.id === id);
+            if (notice) {
+                const duplicate = {
+                    ...notice,
+                    id: Date.now(),
+                    title: notice.title + ' (Copy)',
+                    status: 'draft',
+                    views: 0
+                };
+                notices.unshift(duplicate);
+                loadNotices();
+                showToast('Notice duplicated successfully', 'success');
+            }
+        }
+
+        function duplicateEvent(id) {
+            const event = events.find(e => e.id === id);
+            if (event) {
+                const duplicate = {
+                    ...event,
+                    id: Date.now(),
+                    title: event.title + ' (Copy)',
+                    status: 'draft',
+                    registrations: 0
+                };
+                events.unshift(duplicate);
+                loadEvents();
+                showToast('Event duplicated successfully', 'success');
+            }
+        }
+
+        function editNotice(id) {
+            const notice = notices.find(n => n.id === id);
+            if (notice) {
+                document.getElementById('noticeTitle').value = notice.title;
+                document.getElementById('noticeDate').value = notice.date;
+                document.getElementById('noticePriority').value = notice.priority;
+                document.getElementById('noticeDescription').value = notice.description;
+                document.getElementById('noticeTags').value = notice.tags?.join(', ') || '';
+                
+                const modal = document.getElementById('noticeModal');
+                modal.setAttribute('data-edit-id', id);
+                document.querySelector('#noticeModal .modal-title').textContent = 'Edit Notice';
+                
+                openModal('noticeModal');
+            }
+        }
+
+        function editEvent(id) {
+            const event = events.find(e => e.id === id);
+            if (event) {
+                document.getElementById('eventTitle').value = event.title;
+                document.getElementById('eventDate').value = event.date;
+                document.getElementById('eventTime').value = event.time;
+                document.getElementById('eventLocation').value = event.location;
+                document.getElementById('eventType').value = event.type || '';
+                document.getElementById('eventDescription').value = event.description;
+                document.getElementById('eventLink').value = event.link || '';
+                document.getElementById('eventMaxParticipants').value = event.maxParticipants || '';
+                
+                if (event.poster) {
+                    document.getElementById('eventPosterImg').src = event.poster;
+                    document.getElementById('eventPosterPreview').style.display = 'block';
+                }
+                
+                const modal = document.getElementById('eventModal');
+                modal.setAttribute('data-edit-id', id);
+                document.querySelector('#eventModal .modal-title').textContent = 'Edit Event';
+                
+                openModal('eventModal');
+            }
+        }
+
+        function editImage(id) {
+            const image = galleryImages.find(img => img.id === id);
+            if (image) {
+                document.getElementById('photoCategory').value = image.category;
+                document.getElementById('photoCaption').value = image.caption;
+                document.getElementById('albumName').value = image.album || '';
+                openModal('galleryModal');
+            }
+        }
+
+        function viewImage(id) {
+            const image = galleryImages.find(img => img.id === id);
+            if (image) {
+                window.open(image.url, '_blank');
+            }
+        }
+
+        // Form Submissions
+        document.getElementById('noticeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const editId = document.getElementById('noticeModal').getAttribute('data-edit-id');
+            
+            const noticeData = {
+                id: editId ? parseInt(editId) : Date.now(),
+                title: document.getElementById('noticeTitle').value,
+                date: document.getElementById('noticeDate').value,
+                priority: document.getElementById('noticePriority').value,
+                description: document.getElementById('noticeDescription').value,
+                tags: document.getElementById('noticeTags').value.split(',').map(tag => tag.trim()).filter(tag => tag),
+                status: document.getElementById('noticeAutoPublish').value === 'now' ? 'active' : 
+                        document.getElementById('noticeAutoPublish').value === 'draft' ? 'draft' : 'scheduled',
+                views: editId ? notices.find(n => n.id === parseInt(editId))?.views || 0 : 0,
+                expiry: document.getElementById('noticeExpiry').value || null,
+                attachment: document.getElementById('noticeFile').files[0] || null
+            };
+            
+            if (editId) {
+                const index = notices.findIndex(n => n.id === parseInt(editId));
+                if (index !== -1) {
+                    notices[index] = { ...notices[index], ...noticeData };
+                    showToast('Notice updated successfully', 'success');
+                }
+            } else {
+                notices.unshift(noticeData);
+                showToast('Notice created successfully', 'success');
+            }
+            
+            loadNotices();
+            closeModal('noticeModal');
+            
+            // Reset edit mode
+            document.getElementById('noticeModal').removeAttribute('data-edit-id');
+            document.querySelector('#noticeModal .modal-title').textContent = 'Add New Notice';
+        });
+
+        document.getElementById('eventForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const editId = document.getElementById('eventModal').getAttribute('data-edit-id');
+            
+            const eventData = {
+                id: editId ? parseInt(editId) : Date.now(),
+                title: document.getElementById('eventTitle').value,
+                date: document.getElementById('eventDate').value,
+                time: document.getElementById('eventTime').value,
+                location: document.getElementById('eventLocation').value,
+                type: document.getElementById('eventType').value,
+                description: document.getElementById('eventDescription').value,
+                link: document.getElementById('eventLink').value,
+                maxParticipants: parseInt(document.getElementById('eventMaxParticipants').value) || null,
+                notes: document.getElementById('eventNotes').value,
+                status: 'upcoming',
+                registrations: editId ? events.find(e => e.id === parseInt(editId))?.registrations || 0 : 0,
+                poster: document.getElementById('eventPosterImg').src || null
+            };
+            
+            if (editId) {
+                const index = events.findIndex(e => e.id === parseInt(editId));
+                if (index !== -1) {
+                    events[index] = { ...events[index], ...eventData };
+                    showToast('Event updated successfully', 'success');
+                }
+            } else {
+                events.unshift(eventData);
+                showToast('Event created successfully', 'success');
+            }
+            
+            loadEvents();
+            closeModal('eventModal');
+            
+            // Reset edit mode
+            document.getElementById('eventModal').removeAttribute('data-edit-id');
+            document.querySelector('#eventModal .modal-title').textContent = 'Create New Event';
+        });
+
+        document.getElementById('galleryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const category = document.getElementById('photoCategory').value;
+            const caption = document.getElementById('photoCaption').value;
+            const albumName = document.getElementById('albumName').value;
+            const files = document.getElementById('galleryPhotos').files;
+            const autoOptimize = document.getElementById('autoOptimize').checked;
+            const generateThumbnails = document.getElementById('generateThumbnails').checked;
+            const publishImmediately = document.getElementById('publishImmediately').checked;
+            
+            let uploadCount = 0;
+            
+            // Simulate file upload process
+            Array.from(files).forEach((file, index) => {
+                const newImage = {
+                    id: Date.now() + index,
+                    url: URL.createObjectURL(file),
+                    category: category,
+                    caption: caption || file.name.replace(/\.[^/.]+$/, ""),
+                    album: albumName,
+                    uploadDate: new Date().toISOString(),
+                    size: file.size,
+                    optimized: autoOptimize,
+                    hasThumbnail: generateThumbnails,
+                    status: publishImmediately ? 'published' : 'draft'
+                };
+                
+                galleryImages.unshift(newImage);
+                uploadCount++;
+            });
+            
+            loadGallery();
+            closeModal('galleryModal');
+            showToast(`${uploadCount} photo(s) uploaded successfully`, 'success');
+        });
+
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userData = {
+                id: Date.now(),
+                fullName: document.getElementById('userFullName').value,
+                email: document.getElementById('userEmail').value,
+                role: document.getElementById('userRole').value,
+                status: document.getElementById('userStatus').value,
+                password: document.getElementById('userPassword').value,
+                createdAt: new Date().toISOString(),
+                lastLogin: null
+            };
+            
+            // In a real application, you would send this to your backend
+            console.log('New user created:', userData);
+            
+            closeModal('userModal');
+            showToast('User created successfully', 'success');
+        });
+
+        // File Upload Handlers
+        document.getElementById('noticeFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                document.getElementById('noticeFileName').textContent = file.name;
+                document.getElementById('noticeFilePreview').style.display = 'block';
+            }
+        });
+
+        document.getElementById('eventPoster').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('eventPosterImg').src = e.target.result;
+                    document.getElementById('eventPosterPreview').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('galleryPhotos').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const selectedPhotos = document.getElementById('selectedPhotos');
+            const photoCount = document.getElementById('photoCount');
+            
+            selectedPhotos.innerHTML = '';
+            
+            if (files.length > 0) {
+                Array.from(files).slice(0, 20).forEach((file, index) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const imgContainer = document.createElement('div');
+                        imgContainer.style.cssText = 'position: relative; aspect-ratio: 1; border-radius: var(--border-radius); overflow: hidden;';
+                        imgContainer.innerHTML = `
+                            <img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover;">
+                            <button onclick="removePhoto(${index})" style="position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; background: rgba(0,0,0,0.7); color: white; border: none; border-radius: 50%; font-size: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                        selectedPhotos.appendChild(imgContainer);
+                    };
+                    reader.readAsDataURL(file);
+                });
+                
+                photoCount.textContent = `${files.length} photo${files.length !== 1 ? 's' : ''} selected`;
+                document.getElementById('galleryPhotosPreview').style.display = 'block';
+            } else {
+                document.getElementById('galleryPhotosPreview').style.display = 'none';
+            }
+        });
+
+        // Utility Functions
+        function removeNoticeFile() {
+            document.getElementById('noticeFile').value = '';
+            document.getElementById('noticeFilePreview').style.display = 'none';
+        }
+
+        function removePhoto(index) {
+            // This would need to be implemented to remove specific photos from the selection
+            showToast('Photo removed from selection', 'info');
+        }
+
+        function saveEventDraft() {
+            const eventData = {
+                id: Date.now(),
+                title: document.getElementById('eventTitle').value || 'Untitled Event',
+                date: document.getElementById('eventDate').value || new Date().toISOString().split('T')[0],
+                time: document.getElementById('eventTime').value || '09:00',
+                location: document.getElementById('eventLocation').value || 'TBD',
+                type: document.getElementById('eventType').value || 'other',
+                description: document.getElementById('eventDescription').value || 'No description provided.',
+                link: document.getElementById('eventLink').value,
+                maxParticipants: parseInt(document.getElementById('eventMaxParticipants').value) || null,
+                notes: document.getElementById('eventNotes').value,
+                status: 'draft',
+                registrations: 0,
+                poster: document.getElementById('eventPosterImg').src || null
+            };
+            
+            events.unshift(eventData);
+            loadEvents();
+            closeModal('eventModal');
+            showToast('Event saved as draft', 'success');
+        }
+
+        function toggleGalleryView(view) {
+            const gridBtn = document.getElementById('gridViewBtn');
+            const listBtn = document.getElementById('listViewBtn');
+            const gallery = document.getElementById('galleryGrid');
+            
+            if (view === 'grid') {
+                gridBtn.classList.remove('btn-outline');
+                gridBtn.classList.add('btn-secondary');
+                listBtn.classList.remove('btn-secondary');
+                listBtn.classList.add('btn-outline');
+                gallery.style.gridTemplateColumns = 'repeat(auto-fill, minmax(200px, 1fr))';
+            } else {
+                listBtn.classList.remove('btn-outline');
+                listBtn.classList.add('btn-secondary');
+                gridBtn.classList.remove('btn-secondary');
+                gridBtn.classList.add('btn-outline');
+                gallery.style.gridTemplateColumns = '1fr';
+            }
+        }
+
+        function selectAllGalleryItems() {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                item.style.border = '2px solid var(--accent)';
+            });
+            showToast(`${items.length} photos selected`, 'info');
+        }
+
+        function toggleUserMenu() {
+            // This would show a dropdown menu with user options
+            showToast('User menu functionality would be implemented here', 'info');
+        }
+
+        // Search Functionality
+        document.getElementById('noticeSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#noticesTableBody tr');
+            
+            rows.forEach(row => {
+                const title = row.querySelector('td:first-child').textContent.toLowerCase();
+                const description = row.querySelector('td:first-child div:last-child').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('eventSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#eventsTableBody tr');
+            
+            rows.forEach(row => {
+                const title = row.querySelector('td:first-child').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('gallerySearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const items = document.querySelectorAll('.gallery-item');
+            
+            items.forEach(item => {
+                const caption = item.querySelector('img').alt.toLowerCase();
+                
+                if (caption.includes(searchTerm)) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Global Search
+        document.getElementById('globalSearch')?.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            if (searchTerm.length > 2) {
+                // Simulate global search results
+                const results = [
+                    ...notices.filter(n => n.title.toLowerCase().includes(searchTerm)).slice(0, 3),
+                    ...events.filter(e => e.title.toLowerCase().includes(searchTerm)).slice(0, 3),
+                    ...galleryImages.filter(img => img.caption.toLowerCase().includes(searchTerm)).slice(0, 2)
+                ];
+                
+                if (results.length > 0) {
+                    showToast(`Found ${results.length} results for "${searchTerm}"`, 'info');
+                }
+            }
+        });
+
+        // Dashboard Updates
+        function updateDashboardStats() {
+            // Update notice stats
+            const activeNotices = notices.filter(n => n.status === 'active').length;
+            const totalNotices = notices.length;
+            document.getElementById('totalNotices').textContent = totalNotices;
+            document.getElementById('noticesBadge').textContent = activeNotices;
+
+            // Update event stats
+            const upcomingEvents = events.filter(e => e.status === 'upcoming').length;
+            const totalEvents = events.length;
+            document.getElementById('totalEvents').textContent = upcomingEvents;
+            document.getElementById('eventsBadge').textContent = upcomingEvents;
+
+            // Update gallery stats
+            const totalImages = galleryImages.length;
+            document.getElementById('totalImages').textContent = totalImages;
+            document.getElementById('galleryBadge').textContent = totalImages;
+
+            // Update notification badge
+            const notifications = activeNotices + upcomingEvents;
+            document.getElementById('notificationBadge').textContent = notifications;
+        }
+
+        // Toast Notification System
+        function showToast(message, type = 'success', duration = 3000) {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type} show`;
+            
+            const iconMap = {
+                success: 'fa-check',
+                error: 'fa-times',
+                warning: 'fa-exclamation',
+                info: 'fa-info'
+            };
+            
+            toast.innerHTML = `
+                <div class="toast-icon">
+                    <i class="fas ${iconMap[type]}"></i>
+                </div>
+                <div class="toast-content">
+                    <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
+                    <div class="toast-message">${message}</div>
+                </div>
+            `;
+            
+            document.body.appendChild(toast);
+            
+            // Auto remove toast
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, duration);
+        }
+
+        // Advanced Features
+        function exportData(type) {
+            let data;
+            let filename;
+            
+            switch(type) {
+                case 'notices':
+                    data = notices;
+                    filename = 'notices_export.json';
+                    break;
+                case 'events':
+                    data = events;
+                    filename = 'events_export.json';
+                    break;
+                case 'gallery':
+                    data = galleryImages;
+                    filename = 'gallery_export.json';
+                    break;
+                default:
+                    data = { notices, events, gallery: galleryImages };
+                    filename = 'admin_data_export.json';
+            }
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showToast(`${type || 'Data'} exported successfully`, 'success');
+        }
+
+        // Bulk Operations
+        function bulkDeleteItems(type, ids) {
+            if (!confirm(`Are you sure you want to delete ${ids.length} ${type}?`)) return;
+            
+            switch(type) {
+                case 'notices':
+                    notices = notices.filter(n => !ids.includes(n.id));
+                    loadNotices();
+                    break;
+                case 'events':
+                    events = events.filter(e => !ids.includes(e.id));
+                    loadEvents();
+                    break;
+                case 'images':
+                    galleryImages = galleryImages.filter(img => !ids.includes(img.id));
+                    loadGallery();
+                    break;
+            }
+            
+            showToast(`${ids.length} ${type} deleted successfully`, 'success');
+        }
+
+        // Auto-save functionality
+        function autoSave() {
+            const data = {
+                notices,
+                events,
+                galleryImages,
+                lastSaved: new Date().toISOString()
+            };
+            
+            localStorage.setItem('admin_dashboard_data', JSON.stringify(data));
+        }
+
+        function loadSavedData() {
+            const saved = localStorage.getItem('admin_dashboard_data');
+            if (saved) {
+                const data = JSON.parse(saved);
+                notices = data.notices || notices;
+                events = data.events || events;
+                galleryImages = data.galleryImages || galleryImages;
+            }
+        }
+
+        // Auto-save every 30 seconds
+        setInterval(autoSave, 30000);
+
+        // Date formatting utility
+        function formatDate(dateString) {
+            const options = { 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            };
+            return new Date(dateString).toLocaleDateString('en-US', options);
+        }
+
+        // Logout function
+        function logout() {
+            if (confirm('Are you sure you want to logout?')) {
+                // Clear session
+                sessionStorage.removeItem('adminLoggedIn');
+                sessionStorage.removeItem('adminUser');
+                
+                // Clear auto-saved data if needed
+                // localStorage.removeItem('admin_dashboard_data');
+                
+                // Redirect to login
+                window.location.href = 'admin.html';
+            }
+        }
+
+        // Keyboard Shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl/Cmd + K for global search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                const searchInput = document.getElementById('globalSearch');
+                if (searchInput) searchInput.focus();
+            }
+            
+            // Escape to close modals
+            if (e.key === 'Escape') {
+                const activeModal = document.querySelector('.modal.active');
+                if (activeModal) {
+                    closeModal(activeModal.id);
+                }
+            }
+        });
+
+        // Initialize Dashboard
+        function initializeDashboard() {
+            loadSavedData();
+            loadNotices();
+            loadEvents();
+            loadGallery();
+            updateDashboardStats();
+            
+            // Show welcome toast
+            setTimeout(() => {
+                const userName = sessionStorage.getItem('adminUser') || 'Admin';
+                showToast(`Welcome back, ${userName}!`, 'success');
+            }, 1000);
+        }
+
+        // Window resize handler
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1024) {
+                closeMobileSidebar();
+            }
+        });
+
+        // Page visibility handling
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'visible') {
+                // Refresh data when page becomes visible
+                updateDashboardStats();
+            }
+        });
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDashboard();
+        });
+
+        // Also initialize if already loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeDashboard);
+        } else {
+            initializeDashboard();
+        }
+
+        // Export functions for external use
+        window.adminDashboard = {
+            showSection,
+            openModal,
+            closeModal,
+            showToast,
+            exportData,
+            logout,
+            updateDashboardStats
+        };
+
+    </script>
+</body>
+</html>
