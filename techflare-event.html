@@ -364,45 +364,40 @@
   }
 }
 
-/* Mobile: vertical stack + disable animation */
-@media (max-width: 600px) {
+/* --- MOBILE/TABLET OPTIMIZATION BELOW --- */
+@media (max-width: 768px) {
   .marquee-wrap {
-    overflow: visible;
-    padding: 12px 8px;
-  }
-  .marquee-track {
-    animation: none !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 12px !important;
-    font-size: 1rem !important;
-    white-space: normal !important;
-  }
-  .marquee-item {
-    justify-content: flex-start !important;
-    white-space: normal !important;
-  }
-}
-@media (max-width: 600px) {
-  .marquee-wrap {
-    overflow: visible;
-    padding: 12px 8px;
+    padding: 10px 4px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    margin: 2rem 0 2.5rem 0;
+    border-radius: 10px;
   }
   .marquee-track {
     animation: none !important;
     display: block !important;
     white-space: normal !important;
+    gap: 0 !important;
     font-size: 1rem !important;
-    gap: 0 !important; /* gap ignored in block display */
+    padding: 0;
   }
   .marquee-item {
     display: flex !important;
-    justify-content: flex-start !important;
+    flex-direction: row !important;
+    align-items: center;
+    gap: 10px !important;
+    margin: 0 0 10px 0;
+    padding: 0;
+    background: transparent;
+    min-height: 44px;
     white-space: normal !important;
-    margin-bottom: 12px;
+    border-radius: 6px;
+    box-shadow: none;
+  }
+  .marquee-icon {
+    width: 32px;
+    height: 32px;
   }
 }
-
 
 
         footer.footer {
