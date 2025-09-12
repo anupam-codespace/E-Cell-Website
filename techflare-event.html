@@ -6,10 +6,18 @@
     <title>E-Cell BVEC | Entrepreneurship Cell</title>
     <meta name="description" content="E-Cell BVEC - Empowering the next generation of innovators and entrepreneurs." />
     <meta name="keywords" content="E-Cell, BVEC, Entrepreneurship, Startup, Innovation, Business, Students" />
+    
+    <!-- Favicon -->
     <link rel="icon" href="img/E-Cell - Black Bg.png" type="image/png" />
+    
+    <!-- GT Walsheim Pro Font -->
     <link href="https://fonts.cdnfonts.com/css/gt-walsheim-trial" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
     <style>
+        /* ===== CSS VARIABLES ===== */
         :root {
             --primary: #000d32;
             --primary-dark: #0026a3;
@@ -29,6 +37,7 @@
             --font-primary: 'GT Walsheim Trial', -apple-system, BlinkMacSystemFont, sans-serif;
             --transition: 300ms ease;
         }
+
         body {
             margin: 0;
             font-family: var(--font-primary);
@@ -37,14 +46,17 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
+
         a {
             color: var(--primary);
             text-decoration: none;
         }
+
         a:hover {
             color: var(--accent);
             text-decoration: underline;
         }
+
         .breadcrumb-wrap {
             background: var(--white);
             border-bottom: 1px solid var(--gray-200);
@@ -53,6 +65,7 @@
             z-index: 1000;
             padding: 10px 20px;
         }
+
         .breadcrumb {
             max-width: 1024px;
             margin: 0 auto;
@@ -62,6 +75,7 @@
             align-items: center;
             gap: 8px;
         }
+
         .breadcrumb a {
             color: var(--primary);
             font-weight: 500;
@@ -69,35 +83,42 @@
             align-items: center;
             gap: 4px;
         }
+
         .breadcrumb .separator {
             user-select: none;
             pointer-events: none;
             font-weight: 600;
             color: var(--gray-700);
         }
+
         .breadcrumb .current {
             color: var(--gray-700);
             font-weight: 600;
         }
+
         .container {
             max-width: 1024px;
             margin: 0 auto;
             padding: 0 20px;
         }
+
         .hero {
             background: linear-gradient(135deg, #001d9f 0%, #000000 100%);
             color: var(--white);
             padding: 50px 0 120px;
             text-align: center;
         }
+
         .hero-logo {
             height: 110px;
             margin-bottom: 22px;
         }
+
         .hero-logo img {
             height: 100%;
             width: auto;
         }
+
         .hero-title {
             font-size: 6.8rem;
             font-weight: 600;
@@ -105,6 +126,7 @@
             margin: 0 0 30px;
             margin-bottom: -1rem;
         }
+
         .hero-subtitle {
             font-size: 1.7rem;
             font-weight: 400;
@@ -112,6 +134,7 @@
             margin-top: 0;
             margin-bottom: 0;
         }
+
         .overview {
             background: var(--white);
             border-radius: 14px;
@@ -122,12 +145,14 @@
             font-size: 1.07rem;
             line-height: 1.55;
         }
+
         .overview h2 {
             color: var(--primary);
             margin-bottom: 18px;
             font-weight: 600;
             font-size: 1.9rem;
         }
+
         .overview p {
             max-height: 125px;
             overflow: hidden;
@@ -135,9 +160,11 @@
             margin-bottom: 18px;
             color: var(--gray-700);
         }
+
         .overview p.expanded {
             max-height: 900px;
         }
+
         .read-more-btn {
             font-weight: 600;
             background: none;
@@ -150,14 +177,17 @@
             transition: color 0.2s;
             font-family: var(--font-primary);
         }
+
         .read-more-btn:hover {
             color: var(--primary);
             text-decoration: underline;
         }
+
         .events-section {
             margin-top: 60px;
             margin-bottom: 40px;
         }
+
         .events-title {
             text-align: center;
             font-size: 2rem;
@@ -165,6 +195,7 @@
             color: var(--primary);
             font-weight: 600;
         }
+
         .event-card-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -173,6 +204,7 @@
             margin: 0 auto;
             padding: 0 12px;
         }
+
         .event-card {
             background: var(--white);
             border-radius: 14px;
@@ -183,30 +215,36 @@
             display: flex;
             flex-direction: column;
         }
+
         .event-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 12px 38px rgb(0 0 0 / 0.15);
         }
+
         .event-card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
         }
+
         .event-card-content {
             padding: 1.4rem 1.6rem;
             flex-grow: 1;
         }
+
         .event-card-content h3 {
             margin: 0 0 0.5rem;
             color: var(--primary);
             font-size: 1.3rem;
             font-weight: 700;
         }
+
         .event-card-content p {
             margin-bottom: 0;
             color: var(--gray-700);
             font-weight: 500;
         }
+
         .coordinator-section {
             background: var(--gray-50);
             padding: 4rem 2rem;
@@ -214,6 +252,7 @@
             max-width: 1100px;
             margin: 0 auto 3rem auto;
         }
+
         .coordinator-section h2 {
             text-align: center;
             font-size: 2rem;
@@ -221,11 +260,13 @@
             font-weight: 700;
             margin-bottom: 2.4rem;
         }
+
         .coordinator-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
+
         .coordinator-card {
             background: var(--white);
             border-radius: 12px;
@@ -235,10 +276,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: default;
         }
+
         .coordinator-card:hover {
             transform: translateY(-7px);
             box-shadow: 0 14px 30px rgb(0 0 0 / 0.2);
         }
+
         .coordinator-card img {
             width: 96px;
             height: 96px;
@@ -247,18 +290,21 @@
             border: 3px solid var(--secondary);
             margin-bottom: 1rem;
         }
+
         .coordinator-name {
             font-size: 1.22rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.4rem;
         }
+
         .coordinator-role {
             font-size: 1rem;
             color: var(--gray-700);
             margin-bottom: 1rem;
             font-weight: 600;
         }
+
         .coordinator-contact a {
             color: var(--secondary);
             font-size: 1.3rem;
@@ -266,99 +312,304 @@
             transition: color 0.2s ease;
             text-decoration: none;
         }
+
         .coordinator-contact a:hover {
             color: var(--primary);
         }
-        .marquee-wrap {
-            overflow: hidden;
-            background: #fff;
-            border-radius: 14px;
-            padding: 16px 12px;
-            margin: 3rem auto;
-            max-width: 1024px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
-            user-select: none;
+
+  .marquee-wrap {
+  overflow: hidden;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 12px;
+  margin: 3rem auto;
+  max-width: 1024px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  user-select: none;
+}
+.marquee-track {
+  display: inline-flex;
+  animation: scroll-left 28s linear infinite;
+  gap: 32px;
+  align-items: center;
+}
+.marquee-icon {
+  width: 36px; height: 36px;
+  object-fit: contain;
+  border-radius: 5px;
+  background: #f3f4f6;
+  padding: 4px;
+}
+/* Animate horizontally on desktop/tablet */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Responsive for Mobile: grid, no scroll, touch-friendly */
+@media (max-width: 600px) {
+  .marquee-wrap {
+    padding: 10px 4px;
+    box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+  }
+  .marquee-track {
+    animation: none !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr); /* Two per row */
+    gap: 16px 12px !important;
+    justify-items: center;
+    align-items: center;
+    width: 100% !important;
+    font-size: 1rem;
+    white-space: normal !important;
+  }
+  .marquee-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 4px !important;
+    padding: 0 !important;
+    white-space: normal !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  .marquee-icon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 2px;
+  }
+}
+@media (max-width: 400px) {
+  .marquee-track {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+        footer.footer {
+            background: var(--gray-50);
+            padding: 50px 0 0 0;
+            font-family: var(--font-primary);
+            color: var(--gray-900);
+            border-top: 1px solid var(--gray-200);
         }
-        .marquee-track {
-            display: inline-flex;
-            animation: scroll-left 28s linear infinite;
-            gap: 32px;
+
+        .footer-main {
+            padding: 0 20px 40px 20px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 280px;
+            text-align: left;
+        }
+
+        .footer-left h3 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .footer-left p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin: 0;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .footer-right {
+            flex: 1;
+            min-width: 280px;
+            text-align: right;
+        }
+
+        .footer-right h4 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gray-900);
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+
+        .footer-right p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin: 0 0 5px 0;
+            font-weight: 400;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            color: var(--gray-600);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .footer-contact i {
+            color: #25D366;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo span {
+            color: var(--white);
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 18px;
             align-items: center;
         }
-        .marquee-icon {
-            width: 36px; height: 36px;
-            object-fit: contain;
-            border-radius: 5px;
-            background: #f3f4f6;
-            padding: 4px;
+
+        .footer-social a {
+            color: var(--white);
+            font-size: 22px;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+
+        .footer-social a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
+
+        .footer-credits {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 400;
+        }
+
+        .footer-credits a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-credits a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 900px) {
+            .overview {
+                margin-top: -65px;
+                padding: 24px 30px;
+            }
+        }
+
         @media (max-width: 600px) {
             .hero-title {
                 font-size: 2.8rem;
-                font-weight: 600;
-                letter-spacing: -0.04em;
-                margin: 0 0 30px;
-                margin-bottom: -1rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            margin: 0 0 30px;
+            margin-bottom: -1rem;
+                margin-bottom: auto;
             }
             .hero-subtitle {
                 font-size: 0.9rem;
-                font-weight: 400;
-                opacity: 0.9;
-                margin-top: 0;
-                margin-bottom: -1rem;
-            }
+            font-weight: 400;
+            opacity: 0.9;
+            margin-top: 0;
+            margin-bottom: -1rem;
+        }
+
             .events-title {
                 font-size: 1.6rem;
             }
+
             .coordinator-title {
                 font-size: 1.6rem;
             }
+
+            .gallery-title {
+                font-size: 1.58rem;
+            }
+
             .coordinator-grid {
                 grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
             }
+
             .event-card-list {
                 grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
             }
-            .marquee-wrap {
-                padding: 10px 4px;
-                box-shadow: 0 5px 16px rgba(0,0,0,0.08);
-            }
-            .marquee-track {
-                animation: none !important;
-                display: grid !important;
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 16px 12px !important;
-                justify-items: center;
-                align-items: center;
-                width: 100% !important;
-                font-size: 1rem;
-                white-space: normal !important;
-            }
-            .marquee-item {
-                display: flex !important;
-                flex-direction: column !important;
-                align-items: center !important;
-                justify-content: center !important;
-                gap: 4px !important;
-                padding: 0 !important;
-                white-space: normal !important;
-                background: none !important;
-                box-shadow: none !important;
-            }
-            .marquee-icon {
-                width: 38px;
-                height: 38px;
-                margin-bottom: 2px;
-            }
         }
+
         @media (max-width: 400px) {
-            .marquee-track {
-                grid-template-columns: 1fr !important;
-            }
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
@@ -366,6 +617,7 @@
     </style>
 </head>
 <body>
+
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="breadcrumb-wrap">
         <div class="container breadcrumb">
@@ -376,9 +628,13 @@
             <span class="current">TechFlare 2025</span>
         </div>
     </nav>
+
     <!-- Hero -->
     <section class="hero" aria-labelledby="heroTitle" tabindex="-1">
         <div class="container">
+            <!--<div class="hero-logo">
+                <img src="img/E-Cell - Black Bg.png" alt="E-Cell BVEC Logo" />
+            </div>-->
             <div>
                 <h1 id="heroTitle" class="hero-title">TECHFLARE'25</h1>
                 <div class="hero-subtitle" aria-label="Event Date and Venue">
@@ -387,37 +643,397 @@
             </div>
         </div>
     </section>
+
     <!-- Overview -->
     <section class="overview container" aria-labelledby="overviewTitle" id="overview">
         <h2 id="overviewTitle">About TechFlare</h2>
         <p id="overviewText" aria-expanded="false">
-            TechFlare 2025 is the flagship mega event of Barak Valley Engineering College (BVEC), proudly hosted by the Entrepreneurship Cell of BVEC under the banner of the Institution’s Innovation Council (IIC-BVEC). A celebration of innovation and collaboration featuring top talent and interdisciplinary challenges.
-            <span id="moreText" style="display:none;">
-                Four major clubs — BVEC Code Club, Robotics Club, CAD Design Club, and E-Cell BVEC — come together to create this platform for competition and learning. Ignite your creativity, push boundaries, and join us in shaping the future of technology and entrepreneurship.
+          TechFlare 2025, the premier event of Barak Valley Engineering College (BVEC), hosted by the Entrepreneurship Cell under the banner of IIC-BVEC, stands as a distinguished platform celebrating innovation, collaboration, and entrepreneurship.
+
+          Bringing together the BVEC Code Club, Robotics Club, CAD Design Club, and E-Cell BVEC, TechFlare 2025 offers a unique convergence of talent where ideas meet execution. With flagship events such as Hackathons, Pitching Contests, Robotics Challenges, and Design Competitions, the summit fosters creativity, critical thinking, and future-ready skills.
+          
+          Driven by a vision to cultivate interdisciplinary collaboration and nurture leaders of tomorrow, TechFlare 2025 is not merely an event—it is a transformative movement that empowers students to innovate, excel, and inspire.
             </span>
         </p>
         <button type="button" class="read-more-btn" id="readMoreBtn" aria-controls="moreText" aria-expanded="false" onclick="toggleText()">
             Read More
         </button>
     </section>
-    <!-- Collaboration Marquee -->
-    <div class="marquee-wrap" aria-label="Club collaborations">
-        <div class="marquee-track" aria-hidden="true" tabindex="-1">
-            <div class="marquee-item"><img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" /></div>
-            <div class="marquee-item"><img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" /></div>
-            <div class="marquee-item"><img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" /></div>
-            <div class="marquee-item"><img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" /></div>
-            <div class="marquee-item"><img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" /></div>
-            <!-- ...repeat as needed -->
-        </div>
+
+        <!-- Collaboration Marquee -->
+        <!-- Collaboration Marquee -->
+<div class="marquee-wrap" aria-label="Club collaborations">
+    <div class="marquee-track" aria-hidden="true" tabindex="-1">
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+
+      <!-- Repeat as needed -->
     </div>
-    <!-- Events (etc.)... -->
-    <!-- ...continue as in your code -->
+  </div>
+
+  
+    <!-- Events -->
+    <section class="events-section container" aria-labelledby="eventsTitle" id="events">
+        <h2 id="eventsTitle" class="events-title">Featured Events</h2>
+        <div class="event-card-list" role="list">
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="RoboSoccer Event Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>RoboSoccer</h3>
+                    <p>Program your robot to play soccer and compete for the championship trophy.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="Line Follower Event Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>Line Follower</h3>
+                    <p>Design autonomous robots to navigate and complete challenging line tracks.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="Hackathon Event Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>Hackathon</h3>
+                    <p>Collaborate intensively to develop innovative software solutions to real challenges.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="Pitching Contest Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>Pitching Contest</h3>
+                    <p>Turn your startup ideas into compelling pitches presented to an expert panel.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="CAD Design Competition Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>CAD Design</h3>
+                    <p>Showcase your creative 3D modeling and design projects for expert evaluation.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+
+
+    <!-- Coordinators -->
+    <section class="coordinator-section container" aria-labelledby="coordinatorTitle" id="coordinators">
+        <h2 id="coordinatorTitle" class="coordinator-title">Meet Our Coordinators</h2>
+        <div class="coordinator-grid" role="list">
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            
+            <!-- Repeat other coordinators as above -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Contact Us</h3>
+                    <p>Need a hand? Or a high five? Feel free to reach us.</p>
+                </div>
+                <div class="footer-right">
+                    <h4>E-Cell BVEC</h4>
+                    <p>ecellbvec@gmail.com</p>
+                    <div class="footer-contact">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+91 60260 56362</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="footer-bottom-left">
+                    <div class="footer-logo">
+                        <img src="img/E-Cell_-_Black_Bg-removebg-preview.png" alt="E-Cell BVEC" />
+                        <span>E-CELL, BVEC</span>
+                    </div>
+                    <div class="footer-copyright">
+                        © 2025 | All rights reserved
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="footer-credits">
+                    Designed and developed by <a href="https://onexmedia.studio" target="_blank">OneXmedia.Studio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
         function toggleText() {
             const moreText = document.getElementById('moreText');
             const btn = document.getElementById('readMoreBtn');
             const overviewText = document.getElementById('overviewText');
+
             if (moreText.style.display === 'none' || moreText.style.display === '') {
                 moreText.style.display = 'inline';
                 btn.textContent = 'Read Less';
