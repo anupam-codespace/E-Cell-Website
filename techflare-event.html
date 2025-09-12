@@ -1,613 +1,767 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TechFlare 2025 Overview - BVEC E-Cell</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>E-Cell BVEC | Entrepreneurship Cell</title>
+    <meta name="description" content="E-Cell BVEC - Empowering the next generation of innovators and entrepreneurs." />
+    <meta name="keywords" content="E-Cell, BVEC, Entrepreneurship, Startup, Innovation, Business, Students" />
+    
+    <!-- Favicon -->
+    <link rel="icon" href="img/E-Cell - Black Bg.png" type="image/png" />
+    
+    <!-- GT Walsheim Pro Font -->
+    <link href="https://fonts.cdnfonts.com/css/gt-walsheim-trial" rel="stylesheet" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --primary: #000d32;
+            --primary-dark: #0026a3;
+            --primary-light: #3b82f6;
+            --secondary: #fff48e;
+            --accent: #10b981;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-500: #6b7280;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --black: #000000;
+            --font-primary: 'GT Walsheim Trial', -apple-system, BlinkMacSystemFont, sans-serif;
+            --transition: 300ms ease;
+        }
 
-  <link href="https://fonts.cdnfonts.com/css/gt-walsheim-trial" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        body {
+            margin: 0;
+            font-family: var(--font-primary);
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
 
-  <style>
-    :root {
-      --primary-color: #001F7F;
-      --accent-color: #FBBF24;
-      --background: #FAFAFA;
-      --text-dark: #1E293B;
-      --text-muted: #475569;
-      --border-light: #E2E8F0;
-      --font-family: 'GT Walsheim Trial', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+        a {
+            color: var(--primary);
+            text-decoration: none;
+        }
 
-    body {
-      margin: 0;
-      font-family: var(--font-family);
-      background-color: var(--background);
-      color: var(--text-dark);
-      line-height: 1.5;
-      scroll-behavior: smooth;
-    }
+        a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
 
-    a {
-      color: var(--primary-color);
-      text-decoration: none;
-    }
+        .breadcrumb-wrap {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+            padding: 10px 20px;
+        }
 
-    a:hover {
-      color: var(--accent-color);
-      text-decoration: underline;
-    }
+        .breadcrumb {
+            max-width: 1024px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
 
-    /* Hero Section */
-    .hero {
-      background: linear-gradient(130deg, #001F7F 25%, #0B2559 100%);
-      color: white;
-      text-align: center;
-      padding: 6rem 1rem 4rem;
-    }
-    .hero-logo {
-      width: 120px;
-      height: 120px;
-      margin: 0 auto 1.5rem;
-    }
-    .hero-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .hero-title {
-      font-weight: 600;
-      font-size: 3rem;
-      margin: 0;
-      font-family: 'GT Walsheim Trial', 'Segoe UI', sans-serif;
-      letter-spacing: -0.04em;
-    }
-    .hero-details {
-      font-size: 1.15rem;
-      margin-top:0.8rem;
-      font-weight: 500;
-      font-family: 'GT Walsheim Trial', sans-serif;
-      opacity: 0.85;
-    }
+        .breadcrumb a {
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
 
-    /* Container */
-    .container {
-      max-width: 1050px;
-      margin: 0 auto;
-      padding: 0 1.2rem;
-    }
+        .breadcrumb .separator {
+            user-select: none;
+            pointer-events: none;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
 
-    /* Overview Section */
-    .overview {
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 6px 15px rgb(0 0 0 / 0.08);
-      padding: 2rem 2.5rem;
-      margin: -3rem auto 3rem;
-      max-width: 900px;
-      position: relative;
-      font-family: var(--font-family);
-    }
-    .overview h2 {
-      font-size: 2.25rem;
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      color: var(--primary-color);
-    }
-    .overview p {
-      font-size: 1.12rem;
-      color: var(--text-muted);
-      max-height: 5.2em; /* approx 4 lines */
-      overflow: hidden;
-      transition: max-height 0.35s ease-in-out;
-      line-height: 1.6;
-    }
+        .breadcrumb .current {
+            color: var(--gray-700);
+            font-weight: 600;
+        }
 
-    .overview p.expanded {
-      max-height: 100vh; /* expand fully */
-    }
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .read-more-btn {
-      margin-top: 0.8rem;
-      font-weight: 600;
-      background: none;
-      border: none;
-      color: var(--accent-color);
-      cursor: pointer;
-      font-size: 1rem;
-      font-family: var(--font-family);
-    }
-    .read-more-btn:hover {
-      text-decoration: underline;
-    }
+        .hero {
+            background: linear-gradient(135deg, #001d9f 0%, #000000 100%);
+            color: var(--white);
+            padding: 80px 0 40px;
+            text-align: center;
+        }
 
-    /* Schedule */
-    .schedule-section {
-      margin-bottom: 3rem;
-    }
+        .hero-logo {
+            height: 110px;
+            margin-bottom: 22px;
+        }
 
-    .schedule-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--primary-color);
-      margin-bottom: 1.3rem;
-    }
+        .hero-logo img {
+            height: 100%;
+            width: auto;
+        }
 
-    table.schedule-table {
-      border-collapse: collapse;
-      width: 100%;
-      max-width: 700px;
-      margin: 0 auto;
-      font-family: var(--font-family);
-      color: var(--text-dark);
-    }
+        .hero-title {
+            font-size: 6.8rem;
+            font-weight: 600;
+            letter-spacing: -0.05em;
+            margin: 0 0 10px;
+        }
 
-    table.schedule-table th, table.schedule-table td {
-      padding: 0.9rem 1.2rem;
-      border: 1px solid var(--border-light);
-      font-size: 1rem;
-      font-weight: 500;
-    }
+        .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 100;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
 
-    table.schedule-table th {
-      background: var(--accent-color);
-      color: var(--primary-color);
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
+        .overview {
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: 0 10px 18px rgb(0 0 0 / 0.08);
+            padding: 30px 36px;
+            margin-top: -100px;
+            position: relative;
+            font-size: 1.07rem;
+            line-height: 1.55;
+        }
 
-    /* Events Section */
-    .events-section {
-      max-width: 1050px;
-      margin: 0 auto 4rem;
-      padding: 0 1.5rem;
-    }
-    .events-title {
-      font-size: 2rem;
-      font-weight: 600;
-      color: var(--primary-color);
-      text-align: center;
-      margin-bottom: 1.5rem;
-      font-family: var(--font-family);
-    }
-    .events-list {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      justify-content: center;
-    }
-    .event-item {
-      background: white;
-      border-radius: 1rem;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgb(0 0 0 / 0.07);
-      transition: translateY 0.3s ease, box-shadow 0.3s ease;
-      cursor: default;
-    }
-    .event-item:hover {
-      box-shadow: 0 12px 30px rgb(0 0 0 / 0.12);
-      transform: translateY(-6px);
-    }
-    .event-img-wrapper {
-      width: 100%;
-      height: 190px;
-      overflow: hidden;
-    }
-    .event-img-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .event-item:hover .event-img-wrapper img {
-      transform: scale(1.05);
-    }
-    .event-content {
-      padding: 1rem 1.5rem;
-      font-family: var(--font-family);
-    }
-    .event-content h3 {
-      margin: 0 0 0.5rem;
-      font-size: 1.18rem;
-      color: var(--primary-color);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-    .event-content p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      max-height: 3.8em;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      line-height: 1.3;
-    }
-    .event-content p.expanded {
-      max-height: 100vh;
-    }
-    .event-readmore-btn {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--accent-color);
-      background: none;
-      border: none;
-      padding: 0;
-      margin-top: 0.3rem;
-      cursor: pointer;
-      font-family: var(--font-family);
-    }
-    .event-readmore-btn:hover {
-      text-decoration: underline;
-    }
+        .overview h2 {
+            color: var(--primary);
+            margin-bottom: 18px;
+            font-weight: 600;
+            font-size: 1.9rem;
+        }
 
-    /* Coordinator Section */
-    .coordinator-section {
-      background: var(--background);
-      padding: 3rem 1rem 4rem;
-      max-width: 1050px;
-      margin: 0 auto 3rem;
-    }
-    .coordinator-title {
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 2rem;
-      font-family: var(--font-family);
-    }
-    .coordinator-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      gap: 1.5rem;
-      justify-content: center;
-    }
-    .coordinator-card {
-      background: white;
-      border-radius: 1rem;
-      padding: 1.3rem 1rem 1.7rem;
-      box-shadow: 0 2px 15px rgb(0 0 0 / 0.06);
-      text-align: center;
-    }
-    .coordinator-photo {
-      width: 88px;
-      height: 88px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 0.7rem;
-      border: 2px solid var(--accent-color);
-    }
-    .coordinator-name {
-      font-weight: 600;
-      color: var(--primary-color);
-      font-size: 1.14rem;
-      margin-bottom: 0.17rem;
-      font-family: var(--font-family);
-    }
-    .coordinator-role {
-      font-size: 0.94rem;
-      color: var(--text-muted);
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }
-    .coordinator-contact a {
-      margin: 0 0.3rem;
-      font-size: 1.25rem;
-      color: var(--primary-color);
-      transition: color 0.25s;
-      text-decoration: none;
-    }
-    .coordinator-contact a:hover {
-      color: var(--accent-color);
-    }
+        .overview p {
+            max-height: 125px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            margin-bottom: 18px;
+            color: var(--gray-700);
+        }
 
-    /* Collaboration marquee */
-    .collab-marquee {
-      overflow: hidden;
-      white-space: nowrap;
-      background: white;
-      padding: 1.2rem 0;
-      box-shadow: 0 2px 12px rgb(0 0 0 / 0.06);
-      margin: 3rem 0 0;
-    }
-    .marquee-track {
-      display: inline-flex;
-      animation: scroll-left 30s linear infinite;
-    }
-    .marquee-item {
-      display: inline-block;
-      margin: 0 2rem;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--primary-color);
-      user-select: none;
-    }
-    @keyframes scroll-left {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100%); }
-    }
+        .overview p.expanded {
+            max-height: 900px;
+        }
 
-    /* Responsive */
-    @media (max-width:960px) {
-      .hero {
-        padding: 4rem 1rem 3rem;
-      }
-      .hero-title {
-        font-size: 2rem;
-      }
-      .overview {
-        padding: 1.5rem 1.8rem;
-      }
-      .events-list {
-        grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-      }
-      .coordinator-grid {
-        grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
-        gap: 1rem;
-      }
-    }
-    @media (max-width:480px) {
-      .hero-title {
-        font-size: 1.5rem;
-      }
-      .hero-details {
-        font-size: 0.9rem;
-      }
-      .event-content p {
-        max-height: none;
-      }
-      .event-readmore-btn {
-        display: none;
-      }
-      table.schedule-table {
-        font-size: 0.88rem;
-        width: 100%;
-      }
-      .marquee-item {
-        margin: 0 1rem;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+        .read-more-btn {
+            font-weight: 600;
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 0;
+            user-select: none;
+            transition: color 0.2s;
+            font-family: var(--font-primary);
+        }
+
+        .read-more-btn:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .events-section {
+            margin-top: 60px;
+            margin-bottom: 40px;
+        }
+
+        .events-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 28px;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .event-card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1024px;
+            margin: 0 auto;
+            padding: 0 12px;
+        }
+
+        .event-card {
+            background: var(--white);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgb(0 0 0 / 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 38px rgb(0 0 0 / 0.15);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-card-content {
+            padding: 1.4rem 1.6rem;
+            flex-grow: 1;
+        }
+
+        .event-card-content h3 {
+            margin: 0 0 0.5rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .event-card-content p {
+            margin-bottom: 0;
+            color: var(--gray-700);
+            font-weight: 500;
+        }
+
+        .coordinator-section {
+            background: var(--gray-50);
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            max-width: 1100px;
+            margin: 0 auto 3rem auto;
+        }
+
+        .coordinator-section h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 2.4rem;
+        }
+
+        .coordinator-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .coordinator-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.6rem 1.4rem;
+            box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: default;
+        }
+
+        .coordinator-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 14px 30px rgb(0 0 0 / 0.2);
+        }
+
+        .coordinator-card img {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .coordinator-name {
+            font-size: 1.22rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+
+        .coordinator-role {
+            font-size: 1rem;
+            color: var(--gray-700);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .coordinator-contact a {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin: 0 0.8rem;
+            transition: color 0.2s ease;
+            text-decoration: none;
+        }
+
+        .coordinator-contact a:hover {
+            color: var(--primary);
+        }
+
+        .marquee-wrap {
+            overflow: hidden;
+            background: var(--white);
+            border-radius: 15px;
+            padding: 1.5rem 1rem;
+            box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
+            margin: 0 auto 3rem auto;
+            max-width: 1100px;
+            user-select: none;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: scroll-left 30s linear infinite;
+            gap: 3.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: var(--font-primary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            cursor: default;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%);}
+        }
+
+        footer.footer {
+            background: var(--gray-50);
+            padding: 50px 0 0 0;
+            font-family: var(--font-primary);
+            color: var(--gray-900);
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .footer-main {
+            padding: 0 20px 40px 20px;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-left {
+            flex: 1;
+            min-width: 280px;
+            text-align: left;
+        }
+
+        .footer-left h3 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .footer-left p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin: 0;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+
+        .footer-right {
+            flex: 1;
+            min-width: 280px;
+            text-align: right;
+        }
+
+        .footer-right h4 {
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--gray-900);
+            margin: 0 0 8px 0;
+            line-height: 1.2;
+        }
+
+        .footer-right p {
+            font-size: 1rem;
+            color: var(--gray-600);
+            margin: 0 0 5px 0;
+            font-weight: 400;
+        }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+            color: var(--gray-600);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .footer-contact i {
+            color: #25D366;
+            font-size: 1.1rem;
+        }
+
+        .footer-bottom {
+            background: var(--gray-900);
+            color: var(--white);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo img {
+            width: 30px;
+            height: 30px;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-logo span {
+            color: var(--white);
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        .footer-copyright {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            white-space: nowrap;
+            font-weight: 400;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .footer-social a {
+            color: var(--white);
+            font-size: 22px;
+            padding: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-social a:hover {
+            color: var(--secondary);
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-credits {
+            width: 100%;
+            text-align: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 400;
+        }
+
+        .footer-credits a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-credits a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 900px) {
+            .overview {
+                margin-top: -65px;
+                padding: 24px 30px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-title {
+                font-size: 2.8rem;
+                margin-bottom: auto;
+            }
+            .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 100;
+            opacity: 0.9;
+            margin-bottom: 0;
+        }
+
+            .events-title {
+                font-size: 1.6rem;
+            }
+
+            .coordinator-title {
+                font-size: 1.6rem;
+            }
+
+            .gallery-title {
+                font-size: 1.58rem;
+            }
+
+            .coordinator-grid {
+                grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
+            }
+
+            .event-card-list {
+                grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+            }
+        }
+
+        @media (max-width: 400px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Breadcrumb -->
-  <div class="breadcrumb-wrap" style="position: sticky;top: 50px;background: var(--background); z-index: 1000; border-bottom: 1px solid var(--border-light);">
-    <div class="container">
-      <nav class="breadcrumb" aria-label="breadcrumb">
-        <a href="index.html"><i class="fas fa-home"></i> Home</a> <span class="arrow">&raquo;</span>
-        <a href="events.html">Events</a> <span class="arrow">&raquo;</span>
-        <span>TechFlare 2025</span>
-      </nav>
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="breadcrumb-wrap">
+        <div class="container breadcrumb">
+            <a href="index.html"><i class="fas fa-home"></i> Home</a>
+            <span class="separator">›</span>
+            <a href="events.html">Events</a>
+            <span class="separator">›</span>
+            <span class="current">TechFlare 2025</span>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="heroTitle" tabindex="-1">
+        <div class="container">
+            <!--<div class="hero-logo">
+                <img src="img/E-Cell - Black Bg.png" alt="E-Cell BVEC Logo" />
+            </div>-->
+            <div>
+                <h1 id="heroTitle" class="hero-title">TECHFLARE'25</h1>
+                <div class="hero-subtitle" aria-label="Event Date and Venue">
+                    15th Oct 2025 &bull; BVEC, Main Campus
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="overview container" aria-labelledby="overviewTitle" id="overview">
+        <h2 id="overviewTitle">About TechFlare</h2>
+        <p id="overviewText" aria-expanded="false">
+            TechFlare 2025 is the flagship mega event of Barak Valley Engineering College (BVEC), proudly hosted by the Entrepreneurship Cell of BVEC under the banner of the Institution’s Innovation Council (IIC-BVEC). A celebration of innovation and collaboration featuring top talent and interdisciplinary challenges.
+            <span id="moreText" style="display:none;">
+                Four major clubs — BVEC Code Club, Robotics Club, CAD Design Club, and E-Cell BVEC — come together to create this platform for competition and learning. Ignite your creativity, push boundaries, and join us in shaping the future of technology and entrepreneurship.
+            </span>
+        </p>
+        <button type="button" class="read-more-btn" id="readMoreBtn" aria-controls="moreText" aria-expanded="false" onclick="toggleText()">
+            Read More
+        </button>
+    </section>
+
+    <!-- Events -->
+    <section class="events-section container" aria-labelledby="eventsTitle" id="events">
+        <h2 id="eventsTitle" class="events-title">Featured Events</h2>
+        <div class="event-card-list" role="list">
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="RoboSoccer Event Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>RoboSoccer</h3>
+                    <p>Program your robot to play soccer and compete for the championship trophy.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="Line Follower Event Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>Line Follower</h3>
+                    <p>Design autonomous robots to navigate and complete challenging line tracks.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="Hackathon Event Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>Hackathon</h3>
+                    <p>Collaborate intensively to develop innovative software solutions to real challenges.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="Pitching Contest Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>Pitching Contest</h3>
+                    <p>Turn your startup ideas into compelling pitches presented to an expert panel.</p>
+                </div>
+            </article>
+            <article class="event-card" role="listitem" tabindex="0">
+                <div class="event-card-img">
+                    <img src="img/TechFlare.png" alt="CAD Design Competition Poster" loading="lazy" />
+                </div>
+                <div class="event-card-content">
+                    <h3>CAD Design</h3>
+                    <p>Showcase your creative 3D modeling and design projects for expert evaluation.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Collaboration Marquee -->
+    <div class="marquee-wrap" aria-label="Club collaborations">
+        <div class="marquee-track" aria-hidden="true" tabindex="-1">
+            <div class="marquee-item">IIC BVEC</div>
+            <div class="marquee-item">BVEC Code Club</div>
+            <div class="marquee-item">Robotics Club</div>
+            <div class="marquee-item">CAD Design Club</div>
+            <div class="marquee-item">E-Cell BVEC</div>
+            <div class="marquee-item">Institution Innovation Council</div>
+            <div class="marquee-item">BVEC Code Club</div>
+        </div>
     </div>
-  </div>
 
-  <!-- Hero -->
-  <section class="hero" id="hero">
-    <div class="container hero-row">
-      <!--<div class="hero-logo">
-       <img src="img/E-cell.png" alt="TechFlare Logo" />
-      </div>--> 
-      <div>
-        <h1 class="hero-title">TechFlare 2025</h1>
-        <div class="hero-details">15th Oct 2025 &bull; BVEC Main Campus &bull; Hosted by E-Cell BVEC</div>
-      </div>
-    </div>
-  </section>
+    <!-- Coordinators -->
+    <section class="coordinator-section container" aria-labelledby="coordinatorTitle" id="coordinators">
+        <h2 id="coordinatorTitle" class="coordinator-title">Meet Our Coordinators</h2>
+        <div class="coordinator-grid" role="list">
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            <!-- Repeat other coordinators as above -->
+        </div>
+    </section>
 
-  <!-- Overview + Read More -->
-  <section class="overview container" id="overview">
-    <h2>Overview</h2>
-    <p id="overviewText">
-      TechFlare 2025 is the flagship mega event of Barak Valley Engineering College (BVEC), proudly hosted by the Entrepreneurship Cell of BVEC under the banner of Institution’s Innovation Council (IIC-BVEC). This one-of-a-kind celebration of innovation, skills, and collaboration brings together the brightest minds of the campus and beyond, igniting a spark of creativity and entrepreneurship that defines the next generation of leaders and innovators. 
-      <span id="moreText" style="display:none;">
-        What makes TechFlare 2025 truly unique is its collaborative spirit. Four dynamic clubs of BVEC—BVEC Code Club, Robotics Club, CAD Design Club, and E-Cell BVEC—have come together to craft a platform where innovation meets execution, and ideas come alive. This synergy ensures participants learn, compete, and grow in multiple domains of technology and entrepreneurship, scaling mindsets and nurturing future-ready skillsets.
-      </span>
-    </p>
-    <button class="read-more-btn" onclick="toggleOverview()" aria-expanded="false" aria-controls="moreText" id="readMoreBtn">Read More</button>
-  </section>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <h3>Contact Us</h3>
+                    <p>Need a hand? Or a high five? Feel free to reach us.</p>
+                </div>
+                <div class="footer-right">
+                    <h4>E-Cell BVEC</h4>
+                    <p>ecellbvec@gmail.com</p>
+                    <div class="footer-contact">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+91 60260 56362</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  <!-- Schedule 
-  <section class="schedule-section container" id="schedule">
-    <h2 class="schedule-title">Schedule - 15th Oct 2025</h2>
-    <table class="schedule-table" role="table" aria-label="Event Schedule">
-      <thead>
-        <tr>
-          <th scope="col">Time</th>
-          <th scope="col">Session/Event</th>
-          <th scope="col">Coordinator</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>9:00 AM</td><td>Inauguration & Keynote</td><td>Dr Sharma</td></tr>
-        <tr><td>10:00 AM</td><td>RoboRace Heats</td><td>Shree Hari</td></tr>
-        <tr><td>11:00 AM</td><td>Line Follower Competition</td><td>Pawan Yadav</td></tr>
-        <tr><td>1:00 PM</td><td>Lunch Break</td><td>-</td></tr>
-        <tr><td>2:15 PM</td><td>Robo Soccer Finals</td><td>Shree Hari</td></tr>
-        <tr><td>3:30 PM</td><td>Prize Distribution & Networking</td><td>All Coordinators</td></tr>
-      </tbody>
-    </table>
-  </section>-->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="footer-bottom-left">
+                    <div class="footer-logo">
+                        <img src="img/E-Cell_-_Black_Bg-removebg-preview.png" alt="E-Cell BVEC" />
+                        <span>E-CELL, BVEC</span>
+                    </div>
+                    <div class="footer-copyright">
+                        © 2025 | All rights reserved
+                    </div>
+                </div>
+                <div class="footer-social">
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+                <div class="footer-credits">
+                    Designed and developed by <a href="https://onexmedia.studio" target="_blank">OneXmedia.Studio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <!-- Events -->
-  <section class="events-section container" id="events">
-    <h2 class="events-title">Events & Competitions</h2>
-    <div class="events-list">
-      <!-- Event 1 -->
-      <article class="event-item">
-        <div class="event-img-wrapper">
-          <img src="img/TechFlare.png" alt="RoboSoccer" loading="lazy" />
-        </div>
-        <div class="event-content">
-          <h3>RoboSoccer</h3>
-          <p>Robotic soccer - program bots to compete and win in the thrilling RoboSoccer finals.</p>
-        </div>
-      </article>
+    <script>
+        function toggleText() {
+            const moreText = document.getElementById('moreText');
+            const btn = document.getElementById('readMoreBtn');
+            const overviewText = document.getElementById('overviewText');
 
-      <!-- Event 2 -->
-      <article class="event-item">
-        <div class="event-img-wrapper">
-          <img src="img/TechFlare.png" alt="Line Follower" loading="lazy" />
-        </div>
-        <div class="event-content">
-          <h3>Line Follower</h3>
-          <p>Design autonomous robots to navigate complex lines with precision and speed.</p>
-        </div>
-      </article>
-
-      <!-- Event 3 -->
-      <article class="event-item">
-        <div class="event-img-wrapper">
-          <img src="img/TechFlare.png" alt="Hackathon" loading="lazy" />
-        </div>
-        <div class="event-content">
-          <h3>Hackathon</h3>
-          <p>Form teams to build innovative solutions under time pressure to real-world problems.</p>
-        </div>
-      </article>
-
-      <!-- Event 4 -->
-      <article class="event-item">
-        <div class="event-img-wrapper">
-          <img src="img/TechFlare.png" alt="Pitching Contest" loading="lazy" />
-        </div>
-        <div class="event-content">
-          <h3>Pitching Contests</h3>
-          <p>Bring your entrepreneurial ideas to life with compelling pitches judged by industry experts.</p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Collaborations Marquee -->
-  <section class="collab-marquee">
-    <div class="marquee-track">
-      <div class="marquee-item">IIC BVEC</div>
-      <div class="marquee-item">BVEC Code Club</div>
-      <div class="marquee-item">Robotics Club</div>
-      <div class="marquee-item">CAD Design Club</div>
-      <div class="marquee-item">E-Cell BVEC</div>
-      <div class="marquee-item">IIC BVEC</div>
-      <div class="marquee-item">BVEC Code Club</div>
-      <div class="marquee-item">IIC BVEC</div>
-      <div class="marquee-item">BVEC Code Club</div>
-      <div class="marquee-item">Robotics Club</div>
-      <div class="marquee-item">CAD Design Club</div>
-      <div class="marquee-item">E-Cell BVEC</div>
-      <div class="marquee-item">IIC BVEC</div>
-      <div class="marquee-item">BVEC Code Club</div>
-      <div class="marquee-item">IIC BVEC</div>
-      <div class="marquee-item">BVEC Code Club</div>
-      <div class="marquee-item">Robotics Club</div>
-      <div class="marquee-item">CAD Design Club</div>
-      <div class="marquee-item">E-Cell BVEC</div>
-      <div class="marquee-item">IIC BVEC</div>
-      <div class="marquee-item">BVEC Code Club</div>
-      <!-- Continuously scroll -->
-    </div>
-  </section>
-
-  <!-- Coordinators Section -->
-  <section class="coordinator-section" id="coordinators">
-    <h2 class="coordinator-title">Meet Our Coordinators</h2>
-    <div class="coordinator-grid">
-      <!-- Repeat for each coordinator -->
-      <div class="coordinator-card">
-        <img class="coordinator-photo" src="img/TechFlare.png" alt="Shree Hari Coordinator" loading="lazy" />
-        <div class="coordinator-name">E-CELL BVEC</div>
-        <div class="coordinator-role">Lead Coordinator</div>
-        <div class="coordinator-contact">
-          <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
-          <a href="https://linkedin.com/in/shreehari" target="_blank" rel="noopener" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-      <div class="coordinator-card">
-        <img class="coordinator-photo" src="img/TechFlare.png" alt="Shree Hari Coordinator" loading="lazy" />
-        <div class="coordinator-name">E-CELL BVEC</div>
-        <div class="coordinator-role">Lead Coordinator</div>
-        <div class="coordinator-contact">
-          <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
-          <a href="https://linkedin.com/in/shreehari" target="_blank" rel="noopener" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-      <div class="coordinator-card">
-        <img class="coordinator-photo" src="img/TechFlare.png" alt="Shree Hari Coordinator" loading="lazy" />
-        <div class="coordinator-name">E-CELL BVEC</div>
-        <div class="coordinator-role">Lead Coordinator</div>
-        <div class="coordinator-contact">
-          <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
-          <a href="https://linkedin.com/in/shreehari" target="_blank" rel="noopener" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-      <div class="coordinator-card">
-        <img class="coordinator-photo" src="img/TechFlare.png" alt="Shree Hari Coordinator" loading="lazy" />
-        <div class="coordinator-name">E-CELL BVEC</div>
-        <div class="coordinator-role">Lead Coordinator</div>
-        <div class="coordinator-contact">
-          <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
-          <a href="https://linkedin.com/in/shreehari" target="_blank" rel="noopener" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-      <!-- Add rest 13 coordinators similarly -->
-    </div>
-  </section>
-
-  <!-- Footer (Same as main) -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-logo">
-        <img src="img/E-cell.png" alt="E-Cell BVEC Logo" />
-        <span>E-Cell BVEC</span>
-      </div>
-      <nav class="footer-links" aria-label="Footer Navigation">
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <div class="footer-social" aria-label="Social Media Links">
-        <a href="https://instagram.com/ecellbvec" aria-label="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://linkedin.com/company/ecellbvec" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
-      </div>
-      <div style="font-size: 0.9rem;color: var(--text-muted);">© 2025 E-Cell BVEC</div>
-    </div>
-  </footer>
-
-  <!-- JS: Mobile menu toggle & Read More toggle -->
-  <script>
-    const burger = document.getElementById('mobileNavBtn');
-    const navLinks = document.getElementById('navLinks');
-    burger?.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      burger.querySelector('i').classList.toggle('fa-bars');
-      burger.querySelector('i').classList.toggle('fa-times');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        if(window.innerWidth < 700){
-          navLinks.classList.remove('open');
-          burger.querySelector('i').classList.remove('fa-times');
-          burger.querySelector('i').classList.add('fa-bars');
+            if (moreText.style.display === 'none' || moreText.style.display === '') {
+                moreText.style.display = 'inline';
+                btn.textContent = 'Read Less';
+                btn.setAttribute('aria-expanded', 'true');
+            } else {
+                moreText.style.display = 'none';
+                btn.textContent = 'Read More';
+                btn.setAttribute('aria-expanded', 'false');
+                overviewText.scrollIntoView({behavior: 'smooth'});
+            }
         }
-      });
-    });
-
-    // Read More toggle on overview
-    function toggleOverview() {
-      const moreText = document.getElementById('moreText');
-      const btn = document.getElementById('readMoreBtn');
-      const overviewText = document.getElementById('overviewText');
-
-      if(moreText.style.display === "none") {
-        moreText.style.display = "inline";
-        btn.textContent = "Read Less";
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        moreText.style.display = "none";
-        btn.textContent = "Read More";
-        btn.setAttribute('aria-expanded', 'false');
-        overviewText.scrollIntoView({behavior: "smooth"});
-      }
-    }
-  </script>
+    </script>
 </body>
 </html>
