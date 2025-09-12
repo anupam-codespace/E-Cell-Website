@@ -105,7 +105,7 @@
         .hero {
             background: linear-gradient(135deg, #001d9f 0%, #000000 100%);
             color: var(--white);
-            padding: 80px 0 40px;
+            padding: 50px 0 120px;
             text-align: center;
         }
 
@@ -122,14 +122,16 @@
         .hero-title {
             font-size: 6.8rem;
             font-weight: 600;
-            letter-spacing: -0.05em;
-            margin: 0 0 10px;
+            letter-spacing: -0.06em;
+            margin: 0 0 30px;
+            margin-bottom: -1rem;
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
-            font-weight: 100;
+            font-size: 1.7rem;
+            font-weight: 400;
             opacity: 0.9;
+            margin-top: 0;
             margin-bottom: 0;
         }
 
@@ -316,32 +318,92 @@
         }
 
         .marquee-wrap {
-            overflow: hidden;
-            background: var(--white);
-            border-radius: 15px;
-            padding: 1.5rem 1rem;
-            box-shadow: 0 10px 25px rgb(0 0 0 / 0.1);
-            margin: 0 auto 3rem auto;
-            max-width: 1100px;
-            user-select: none;
-        }
+  overflow: hidden;
+  background: #fff;
+  border-radius: 14px;
+  padding: 16px 12px;
+  margin: 3rem auto;
+  max-width: 1024px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+  user-select: none;
+}
 
-        .marquee-track {
-            display: inline-flex;
-            animation: scroll-left 30s linear infinite;
-            gap: 3.2rem;
-            font-weight: 700;
-            color: var(--primary);
-            font-family: var(--font-primary);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            cursor: default;
-        }
+.marquee-track {
+  display: inline-flex;
+  animation: scroll-left 30s linear infinite;
+  gap: 28px;
+  font-weight: 700;
+  color: #001F7F;
+  font-family: 'GT Walsheim Trial', sans-serif;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  cursor: default;
+  white-space: nowrap;
+}
 
-        @keyframes scroll-left {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%);}
-        }
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.marquee-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile: vertical stack + disable animation */
+@media (max-width: 600px) {
+  .marquee-wrap {
+    overflow: visible;
+    padding: 12px 8px;
+  }
+  .marquee-track {
+    animation: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    font-size: 1rem !important;
+    white-space: normal !important;
+  }
+  .marquee-item {
+    justify-content: flex-start !important;
+    white-space: normal !important;
+  }
+}
+@media (max-width: 600px) {
+  .marquee-wrap {
+    overflow: visible;
+    padding: 12px 8px;
+  }
+  .marquee-track {
+    animation: none !important;
+    display: block !important;
+    white-space: normal !important;
+    font-size: 1rem !important;
+    gap: 0 !important; /* gap ignored in block display */
+  }
+  .marquee-item {
+    display: flex !important;
+    justify-content: flex-start !important;
+    white-space: normal !important;
+    margin-bottom: 12px;
+  }
+}
+
+
 
         footer.footer {
             background: var(--gray-50);
@@ -532,13 +594,18 @@
         @media (max-width: 600px) {
             .hero-title {
                 font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.04em;
+            margin: 0 0 30px;
+            margin-bottom: -1rem;
                 margin-bottom: auto;
             }
             .hero-subtitle {
-            font-size: 1.1rem;
-            font-weight: 100;
+                font-size: 0.9rem;
+            font-weight: 400;
             opacity: 0.9;
-            margin-bottom: 0;
+            margin-top: 0;
+            margin-bottom: -1rem;
         }
 
             .events-title {
@@ -611,6 +678,220 @@
         </button>
     </section>
 
+        <!-- Collaboration Marquee -->
+        <!-- Collaboration Marquee -->
+<div class="marquee-wrap" aria-label="Club collaborations">
+    <div class="marquee-track" aria-hidden="true" tabindex="-1">
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+        
+      </div>
+      <div class="marquee-item">
+        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+      </div>
+      <div class="marquee-item">
+        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
+      </div>
+
+      <!-- Repeat as needed -->
+    </div>
+  </div>
+
+  
     <!-- Events -->
     <section class="events-section container" aria-labelledby="eventsTitle" id="events">
         <h2 id="eventsTitle" class="events-title">Featured Events</h2>
@@ -663,18 +944,7 @@
         </div>
     </section>
 
-    <!-- Collaboration Marquee -->
-    <div class="marquee-wrap" aria-label="Club collaborations">
-        <div class="marquee-track" aria-hidden="true" tabindex="-1">
-            <div class="marquee-item">IIC BVEC</div>
-            <div class="marquee-item">BVEC Code Club</div>
-            <div class="marquee-item">Robotics Club</div>
-            <div class="marquee-item">CAD Design Club</div>
-            <div class="marquee-item">E-Cell BVEC</div>
-            <div class="marquee-item">Institution Innovation Council</div>
-            <div class="marquee-item">BVEC Code Club</div>
-        </div>
-    </div>
+
 
     <!-- Coordinators -->
     <section class="coordinator-section container" aria-labelledby="coordinatorTitle" id="coordinators">
@@ -690,6 +960,37 @@
                     <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
                 </div>
             </article>
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            <article class="coordinator-card" role="listitem" tabindex="0">
+                <img class="coordinator-card-img" src="img/TechFlare.png" alt="Shree Hari" loading="lazy" />
+                <div class="coordinator-name">Shree Hari</div>
+                <div class="coordinator-role">Lead Coordinator</div>
+                <div class="coordinator-contact">
+                    <a href="tel:+916260904430" aria-label="Call Shree Hari"><i class="fas fa-phone"></i></a>
+                    <a href="mailto:hari@example.com" aria-label="Email Shree Hari"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/shreehari" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </article>
+            
             <!-- Repeat other coordinators as above -->
         </div>
     </section>
