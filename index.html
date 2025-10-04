@@ -1298,7 +1298,7 @@
                     <li><a href="events.html">Initiatives</a></li>
                     <li><a href="notice.html">Notice</a></li>
                     <li><a href="Gallery.html">Gallery</a></li>
-                    <li><a href="About.html">About Us</a></li>
+                    <li><a href="#about">About Us</a></li>
                     <li class="mobile-close">
                         <button class="mobile-menu-close" aria-label="Close Menu"><i class="fas fa-times"></i></button>
                     </li>
@@ -1308,7 +1308,6 @@
                 <!-- Mobile Menu Button - Right Aligned, White -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
-                    <button class="admin-button" ><a href="admin-dashboard.html">Admin Panel</a></button>
                 </button>
             </nav>
         </div>
@@ -1815,37 +1814,33 @@
                 setInterval(changeHeroText, 5000);
             }, 3000);
 
-// ----- Mobile Menu Toggle & Proper Close -----
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.getElementById('navLinks');
-const menuIcon = mobileMenuBtn.querySelector('i');
+            // Improved Mobile Menu Toggle with Better Closing
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+            }
 
-mobileMenuBtn.addEventListener('click', function(e) {
-    e.stopPropagation(); // prevent doc click firing immediately after
-    navLinks.classList.toggle('active');
-    menuIcon.classList.toggle('fa-bars');
-    menuIcon.classList.toggle('fa-times');
-});
+            mobileMenuBtn.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
+                mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
+            });
 
-function closeMenu() {
-    if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        menuIcon.classList.remove('fa-times');
-        menuIcon.classList.add('fa-bars');
-    }
-}
+            // Close menu when clicking on navigation links
+            navLinks.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', closeMenu);
+            });
 
-// Close if clicking navigation links (on mobile)
-navLinks.querySelectorAll('a').forEach(function(link) {
-    link.addEventListener('click', closeMenu);
-});
-
-// Only close if menu is open and click is outside both menu and button
-document.addEventListener('click', function(event) {
-    if (navLinks.classList.contains('active') && !navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-        closeMenu();
-    }
-});
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                    closeMenu();
+                }
+            });
 
             document.querySelectorAll(".notice-link").forEach(link=>{
   link.addEventListener("click", function(e){
