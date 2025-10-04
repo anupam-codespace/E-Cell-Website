@@ -174,6 +174,20 @@
             text-decoration: underline;
         }
 
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--gray-900);
+            margin-bottom: 0rem;
+            text-transform: uppercase;
+            letter-spacing: -0.01em;
+            font-family: var(--font-primary);
+        }
         .events-section {
             margin-top: 60px;
             margin-bottom: 40px;
@@ -308,73 +322,85 @@
             color: var(--primary);
         }
 
-  .marquee-wrap {
+        .marquee-wrap {
   overflow: hidden;
   background: #fff;
   border-radius: 14px;
   padding: 16px 12px;
   margin: 3rem auto;
   max-width: 1024px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0);
   user-select: none;
 }
+
+/* Track scrolling */
 .marquee-track {
   display: inline-flex;
   animation: scroll-left 28s linear infinite;
   gap: 32px;
   align-items: center;
 }
+
+/* Individual item icon */
 .marquee-icon {
-  width: 36px; height: 36px;
+  width: 106px; 
+  height: 106px;
   object-fit: contain;
   border-radius: 5px;
   background: #f3f4f6;
   padding: 4px;
 }
-/* Animate horizontally on desktop/tablet */
+
+/* Horizontal scroll animation */
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-/* Responsive for Mobile: grid, no scroll, touch-friendly */
-@media (max-width: 600px) {
+
+/* ===== TABLET & MOBILE ===== */
+@media (max-width: 900px) { /* Tablet adjustments */
   .marquee-wrap {
-    padding: 10px 4px;
-    box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+    padding: 12px 8px;
   }
   .marquee-track {
-    animation: none !important;
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr); /* Two per row */
-    gap: 16px 12px !important;
-    justify-items: center;
-    align-items: center;
-    width: 100% !important;
-    font-size: 1rem;
-    white-space: normal !important;
-  }
-  .marquee-item {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 4px !important;
-    padding: 0 !important;
-    white-space: normal !important;
-    background: none !important;
-    box-shadow: none !important;
+    gap: 24px;
+    animation: scroll-left 28s linear infinite; /* Keep scrolling */
   }
   .marquee-icon {
-    width: 38px;
-    height: 38px;
-    margin-bottom: 2px;
+    width: 80px;
+    height: 80px;
   }
 }
-@media (max-width: 400px) {
+
+@media (max-width: 600px) { /* Mobile adjustments */
+  .marquee-wrap {
+    padding: 10px 0px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0);
+  }
   .marquee-track {
-    grid-template-columns: 1fr !important;
+    animation: scroll-left 20s linear infinite; /* Keep scrolling, faster */
+    gap: 16px;
+  }
+  .marquee-icon {
+    width: 60px;
+    height: 60px;
   }
 }
+
+@media (max-width: 400px) { /* Small mobile */
+  .marquee-wrap {
+    padding: 8px 4px;
+  }
+  .marquee-track {
+    animation: scroll-left 18s linear infinite; /* slower for single column */
+    gap: 12px;
+  }
+  .marquee-icon {
+    width: 50px;
+    height: 50px;
+  }
+}
+
 
 /* ===== PERFECTLY ALIGNED FOOTER WITH PROPER FONT WEIGHTS ===== */
 .footer {
@@ -757,33 +783,130 @@
         </button>
     </section>
 
-        <!-- Collaboration Marquee -->
-        <!-- Collaboration Marquee -->
-<div class="marquee-wrap" aria-label="Club collaborations">
-    <div class="marquee-track" aria-hidden="true" tabindex="-1">
-      <div class="marquee-item">
-        <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
-        
-      </div>
-      <div class="marquee-item">
-        <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
-        
-      </div>
-      <div class="marquee-item">
-        <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
-      </div>
-      <div class="marquee-item">
-        <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
-      </div>
-      <div class="marquee-item">
-        <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell Logo" class="marquee-icon" />
-      </div>
-     
-
-      <!-- Repeat as needed -->
-    </div>
-  </div>
-
+            <!-- Collaboration  -->
+            <div class="marquee-wrap" aria-label="Club collaborations">
+                <div class="section-title">
+                    <h2>Collaboration</h2>
+                </div>
+                <div class="marquee-track" aria-hidden="true" tabindex="-1">
+                  <div class="marquee-item">
+                    <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+                    
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+                    
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+                  </div>
+                
+                  <div class="marquee-item">
+                    <img src="Collaboration/assam startup.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Unstop.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Techyuva.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Ntv.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  
+                  <div class="marquee-item">
+                    <img src="Collaboration/Ecell - iitb.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Truth.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+            
+                  <div class="marquee-item">
+                    <img src="Collaboration/BTN.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+                    
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+                    
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+                  </div>
+                
+                  <div class="marquee-item">
+                    <img src="Collaboration/assam startup.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Unstop.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Techyuva.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Ntv.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  
+                  <div class="marquee-item">
+                    <img src="Collaboration/Ecell - iitb.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Truth.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+            
+                  <div class="marquee-item">
+                    <img src="Collaboration/BTN.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/iic logo.png" alt="IIC Logo" class="marquee-icon" />
+                    
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/BVEC New - CODE CLUB LOGO.png" alt="Code Club Logo" class="marquee-icon" />
+                    
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/ROBO LOGO FULL 9XENGG.png" alt="Robotics Club Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="img/TechFlare_white_bg_logo_-_final-removebg-preview.png" alt="CAD Design Club Logo" class="marquee-icon" />
+                  </div>
+                
+                  <div class="marquee-item">
+                    <img src="Collaboration/assam startup.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Unstop.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Techyuva.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Ntv.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  
+                  <div class="marquee-item">
+                    <img src="Collaboration/Ecell - iitb.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <div class="marquee-item">
+                    <img src="Collaboration/Truth.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+            
+                  <div class="marquee-item">
+                    <img src="Collaboration/BTN.png" alt="E-Cell Logo" class="marquee-icon" />
+                  </div>
+                  <!-- Repeat as needed -->
+                </div>
+              </div>
+            
   
     <!-- Events -->
     <section class="events-section container" aria-labelledby="eventsTitle" id="events">
