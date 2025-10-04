@@ -495,6 +495,100 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+
+        .marquee-section {
+    width: 100%;
+    background: linear-gradient(135deg, rgb(0, 29, 159) 0%, #000000 100%);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0);
+    padding: 12px 0;
+    overflow: hidden;
+    font-family: var(--font-primary)";
+
+  }
+
+  .marquee {
+    display: flex;
+    width: max-content;
+    gap: 50px;
+    white-space: nowrap;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    font-weight: 800;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    color: #ffffff; /* blue accent */
+  }
+
+  .marquee-left {
+    animation-name: marquee-left;
+    animation-duration: 18s;
+  }
+
+  .marquee-right {
+    animation-name: marquee-right;
+    animation-duration: 20s;
+  }
+
+  .marquee span {
+    display: inline-block;
+  }
+
+  @keyframes marquee-left {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .marquee {
+      font-size: 1rem;
+      gap: 30px;
+    }
+    .marquee-section {
+      padding: 10px 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .marquee {
+      font-size: 0.9rem;
+      gap: 20px;
+    }
+    .marquee-section {
+      padding: 8px 0;
+    }
+  }
+
+
+        .facebook-cover-banner {
+    width: 100%;
+    max-width: 1200px; /* optional max width */
+    margin: 20px auto;
+  }
+  .facebook-cover-banner a {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px; /* optional */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* optional */
+    cursor: pointer;
+  }
+  .facebook-cover-banner img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 820 / 312; /* ensures the image keeps Facebook cover ratio */
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+ 
+
         /* ===== ONGOING EVENTS SECTION WITH INSTAGRAM SQUARE IMAGES ===== */
         .events {
             padding: 3.6rem 0;
@@ -1344,7 +1438,37 @@
         </div>
     </section>
     
-    
+
+
+    <!-- Marquee Section -->
+<section class="marquee-section">
+    <div class="marquee marquee-left" aria-label="Scrolling text from right to left">
+      <span>Book yours TechFlare merchandise today - Click on the banner&nbsp;&nbsp;</span>
+      <span>Book yours TechFlare merchandise today - Click on the banner &nbsp;&nbsp;</span>
+      <span>Book yours TechFlare merchandise today - Click on the banner&nbsp;&nbsp;</span>
+      <span>Book yours TechFlare merchandise today - Click on the banner &nbsp;&nbsp;</span>
+    </div>
+  </section>
+
+
+<!-- Banner Section -->
+<section class="facebook-cover-banner">
+    <a href="merchandise.html" target="_blank" rel="noopener noreferrer" aria-label="Go to external site">
+      <img src="Merchandise- TechFalre/TechFalare 0fficial Merchandise.png" alt="Banner Image" />
+    </a>
+  </section>
+
+  <section class="marquee-section">
+  <div class="marquee marquee-right" aria-label="Scrolling text from left to right">
+    <span>Book yours TechFlare merchandise today - Click on the banner&nbsp;&nbsp;</span>
+    <span>Book yours TechFlare merchandise today - Click on the banner&nbsp;&nbsp;</span>
+    <span>Book yours TechFlare merchandise today - Click on the banner&nbsp;&nbsp;</span>
+    <span>Book yours TechFlare merchandise today - Click on the banner&nbsp;&nbsp;</span>
+  </div>
+</section>
+
+
+
 
     <!-- Ongoing Events with Instagram Square Images -->
     <section id="initiatives" class="events">
