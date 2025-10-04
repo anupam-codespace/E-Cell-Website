@@ -104,102 +104,54 @@
             border-bottom: 1px solid var(--gray-200);
         }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            height: auto;
+        .breadcrumb-wrap {
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-200);
+            position: sticky;
+            top: 0px;
+            z-index: 1000;
+            padding: 10px 20px;
         }
 
-        /* Logo - Perfectly Aligned Left, Never Centered */
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: var(--gray-900);
-            flex-shrink: 0;
-            margin-right: auto;
-        }
-
-        .nav-logo img {
-            width: 60px;
-            height: 60px;
-            transition: var(--transition);
-        }
-
-        /* Navigation Links - Right Aligned on Desktop */
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--gray-700);
-            font-weight: 500; /* Medium */
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
+        .breadcrumb {
+            max-width: 1024px;
+            margin: 0 auto;
             font-size: 0.9rem;
-            padding: 0.5rem 0;
-            position: relative;
-            transition: var(--transition);
-            white-space: nowrap;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .nav-links a.active {
-            color: var(--primary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* Mobile Menu Button - Right Aligned */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
             color: var(--gray-700);
-            padding: 0.5rem;
-            margin-left: auto;
-            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .mobile-menu-btn:hover {
+        .breadcrumb a {
             color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 4px;
         }
+
+        .breadcrumb .separator {
+            user-select: none;
+            pointer-events: none;
+            font-weight: 600;
+            color: var(--gray-700);
+        }
+
+        .breadcrumb .current {
+            color: var(--gray-700);
+            font-weight: 600;
+        }
+    
 
         /* ===== ABOUT PAGE HERO ===== */
         .page-hero {
             background: linear-gradient(135deg, #0022b9 0%, #420000 100%);
             color: var(--white);
-            padding: 8rem 0 4rem;
+            padding: 3rem 0 3rem;
             text-align: center;
             position: relative;
-            margin-top: 75px;
+            margin-top: 0px;
         }
 
         .page-hero::before {
@@ -220,14 +172,14 @@
         .page-hero h1 {
             font-size: 4rem;
             font-weight: 500; /* Medium */
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
             letter-spacing: -0.02em;
             font-family: var(--font-primary);
         }
 
         .page-hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
@@ -242,14 +194,14 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 2rem;
         }
 
         .section-title h2 {
             font-size: 2.5rem;
             font-weight: 500; /* Medium */
             color: var(--gray-900);
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
             text-transform: uppercase;
             letter-spacing: -0.01em;
             font-family: var(--font-primary);
@@ -416,213 +368,297 @@
             background: var(--gray-100);
         }
 
-        /* ===== PERFECTLY ALIGNED FOOTER ===== */
-        .footer {
-            background: var(--gray-50);
-            padding: 40px 0;
-            font-family: var(--font-primary);
-            color: var(--gray-900);
-            border-top: 1px solid var(--gray-200);
-        }
+/* ===== PERFECTLY ALIGNED FOOTER WITH PROPER FONT WEIGHTS ===== */
+.footer {
+    background: var(--gray-50);
+    padding: 50px 0 0 0;
+    font-family: var(--font-primary);
+    color: var(--gray-900);
+    border-top: 1px solid var(--gray-200);
+}
 
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            position: relative;
-        }
+.footer-main {
+    padding: 0 20px 40px 20px;
+    position: relative;
+}
 
-        .footer-left {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            max-width: 50%;
-        }
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .footer-left h3 {
-            font-size: 2rem;
-            font-weight: 500; /* Medium */
-            color: var(--gray-900);
-            margin-bottom: 5px;
-            line-height: 1.2;
-        }
+.footer-left {
+    flex: 1;
+    min-width: 280px;
+    text-align: left;
+}
 
-        .footer-left p {
-            font-size: 1rem;
-            color: var(--gray-600);
-            margin: 0;
-            line-height: 1.5;
-            font-weight: 400; /* Regular */
-        }
+.footer-left h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--gray-900);
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
 
-        .footer-right {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-            max-width: 50%;
-        }
+.footer-left p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 400;
+}
 
-        .footer-right h4 {
-            font-size: 1.4rem;
-            font-weight: 500; /* Medium */
-            color: var(--gray-900);
-            margin: 0;
-            line-height: 1.2;
-        }
+.footer-right {
+    flex: 1;
+    min-width: 280px;
+    text-align: right;
+}
 
-        .footer-right p {
-            font-size: 1rem;
-            color: var(--gray-600);
-            margin: 0;
-            text-align: right;
-            font-weight: 400; /* Regular */
-        }
+.footer-right h4 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: var(--gray-900);
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+}
 
-        .footer-contact {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--gray-600);
-            font-size: 1rem;
-            font-weight: 400; /* Regular */
-        }
+.footer-right p {
+    font-size: 1rem;
+    color: var(--gray-600);
+    margin: 0 0 5px 0;
+    font-weight: 400;
+}
 
-        .footer-contact i {
-            color: #25D366;
-            font-size: 1.1rem;
-        }
+.footer-contact {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    color: var(--gray-600);
+    font-size: 1rem;
+    font-weight: 400;
+}
 
-        /* Admin Button in Footer - Perfect Alignment */
-        .footer-admin {
-            position: absolute;
-            top: 0;
-            right: 0;
-        }
+.footer-contact i {
+    color: #25D366;
+    font-size: 1.1rem;
+}
 
-        .admin-btn {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500; /* Medium */
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
+/* Footer Bottom - Perfect Social Icon Alignment */
+.footer-bottom {
+    background: var(--gray-900);
+    color: var(--white);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-        .admin-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
+.footer-bottom-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
 
-        /* Footer Bottom - Perfect Alignment */
-        .footer-bottom {
-            background: var(--gray-900);
-            color: var(--white);
-            padding: 20px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
+.footer-bottom-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
 
-        .footer-bottom-left {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.footer-logo img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
 
-        .footer-logo img {
-            width: 30px;
-            height: 30px;
-            filter: brightness(0) invert(1);
-        }
+.footer-logo span {
+    color: var(--white);
+    font-weight: 400;
+    font-size: 1.1rem;
+}
 
-        .footer-logo span {
-            color: var(--white);
-            font-weight: 500; /* Medium */
-            font-size: 1.1rem;
-        }
+.footer-copyright {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    font-weight: 400;
+}
 
-        .footer-copyright {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
-            white-space: nowrap;
-            font-weight: 400; /* Regular */
-        }
+.footer-social {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
 
-        .footer-social {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
+.footer-social a {
+    color: var(--white);
+    font-size: 22px;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+}
 
-        .footer-social a {
-            color: var(--white);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            padding: 8px;
-            border-radius: 50%;
-        }
+.footer-social a:hover {
+    color: var(--secondary);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
 
-        .footer-social a:hover {
-            color: var(--secondary);
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-        }
+.footer-credits {
+    width: 100%;
+    text-align: center;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-weight: 400;
+}
 
-        .footer-credits {
-            width: 100%;
-            text-align: center;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-weight: 400; /* Regular */
-        }
+.footer-credits a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 500;
+}
 
-        .footer-credits a {
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 500; /* Medium */
-        }
+.footer-credits a:hover {
+    text-decoration: underline;
+}
 
-        .footer-credits a:hover {
-            text-decoration: underline;
-        }
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Mobile & Tablet (default adjustments) */
+@media (max-width: 992px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 25px;
+        align-items: center;
+    }
+
+    .footer-left, 
+    .footer-right {
+        min-width: auto;
+        width: 100%;
+        text-align: center;
+    }
+
+    .footer-contact {
+        justify-content: center;
+    }
+
+    .footer-admin {
+        position: static;
+        transform: none;
+        margin-top: 30px;
+        text-align: center;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-bottom-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-bottom-left {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-social {
+        justify-content: center;
+        margin-top: 10px;
+        gap: 20px;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .footer-left h3 {
+        font-size: 1.6rem;
+    }
+
+    .footer-right h4 {
+        font-size: 1.2rem;
+    }
+
+    .footer-bottom {
+        padding: 20px 15px;
+    }
+
+    .footer-social a {
+        width: 36px;
+        height: 36px;
+        font-size: 20px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .footer-left h3 {
+        font-size: 1.4rem;
+    }
+
+    .footer-right h4 {
+        font-size: 1.1rem;
+    }
+
+    .footer-bottom {
+        padding: 15px;
+    }
+
+    .footer-logo span {
+        font-size: 1rem;
+    }
+
+    .footer-copyright {
+        font-size: 0.8rem;
+    }
+
+    .footer-credits {
+        font-size: 0.8rem;
+    }
+
+    .footer-social a {
+        width: 34px;
+        height: 34px;
+        font-size: 18px;
+    }
+}
 
         /* ===== RESPONSIVE DESIGN - PERFECT ALIGNMENT ===== */
         @media (max-width: 1200px) {
-            .nav-logo img {
-                width: 55px;
-                height: 55px;
-            }
-
-            .nav-links {
-                gap: 2rem;
-            }
-
-            .nav-links a {
-                font-size: 0.85rem;
-            }
+           
 
             .gallery-grid {
                 grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -637,38 +673,7 @@
                 padding: 0.7rem 0;
             }
 
-            .nav-logo img {
-                width: 65px;
-                height: 65px;
-            }
-
-            .nav-links {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: var(--white);
-                flex-direction: column;
-                padding: 2rem;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                gap: 1rem;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 1rem 0;
-                text-align: center;
-                width: 100%;
-                border-bottom: 1px solid var(--gray-200);
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
+           
 
             .page-hero h1 {
                 font-size: 3rem;
@@ -684,77 +689,26 @@
                 gap: 1.5rem;
             }
 
-            /* Footer Mobile - Perfect Alignment */
-            .footer {
-                position: relative;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 25px;
-                align-items: center;
-            }
-
-            .footer-left, .footer-right {
-                max-width: 100%;
-                text-align: center;
-            }
-
-            .footer-right {
-                align-items: center;
-            }
-
-            .footer-right p {
-                text-align: center;
-            }
-
-            .footer-admin {
-                position: static;
-                margin-top: 20px;
-                text-align: center;
-                width: 100%;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                padding: 25px 0;
-            }
-
-            .footer-bottom-left {
-                justify-content: center;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .footer-social {
-                justify-content: center;
-                margin-top: 10px;
-            }
         }
 
         @media (max-width: 768px) {
             /* Mobile - Logo Bigger but Still Left Aligned */
-            .nav-logo img {
-                width: 70px;
-                height: 70px;
-            }
+            
 
             .page-hero {
-                padding: 6rem 0 3rem;
+                padding: 4rem 0 3rem;
             }
 
             .page-hero h1 {
-                font-size: 2.5rem;
+                font-size: 4.5rem;
             }
 
             .section-title h2 {
-                font-size: 2rem;
+                font-size: 1rem;
             }
 
             .about-section, .team-section, .gallery-section {
-                padding: 4rem 0;
+                padding: 3rem 0;
             }
 
             .team-grid {
@@ -766,17 +720,6 @@
                 gap: 1.5rem;
             }
 
-            .footer-left h3 {
-                font-size: 1.6rem;
-            }
-
-            .footer-right h4 {
-                font-size: 1.2rem;
-            }
-
-            .footer-bottom {
-                padding: 20px 0;
-            }
         }
 
         @media (max-width: 480px) {
@@ -785,15 +728,7 @@
                 padding: 0.6rem 0;
             }
 
-            .nav-logo img {
-                width: 75px;
-                height: 75px;
-            }
-
-            .mobile-menu-btn {
-                font-size: 1.7rem;
-                padding: 0.7rem;
-            }
+            
 
             .page-hero h1 {
                 font-size: 2rem;
@@ -826,65 +761,28 @@
                 font-size: 0.8rem;
             }
 
-            .footer-left h3 {
-                font-size: 1.4rem;
-            }
-
-            .footer-right h4 {
-                font-size: 1.1rem;
-            }
-
-            .footer-bottom {
-                padding: 15px 0;
-            }
-
-            .footer-logo span {
-                font-size: 1rem;
-            }
-
-            .footer-copyright {
-                font-size: 0.8rem;
-            }
-
-            .footer-credits {
-                font-size: 0.8rem;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Header with Perfect Logo Alignment -->
-    <header class="header" id="header">
-        <div class="container">
-            <nav class="nav">
-                <!-- Logo - Always Left Aligned, Never Centered -->
-                <a href="index.html" class="nav-logo">
-                    <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell BVEC">
-                </a>
-                
-                <!-- Navigation Links - Right Aligned on Desktop -->
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                    <li><a href="about.html" class="active">About Us</a></li>
-                </ul>
-                
-                <!-- Mobile Menu Button - Right Aligned -->
-                <button class="mobile-menu-btn" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
+
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="breadcrumb-wrap">
+    <div class="container breadcrumb">
+        <a href="index.html"><i class=""></i> Home</a>
+        <span class="separator">›</span>
+        <a href="events.html">About Page</a>
+        <span class="separator">›</span>
+        <span class="current"> About - E Cell BVEC</span>
+    </div>
+</nav>
 
     <!-- Page Hero -->
     <section class="page-hero">
         <div class="container">
             <div class="page-hero-content">
                 <h1>About E-Cell BVEC</h1>
-                <p>Empowering the next generation of innovators and entrepreneurs through education, mentorship, and practical experiences.</p>
+                <p>Empowering future innovators and entrepreneurs.</p>
             </div>
         </div>
     </section>
@@ -896,9 +794,13 @@
                 <h2>What is E-Cell?</h2>
             </div>
             <div class="about-content">
-                <p>E-Cell BVEC is a non-profit student run organization where we crave and explore the constantly evolving world of entrepreneurship and start-up culture. In our quest to promote the spirit of entrepreneurship among the community, we try to answer essential questions like "How this realm of entrepreneurship affects us in our day-to-day lives?" and the likes of "Can I construct my start-up idea into a functional business model?"</p>
+                <p>E-Cell BVEC is a non-profit, student-driven organization dedicated to exploring the ever changing world of entrepreneurship and startup culture. Our goal is to nurture an entrepreneurial mindset within the student community by addressing real and practical questions such as: How does entrepreneurship influence our daily lives? and How can a simple idea be transformed into a successful business model?
+
+                    To achieve this, we organize a variety of engaging activities  from seminars, webinars, and expert lectures to podcasts, book discussions, and interactive brainstorming sessions. We also conduct innovative games, competitions, and case-study challenges that encourage students to think creatively and practically.
+                    
+                    Beyond regular activities, E-Cell BVEC proudly hosts major annual events that bring together aspiring entrepreneurs, industry experts, and thought leaders. These events provide valuable insights, real world knowledge, and hands-on experiences to prepare students for the challenges of building and sustaining ventures.</p>
                 <br>
-                <p>To spread this very essence, we host various seminars/webinars, lectures, podcasts and book summaries, innovative games, brainstorming sessions, competitions. Besides that, we host prominent annual entrepreneurial events which include numerous informative sessions about entrepreneurship.</p>
+                <p>At its core, E-Cell BVEC is more than just a club  it is a platform for learning, experimenting, and growing. It is where students gain the confidence to think beyond conventional career paths, embrace risks, and take the first steps toward creating meaningful impact as future innovators and entrepreneurs.</p>
             </div>
         </div>
     </section>
@@ -963,7 +865,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section 
     <section class="gallery-section">
         <div class="container">
             <div class="section-title">
@@ -1019,43 +921,42 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- Footer - Perfect Alignment -->
-    <footer class="footer">
-        <div class="container" style="position: relative;">
-            <!-- Admin Button - Perfect Position -->
-            <div class="footer-admin">
-                <a href="admin.html" class="admin-btn">
-                    <i class="fas fa-lock"></i>
-                    Admin
-                </a>
-            </div>
 
+    <!-- Footer - Perfect Alignment with Proper Font Weights -->
+    <footer class="footer">
+        <div class="footer-main">
             <div class="footer-content">
+                <!-- Left Section -->
                 <div class="footer-left">
                     <h3>Contact Us</h3>
-                    <p>Need a hand? Or a high five? Feel free to reach us.</p>
+                    <p>Need a hand? Feel free to reach us.</p>
                 </div>
                 
-                <div class="footer-right">
-                    <h4>E-Cell BVEC</h4>
-                    <p>ecellbvec@gmail.com</p>
-                    <div class="footer-contact">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>+91 60260 56362</span>
-                    </div>
-                </div>
+                <!-- Right Section -->
+  <div class="footer-right">
+    <h4>Entrepreneurship Cell, BVEC
+  
+    </h4>
+    <p>
+        <a  class="mail" href="mailto:techella.bvec@gmail.com">techella.bvec@gmail.com</a>
+    </p>
+  </div>         
             </div>
         </div>
-
-        <!-- Footer Bottom - Perfect Alignment -->
+  
+  
+        <!-- Footer Bottom - Perfect Social Icon Alignment -->
         <div class="footer-bottom">
-            <div class="container">
+            <div class="footer-bottom-content">
                 <div class="footer-bottom-left">
                     <div class="footer-logo">
                         <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell BVEC">
-                        <span>E-CELL, BVEC</span>
+                        <span>Entrepreneurship Cell, BVEC
+  
+                        </span>
                     </div>
                     <div class="footer-copyright">
                         © 2025 | All rights reserved
@@ -1078,12 +979,14 @@
                 </div>
                 
                 <div class="footer-credits">
-                    Designed and developed by <a href="https://onexmedia.studio" target="_blank">OneXmedia.Studio</a>
+                    Designed and developed by <a href="Dev.html" target="_blank">BVEC Code Club</a>
                 </div>
             </div>
         </div>
+        
     </footer>
-
+  
+  
     <!-- JavaScript -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {

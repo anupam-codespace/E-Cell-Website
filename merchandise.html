@@ -113,11 +113,10 @@
         
 
         .hero-title {
-            font-size: 4.0rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            margin: 0 0 0px;
+            font-size: 6.0rem;
+            font-weight: 600;
+            letter-spacing: -0.05em;
+            margin: 0 0 30px;
             margin-bottom: -1rem;
         }
 
@@ -129,55 +128,6 @@
             margin-bottom: 0;
         }
 
-        .linktree-container {
-    text-align: center;
-    margin-top: 1rem;
-    padding: 0 1rem;
-}
-
-.linktree-btn {
-    display: inline-block;
-    width: 100%;
-    max-width: 300px;
-    margin: 0.5rem auto;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-family: var(--font-primary);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    background: var(--primary);
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Continuous animated glowing outline */
-.linktree-btn::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    width: calc(100% + 6px);
-    height: calc(100% + 6px);
-    border-radius: 33px;
-    border: 2px solid transparent;
-    background: linear-gradient(270deg, #00aaff, #0066ff, #00aaff);
-    background-size: 600% 600%;
-    z-index: -1;
-    animation: outlineGlow 6s linear infinite;
-}
-
-@keyframes outlineGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-
         /* Responsive tweaks */
         @media (max-width: 900px) {
             .overview {
@@ -188,9 +138,9 @@
 
         @media (max-width: 600px) {
             .hero-title {
-                font-size: 2.3rem;
+                font-size: 2.8rem;
                 font-weight: 600;
-                letter-spacing: -0.00em;
+                letter-spacing: -0.04em;
                 margin: 0 0 0px;
             }
             .hero-subtitle {
@@ -202,148 +152,6 @@
             }
         }
 
-        /* ===== ONGOING EVENTS SECTION WITH INSTAGRAM SQUARE IMAGES ===== */
-        .events {
-            padding: 2rem 0;
-            background: var(--white);
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-top: 0.4rem;
-        }
-
-        .event-card {
-            background: var(--white);
-            border-radius: 1.2rem;
-            padding: 0;
-            text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            border: 1px solid var(--gray-200);
-            overflow: hidden;
-        }
-
-        .event-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
-        /* Instagram Square Ratio Images */
-        .event-img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            border-radius: 1.2rem 1.2rem 0 0;
-            margin-bottom: 0;
-        }
-
-        .event-content {
-            padding: 2.5rem;
-        }
-
-        .event-card h3 {
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.02em;
-            font-family: var(--font-primary);
-        }
-
-        .event-card p {
-            color: var(--gray-600);
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
-            font-size: 1rem;
-            font-weight: 400;
-        }
-
-        .event-btn {
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.9rem 1.8rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            display: inline-block;
-            margin: 0.4rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-            font-family: var(--font-primary);
-        }
-
-        .event-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
-        }
-
-
-
-        @media (max-width: 768px) {
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .events, .quotes-section {
-                padding: 2rem 0;
-            }
-.linktree-container {
-    text-align: center;
-    margin-top: 1rem;
-    padding: 0 1rem;
-}
-
-.linktree-btn {
-    display: inline-block;
-    width: 100%;
-    max-width: 300px;
-    margin: 0.5rem auto;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    font-family: var(--font-primary);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    background: var(--primary);
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Continuous animated glowing outline */
-.linktree-btn::after {
-    content: '';
-    position: absolute;
-    top: -3px;
-    left: -3px;
-    width: calc(100% + 6px);
-    height: calc(100% + 6px);
-    border-radius: 33px;
-    border: 2px solid transparent;
-    background: linear-gradient(270deg, #00aaff, #0066ff, #00aaff);
-    background-size: 600% 600%;
-    z-index: -1;
-    animation: outlineGlow 6s linear infinite;
-}
-
-@keyframes outlineGlow {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-
-
-}
 
 
 
@@ -532,28 +340,8 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 
-/* Mobile & Tablet Adjustments */
+/* Mobile & Tablet (default adjustments) */
 @media (max-width: 992px) {
-
-.linktree-container {
-    text-align: center; /* center the buttons */
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 0 1rem; /* prevent buttons from touching screen edges */
-}
-
-.linktree-btn {
-    display: block; /* full width on mobile for easier tapping */
-    width: 100%;    
-    max-width: 300px; /* optional: limit max width */
-    margin: 0.5rem auto; /* vertical spacing + centered */
-    font-size: 0.7rem; /* slightly smaller font */
-    padding: 0.8rem 1.5rem; /* adjust padding to match smaller font */
-    box-shadow: 0 4px 10px rgba(0, 0, 144, 0.393); /* subtle professional glow */
-    transition: all 0.3s ease;
-}
-
-
     .footer-content {
         flex-direction: column;
         text-align: center;
@@ -665,9 +453,9 @@
     <div class="container breadcrumb">
         <a href="index.html"><i class=""></i> Home</a>
         <span class="separator">›</span>
-        <a href="events.html">Events</a>
+        <a href="techflare-event.html">TechFlare</a>
         <span class="separator">›</span>
-        <span class="current">Ongoing/Past</span>
+        <span class="current">Merchandise</span>
     </div>
 </nav>
 
@@ -678,81 +466,14 @@
             <img src="img/E-Cell - Black Bg.png" alt="E-Cell BVEC Logo" />
         </div>-->
         <div>
-            <h1 id="heroTitle" class="hero-title">Events</h1>
-<div class="hero-subtitle" aria-label="Events of E-Cell BVEC">
-    Ongoing • Past Events  
+            <h1 id="heroTitle" class="hero-title">Merchandise</h1>
+<div class="hero-subtitle" aria-label="Merchandise for TechFlare 2025">
+    TechFlare 2025 • Exclusive goodies  
 </div>
         </div>
     </div>
 </section>
 
-<div class="linktree-container">
-    <a href="https://linktr.ee/EcellBVEC" class="linktree-btn">Check the Latest Event Ongoing Here !!</a>
-</div>
-
- <!-- Ongoing Events with Instagram Square Images -->
- <section id="initiatives" class="events">
-    <div class="container">
-        <div class="events-grid">
-            <div class="event-card">
-                <img src="img/TechFalre.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
-                <div class="event-content">
-                    <h3>TechFlare</h3>
-                    <p>A comprehensive program designed to transform your innovative ideas into viable business ventures through expert mentorship and hands-on training.</p>
-
-                    <a href="techflare-event.html" class="event-btn">Know More</a>
-                </div>
-            </div>
-            
-            <div class="event-card">
-                <img src="img/3.png" alt="Pitch Perfect" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
-                <div class="event-content">
-                    <h3>Eureka! Pitching Competition</h3>
-                    <p>Entrepreneurship cell, BVEC
-                        Powered by NEC & E-Cell, IIT Bombay | 24th August 2025  |  6.00 PM</p>
-                    <a href="https://www.youtube.com/live/w0Racni5Ds4" class="event-btn">Watch on Youtube</a>
-                    <!--<a href="#" class="event-btn">Learn More</a>-->
-                </div>
-            </div>
-            
-            <div class="event-card">
-                <img src="img/Screenshot 2025-10-04 at 06.41.18.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
-                <div class="event-content">
-                    <h3>STARTUP BLUEPRINT - 2025</h3>
-                    <p>E-CELL BVEC presents STARTUP BLUEPRINT – A Business Plan Workshop by Dr. Pinak Deb. Learn to transform ideas into business plans. 17 Sept 2025, 3:00 PM, ETE Seminar Hall.</p>
-
-                    <a href="" class="event-btn">Know More</a>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <img src="img/The next unicoRn.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
-                <div class="event-content">
-                    <h3>The Next Unicorn</h3>
-                    <p>THE NEXT UNICORN – Business Idea Pitching Contest: Present your groundbreaking idea, impress the judges, and take your startup vision to the next level.</p>
-
-                    <a href="" class="event-btn">Know More</a>
-                </div>
-            </div>
-
-            <div class="event-card">
-                <img src="img/REELMARK.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
-                <div class="event-content">
-                    <h3>REELMARK</h3>
-                    <p>REELMARK – Brand Reel Making Contest: Showcase a brand’s story in 60 seconds by creating a promotional reel featuring a watch. Win ₹1000 cash prize, certificates, and social media recognition.</p>
-
-                    <a href="" class="event-btn">Know More</a>
-                </div>
-            </div>
-
-            
-         
-            </div>
-           
-            </div>
-        </div>
-    </div>
-</section>
 
 
     <!-- Footer - Perfect Alignment with Proper Font Weights -->
@@ -767,9 +488,7 @@
                 
                 <!-- Right Section -->
 <div class="footer-right">
-    <h4>Entrepreneurship Cell, BVEC
-
-    </h4>
+    <h4>E-Cell BVEC</h4>
     <p>
         <a  class="mail" href="mailto:techella.bvec@gmail.com">techella.bvec@gmail.com</a>
     </p>
@@ -777,15 +496,17 @@
             </div>
         </div>
 
+
+
+
+
         <!-- Footer Bottom - Perfect Social Icon Alignment -->
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <div class="footer-bottom-left">
                     <div class="footer-logo">
                         <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell BVEC">
-                        <span>Entrepreneurship Cell, BVEC
-
-                        </span>
+                        <span>E-CELL, BVEC</span>
                     </div>
                     <div class="footer-copyright">
                         © 2025 | All rights reserved
@@ -802,12 +523,10 @@
                     <a href="#" target="_blank" rel="noopener noreferrer" title="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube">
-                        <i class="fab fa-youtube"></i>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter">
+                        <i class="fab fa-twitter"></i>
                     </a>
-                   
                 </div>
-                
                 
                 <div class="footer-credits">
                     Designed and developed by <a href="Dev.html" target="_blank">BVEC Code Club</a>
@@ -816,5 +535,6 @@
         </div>
         
     </footer>
+
 </body>
 </html>

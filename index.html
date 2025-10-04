@@ -169,7 +169,7 @@
             --primary-dark: #0026a3;
             --primary-light: #3b82f6;
             --secondary: #fff48e;
-            --accent: #10b981;
+            --accent: #10b981cf;
             --white: #ffffff;
             --gray-50: #f9fafb;
             --gray-100: #f3f4f6;
@@ -311,11 +311,32 @@
             color: var(--secondary) !important;
         }
 
+        @media (max-width: 992px) {
+  .nav-links .mobile-close {
+    display: block;
+    text-align: right;
+    margin-bottom: 10px;
+    margin-top: -50px;
+  }
+  .mobile-menu-close {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+}
+@media (min-width: 993px) {
+  .nav-links .mobile-close {
+    display: none;
+  }
+}
+
         /* ===== HERO SECTION WITH TEXT ANIMATION ===== */
         .hero {
-            background: linear-gradient(135deg, #001d9f 0%, #000000 100%);
+            background: linear-gradient(135deg, rgb(0, 29, 159) 0%, #000000 100%);
             color: var(--white);
-            padding: 10rem 0 8rem;
+            padding: 16rem 0 13rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -423,7 +444,7 @@
             font-size: 3rem;
             font-weight: 500;
             color: var(--gray-900);
-            margin-bottom: 1rem;
+            margin-bottom: 0rem;
             text-transform: uppercase;
             letter-spacing: -0.01em;
             font-family: var(--font-primary);
@@ -437,11 +458,46 @@
             line-height: 1.8;
             color: var(--gray-600);
             font-weight: 400;
+            margin-bottom: 2.4rem;
+        }
+
+        
+        .about-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btns {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.9rem;
+            font-family: var(--font-primary);
+        }
+
+        .btns-primary {
+            background: rgba(0, 29, 159, 0.257);
+            color: var(--primary);
+        }
+
+        .btns-primary:hover {
+            background: var(--gray-100);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         /* ===== ONGOING EVENTS SECTION WITH INSTAGRAM SQUARE IMAGES ===== */
         .events {
-            padding: 8rem 0;
+            padding: 3.6rem 0;
             background: var(--white);
         }
 
@@ -582,67 +638,133 @@
         }
 
         /* ===== NEWSLETTER SECTION ===== */
-        .newsletter {
-            padding: 5rem 0;
-            background: var(--primary);
-            color: var(--white);
-            text-align: center;
-        }
 
-        .newsletter h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-            font-family: var(--font-primary);
-        }
-
-        .newsletter p {
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 3rem;
-            font-weight: 400;
-        }
-
-        .newsletter-form {
-            display: flex;
-            max-width: 450px;
-            margin: 0 auto;
-            gap: 1rem;
-        }
-
-        .newsletter-input {
-            flex: 1;
-            padding: 1.2rem 1.5rem;
-            border: none;
-            border-radius: 30px;
-            outline: none;
-            font-size: 1rem;
-            font-family: var(--font-primary);
-            font-weight: 400;
-        }
-
-        .newsletter-btn {
-            padding: 1.2rem 2rem;
-            background: var(--secondary);
-            color: var(--white);
-            border: none;
-            border-radius: 30px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.03em;
-        }
-
-        .newsletter-btn:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
-        }
+        .notice-section {
+  padding: 5rem 0;
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+}
+.notice-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  font-family: var(--font-primary);
+}
+.notice-box {
+  background: rgba(255,255,255,0.08);
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 6px 26px rgba(0,0,0,0.07);
+  overflow-y: auto;
+  max-height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+  scrollbar-width: thin;
+  scrollbar-color: var(--secondary) var(--primary);
+}
+.notice-link {
+  color: var(--secondary) !important;
+  text-decoration: underline;
+  font-weight: 500;
+  border-left: 3px solid var(--accent);
+  padding: 0.6em 0.8em;
+  background: rgba(245,245,245,0.05);
+  border-radius: 5px;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.notice-link:hover {
+  background: rgba(255,255,255,0.12);
+}
+.notice-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 9000;
+  background: rgba(24,32,60,0.82);
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+.notice-modal.active {
+  display: flex;
+}
+.notice-modal-content {
+  background: var(--white);
+  color: var(--gray-900);
+  border-radius: 15px;
+  min-width: 320px;
+  max-width: 95%;
+  padding: 2.4rem 1.3rem 1.9rem 1.3rem;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.18);
+  animation: slideUp 0.33s;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+.notice-modal-close {
+  position: absolute;
+  top: 0.6em;
+  right: 1em;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.notice-modal-close:hover {
+  color: var(--accent);
+}
+.notice-meta {
+  color: var(--primary-dark);
+  margin-bottom: 12px;
+  font-size: 1.01em;
+  font-weight: 500;
+}
+.notice-links a {
+  display: inline-block;
+  margin-right: 1rem;
+  background: var(--secondary);
+  color: var(--primary);
+  border-radius: 18px;
+  text-decoration: none;
+  padding: 0.44em 1.2em;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 1.1em;
+  transition: background 0.17s;
+}
+.notice-links a:hover {
+  background: var(--accent);
+  color: var(--white);
+}
+@media (max-width:600px) {
+  .notice-section {
+    padding: 2rem 0;
+  }
+  .notice-modal-content {
+    min-width: 97vw;
+    padding: 1rem 0.5rem 1.2rem 0.7rem;
+  }
+  .notice-box {
+    max-height: 180px;
+  }
+}
+@keyframes slideUp {
+  0% { transform: translateY(60px) scale(0.95); opacity:0; }
+  90% { transform: translateY(-4px) scale(1.02);}
+  100% { transform: translateY(0) scale(1); opacity: 1;}
+}
+@keyframes fadeIn {
+  from { opacity: 0;}
+  to { opacity: 1;}
+}
 
         /* ===== PERFECTLY ALIGNED FOOTER WITH PROPER FONT WEIGHTS ===== */
         .footer {
@@ -726,35 +848,6 @@
             font-size: 1.1rem;
         }
 
-        /* Admin Button - Perfectly Centered on Desktop */
-        .footer-admin {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .admin-btn {
-            background: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-family: var(--font-primary);
-        }
-
-        .admin-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-        }
 
         /* Footer Bottom - Perfect Social Icon Alignment */
         .footer-bottom {
@@ -917,6 +1010,10 @@
                 flex-direction: column;
                 align-items: center;
             }
+            .about-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
 
             .newsletter-form {
                 flex-direction: column;
@@ -982,7 +1079,7 @@
             }
 
             .hero {
-                padding: 8rem 0 6rem;
+                padding: 10rem 0 7rem;
             }
 
             .hero-title {
@@ -1085,10 +1182,7 @@
                 font-size: 18px;
             }
 
-            .admin-btn {
-                padding: 8px 16px;
-                font-size: 13px;
-            }
+    
 
             .nav-links {
                 width: 240px;
@@ -1110,18 +1204,22 @@
         <div class="container">
             <nav class="nav">
                 <!-- Logo - Always Left Aligned, White on All Devices -->
-                <a href="#" class="nav-logo">
+                <a href="index.html" class="nav-logo">
                     <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell BVEC">
                 </a>
                 
                 <!-- Navigation Links - White Color on All Devices -->
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#initiatives">Initiatives</a></li>
-                    <li><a href="#achievements">Achievements</a></li>
-                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="events.html">Initiatives</a></li>
+                    <li><a href="notice.html">Notice</a></li>
+                    <li><a href="Gallery.html">Gallery</a></li>
                     <li><a href="#about">About Us</a></li>
-                </ul>
+                    <li class="mobile-close">
+                        <button class="mobile-menu-close" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+                    </li>
+                  </ul>
+                  
                 
                 <!-- Mobile Menu Button - Right Aligned, White -->
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1156,8 +1254,13 @@
                 <br>
                 <p>To spread this very essence, we host various seminars/webinars, lectures, podcasts and book summaries, innovative games, brainstorming sessions, competitions. Besides that, we host prominent annual entrepreneurial events which include numerous informative sessions about entrepreneurship.</p>
             </div>
+            <div class="about-buttons">
+                <a href="About.html" class="event-btn">Know More</a>
+            </div>
         </div>
     </section>
+    
+    
 
     <!-- Ongoing Events with Instagram Square Images -->
     <section id="initiatives" class="events">
@@ -1167,11 +1270,11 @@
             </div>
             <div class="events-grid">
                 <div class="event-card">
-                    <img src="img/TechFlare.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
+                    <img src="img/TechFalre.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
                     <div class="event-content">
-                        <h3>TechFlare</h3>
-                        <p>A comprehensive program designed to transform your innovative ideas into viable business ventures through expert mentorship and hands-on training.</p>
-                        <a href="" class="event-btn">Register Now</a>
+                        <h3>TechFlare - 2025 </h3>
+                        <p>TechFlare 2025 – BVEC’s flagship event showcasing hackathons, pitching, robotics, and design, driving innovation and entrepreneurship.</p>
+
                         <a href="techflare-event.html" class="event-btn">Know More</a>
                     </div>
                 </div>
@@ -1188,17 +1291,55 @@
                 </div>
                 
                 <div class="event-card">
-                    <img src="img/2.png" alt="Innovation Challenge" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
+                    <img src="img/The next unicoRn.png" alt="Startup Bootcamp" class="event-img" onerror="this.src='img/placeholder-square.jpg'">
                     <div class="event-content">
-                        <h3>INNOVATION CHALLENGE</h3>
-                        <p>Compete with the brightest minds to solve real-world problems through innovative solutions and win exciting prizes.</p>
-                        <a href="#" class="event-btn">Register Now</a>
-                        <a href="#" class="event-btn">Guidelines</a>
+                        <h3>The Next Unicorn</h3>
+                        <p>THE NEXT UNICORN – Business Idea Pitching Contest: Present your groundbreaking idea, impress the judges, and take your startup vision to the next level.</p>
+
+                        <a href="" class="event-btn">Know More</a>
                     </div>
+                </div>
+
+             
+                </div>
+               
                 </div>
             </div>
         </div>
     </section>
+
+        <!-- Notice Section -->
+        <section class="notice-section" id="club-notice">
+            <div class="container">
+              <h2>Club Notice</h2>
+              <div class="notice-box">
+                <!-- Example notices; replace/add more as needed -->
+                <a href="#" class="notice-link" 
+                   data-heading="Special Club Meeting"
+                   data-date="2025-09-15"
+                   data-memo="Memo No. 14/2025"
+                   data-description="There will be a special club meeting to discuss upcoming events. Attendance is mandatory for all coordinators."
+                   data-links="https://bit.ly/club-meeting-2025">Special Club Meeting (15 Sep 2025)</a>
+                <a href="#" class="notice-link" 
+                   data-heading="Workshop Registration Open"
+                   data-date="2025-08-30"
+                   data-description="Registrations are open for the Website Design Workshop. Limited seats, register fast!"
+                   data-links="https://forms.gle/club-workshop">Website Design Workshop Registration</a>
+                <!-- More notices, latest first -->
+              </div>
+            </div>
+
+              <!-- Notice Modal/Preview Template -->
+  <div class="notice-modal" id="noticeModal">
+    <div class="notice-modal-content">
+      <button class="notice-modal-close" id="closeNoticePreview" aria-label="Close Notice">&times;</button>
+      <h3 id="noticeModalHeading"></h3>
+      <div class="notice-meta" id="noticeMeta"></div>
+      <div class="notice-description" id="noticeDesc"></div>
+      <div class="notice-links" id="noticeLinks"></div>
+    </div>
+  </div>
+</section>
 
     <!-- Quote Slider Section -->
     <section class="quotes-section">
@@ -1211,17 +1352,7 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>Subscribe to E-Cell BVEC</h2>
-            <p>Get to know about Entrepreneurship and recent happenings in the Startup world. Stay updated with our cool and insightful events.</p>
-            <form class="newsletter-form">
-                <input type="email" class="newsletter-input" placeholder="Enter your email">
-                <button type="submit" class="newsletter-btn">Subscribe</button>
-            </form>
-        </div>
-    </section>
+
 
     <!-- Footer - Perfect Alignment with Proper Font Weights -->
     <footer class="footer">
@@ -1230,20 +1361,18 @@
                 <!-- Left Section -->
                 <div class="footer-left">
                     <h3>Contact Us</h3>
-                    <p>Need a hand? Or a high five? Feel free to reach us.</p>
+                    <p>Need a hand? Feel free to reach us.</p>
                 </div>
                 
                 <!-- Right Section -->
-                <div class="footer-right">
-                    <h4>E-Cell BVEC</h4>
-                    <p>ecellbvec@gmail.com</p>
-                    <div class="footer-contact">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>+91 60260 56362</span>
-                    </div>
-                </div>
+<div class="footer-right">
+    <h4>Entrepreneurship Cell, BVEC
 
-                
+    </h4>
+    <p>
+        <a  class="mail" href="mailto:techella.bvec@gmail.com">techella.bvec@gmail.com</a>
+    </p>
+</div>         
             </div>
         </div>
 
@@ -1253,7 +1382,9 @@
                 <div class="footer-bottom-left">
                     <div class="footer-logo">
                         <img src="img/E-Cell_-_White_Bg-removebg-preview.png" alt="E-Cell BVEC">
-                        <span>E-CELL, BVEC</span>
+                        <span>Entrepreneurship Cell, BVEC
+
+                        </span>
                     </div>
                     <div class="footer-copyright">
                         © 2025 | All rights reserved
@@ -1270,13 +1401,15 @@
                     <a href="#" target="_blank" rel="noopener noreferrer" title="Facebook">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" target="_blank" rel="noopener noreferrer" title="Twitter">
-                        <i class="fab fa-twitter"></i>
+                    <a href="#" target="_blank" rel="noopener noreferrer" title="YouTube">
+                        <i class="fab fa-youtube"></i>
                     </a>
+                   
                 </div>
                 
+                
                 <div class="footer-credits">
-                    Designed and developed by <a href="https://onexmedia.studio" target="_blank">OneXmedia.Studio</a>
+                    Designed and developed by <a href="Dev.html" target="_blank">BVEC Code Club</a>
                 </div>
             </div>
         </div>
@@ -1310,42 +1443,87 @@
 
             // Quote Slider Functionality
             const quotes = [
-                { 
-                    text: "ENTREPRENEURSHIP IS A MIX OF THE INNOVATIVE YOU, THE INTELLECTUAL YOU, THE EMOTIONAL YOU, THE SKILLFUL YOU, IN OTHER WORDS, THE 'PERFECT' YOU", 
-                    author: "E-CELL IIT GUWAHATI" 
-                },
-                { 
-                    text: "IGNITING MINDS, BUILDING FUTURES", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "WHERE IDEAS MEET ACTION", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "DREAM. DARE. DISRUPT.", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "FUELING INNOVATION, SHAPING LEADERS", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "TURNING VISION INTO VENTURE", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "INNOVATE. INSPIRE. IMPACT.", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "FROM CAMPUS TO CEO", 
-                    author: "E-CELL BVEC" 
-                },
-                { 
-                    text: "BUILDING TOMORROW'S CHANGEMAKERS", 
-                    author: "E-CELL BVEC" 
-                }
+            { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+    { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" },
+    { text: "Don't be afraid to give up the good to go for the great.", author: "John D. Rockefeller" },
+    { text: "I find that the harder I work, the more luck I seem to have.", author: "Thomas Jefferson" },
+    { text: "Opportunities don't happen, you create them.", author: "Chris Grosser" },
+    { text: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau" },
+    { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
+    { text: "The future depends on what we do in the present.", author: "Mahatma Gandhi" },
+    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
+    { text: "Everything you've ever wanted is on the other side of fear.", author: "George Addair" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+    { text: "Do not wait to strike till the iron is hot, but make it hot by striking.", author: "William Butler Yeats" },
+    { text: "Whether you think you can, or you think you can't – you're right.", author: "Henry Ford" },
+    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+    { text: "I am not a product of my circumstances. I am a product of my decisions.", author: "Stephen R. Covey" },
+    { text: "You must be the change you wish to see in the world.", author: "Mahatma Gandhi" },
+    { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+    { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar" },
+    { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+    { text: "The best way to predict the future is to invent it.", author: "Alan Kay" },
+    { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" },
+    { text: "I have not failed. I've just found 10,000 ways that won't work.", author: "Thomas Edison" },
+    { text: "A person who never made a mistake never tried anything new.", author: "Albert Einstein" },
+    { text: "It's not about ideas. It's about making ideas happen.", author: "Scott Belsky" },
+    { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
+    { text: "The only place where success comes before work is in the dictionary.", author: "Vidal Sassoon" },
+    { text: "Do one thing every day that scares you.", author: "Eleanor Roosevelt" },
+    { text: "The road to success and the road to failure are almost exactly the same.", author: "Colin R. Davis" },
+    { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+    { text: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is how high you bounce when you hit bottom.", author: "George S. Patton" },
+    { text: "The only way to achieve the impossible is to believe it is possible.", author: "Charles Kingsleigh" },
+    { text: "The best revenge is massive success.", author: "Frank Sinatra" },
+    { text: "I never dreamed about success. I worked for it.", author: "Estee Lauder" },
+    { text: "Success is not the absence of failure; it's the persistence through failure.", author: "Aisha Tyler" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
+    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
+    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
+    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
+    { text: "Success is not the key to happiness. Happiness is the key to success."},
             ];
 
             let currentQuoteIndex = 0;
@@ -1390,15 +1568,24 @@
 
             // Hero Title Text Changing Animation
             const heroQuotes = [
-                "Igniting Minds, Building Futures",
-                "Where Ideas Meet Action",
-                "Dream. Dare. Disrupt.",
-                "Fueling Innovation, Shaping Leaders",
-                "Turning Vision Into Venture",
-                "Innovate. Inspire. Impact.",
-                "From Campus to CEO",
-                "Building Tomorrow's Changemakers"
-            ];
+    "Empowering Minds, Shaping Futures",
+    "Innovate Today, Inspire Tomorrow",
+    "Dream, Create, Transform the World",
+    "Leading Ideas into Brilliant Action",
+    "Unlocking Potential, Driving Change",
+    "Where Passion Meets Innovation Daily",
+    "Creating Leaders for a Better World",
+    "Transforming Dreams into Reality Now",
+    "Igniting Minds, Fueling Ambition",
+    "Inspiring Change, One Step Ahead",
+    "Building Skills, Shaping New Paths",
+    "Turning Visions into Tangible Impact",
+    "Empower, Innovate, Achieve Together",
+    "Where Ideas Blossom into Action",
+    "Nurturing Talent, Leading Tomorrow",
+    "Building Tomorrow's Changemakers"
+];
+
 
             let heroQuoteIndex = 0;
             const heroTitle = document.querySelector('.hero-title');
@@ -1446,6 +1633,38 @@
                 }
             });
 
+            document.querySelectorAll(".notice-link").forEach(link=>{
+  link.addEventListener("click", function(e){
+    e.preventDefault();
+    document.getElementById("noticeModalHeading").innerText = this.dataset.heading;
+    document.getElementById("noticeMeta").innerText = 
+       (this.dataset.memo ? this.dataset.memo + " | " : "") + this.dataset.date;
+    document.getElementById("noticeDesc").innerText = this.dataset.description;     
+    // links can be comma separated
+    let linksBlock = '';
+    if(this.dataset.links) {
+      this.dataset.links.split(',').forEach(url=>{
+        linksBlock += `<a href="${url.trim()}" target="_blank">View Link</a>`;
+      });
+    }
+    document.getElementById("noticeLinks").innerHTML = linksBlock;
+    document.getElementById("noticeModal").classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+});
+// Modal close button + escape key/overlay close
+document.getElementById("closeNoticePreview").onclick = closeNoticeModal;
+document.getElementById("noticeModal").onclick = (e)=>{
+  if(e.target.id==="noticeModal"){ closeNoticeModal(); }
+};
+document.addEventListener('keyup', function(e){
+  if(e.key==="Escape") closeNoticeModal();
+});
+function closeNoticeModal(){
+  document.getElementById("noticeModal").classList.remove("active");
+  document.body.style.overflow = "";
+}
+
             // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
@@ -1460,16 +1679,9 @@
                 });
             });
 
-            // Newsletter form submission
-            document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = this.querySelector('.newsletter-input').value;
-                if (email) {
-                    alert('Thank you for subscribing to E-Cell BVEC!');
-                    this.reset();
-                }
-            });
+          
 
+            
             // Add animation to cards
             const observerOptions = {
                 threshold: 0.1,
