@@ -173,6 +173,34 @@
             letter-spacing: -0.01em;
             font-family: var(--font-primary);
         }
+
+
+        .facebook-cover-banner {
+    width: 100%;
+    max-width: 1200px; /* optional max width */
+    margin: 20px auto;
+  }
+  .facebook-cover-banner a {
+    display: block;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px; /* optional */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* optional */
+    cursor: pointer;
+  }
+  .facebook-cover-banner img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 820 / 312; /* ensures the image keeps Facebook cover ratio */
+    display: block;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+ 
+
+
+
         .events-section {
             margin-top: 60px;
             margin-bottom: 40px;
@@ -233,6 +261,28 @@
             margin-bottom: 0;
             color: var(--gray-700);
             font-weight: 500;
+        }
+
+        .event-btns {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.9rem 1.8rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 1.8rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-family: var(--font-primary);
+        }
+
+        .event-btns:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
         }
 
         .coordinator-section {
@@ -890,6 +940,13 @@
                 </div>
               </div>
             
+
+<!-- Banner Section -->
+<section class="facebook-cover-banner">
+    <a href="https://destination-website.example" target="_blank" rel="noopener noreferrer" aria-label="Go to external site">
+      <img src="Merchandise- TechFalre/TechFalare 0fficial Merchandise.png" alt="Banner Image" />
+    </a>
+  </section>
   
     <!-- Events -->
     <section class="events-section container" aria-labelledby="eventsTitle" id="events">
@@ -902,6 +959,7 @@
                 <div class="event-card-content">
                     <h3>Pitching Contest</h3>
                     <p>Turn your startup ideas into compelling pitches presented to an expert panel.</p>
+                    <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
             </article>
             <article class="event-card" role="listitem" tabindex="0">
@@ -911,6 +969,7 @@
                 <div class="event-card-content">
                     <h3>RoboSoccer</h3>
                     <p>Program your robot to play soccer and compete for the championship trophy.</p>
+                    <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
             </article>
            
@@ -921,6 +980,7 @@
                 <div class="event-card-content">
                     <h3>Hackathon</h3>
                     <p>Collaborate intensively to develop innovative software solutions to real challenges.</p>
+                    <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
             </article>
            
@@ -931,6 +991,7 @@
                 <div class="event-card-content">
                     <h3>CAD Design</h3>
                     <p>Showcase your creative 3D modeling and design projects for expert evaluation.</p>
+                    <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
             </article>
         </div>
