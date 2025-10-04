@@ -1814,33 +1814,58 @@
                 setInterval(changeHeroText, 5000);
             }, 3000);
 
-            // Improved Mobile Menu Toggle with Better Closing
-            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-            const navLinks = document.getElementById('navLinks');
-            
-            function closeMenu() {
-                navLinks.classList.remove('active');
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-            }
 
-            mobileMenuBtn.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                mobileMenuBtn.querySelector('i').classList.toggle('fa-bars');
-                mobileMenuBtn.querySelector('i').classList.toggle('fa-times');
-            });
 
-            // Close menu when clicking on navigation links
-            navLinks.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', closeMenu);
-            });
 
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!navLinks.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
-                    closeMenu();
-                }
-            });
+// Mobile Menu Toggle with Close Button
+const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+const navLinks = document.getElementById('navLinks');
+const closeMenuBtn = document.getElementById('closeMenuBtn'); // Close (X) button inside menu
+
+function closeMenu() {
+    navLinks.classList.remove('active');
+    if (mobileMenuBtn.querySelector('i')) {
+        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+    }
+}
+
+// Toggle menu on hamburger click
+mobileMenuBtn.addEventListener('click', function (e) {
+    e.stopPropagation(); // prevent outside click trigger
+    navLinks.classList.toggle('active');
+    const icon = mobileMenuBtn.querySelector('i');
+    if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    }
+});
+
+// Close menu when clicking close button
+if (closeMenuBtn) {
+    closeMenuBtn.addEventListener('click', closeMenu);
+}
+
+// Close menu when clicking navigation links
+navLinks.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', function (event) {
+    if (navLinks.classList.contains('active') &&
+        !navLinks.contains(event.target) &&
+        !mobileMenuBtn.contains(event.target)) {
+        closeMenu();
+    }
+});
+
+
+
+
 
             document.querySelectorAll(".notice-link").forEach(link=>{
   link.addEventListener("click", function(e){
