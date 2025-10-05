@@ -906,7 +906,7 @@
       position: fixed;
       bottom: 22px;
       right: 22px;
-      z-index: 2000;
+      z-index: 1000;
     }
 
     .whatsapp-btn {
@@ -934,14 +934,14 @@
       border-radius: 50%;
       top: 0;
       left: 0;
-      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.183), transparent);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
     .whatsapp-btn:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+      box-shadow: 0 8px 28px rgba(11, 255, 100, 0.6);
     }
 
     .whatsapp-btn:hover::after {
@@ -957,7 +957,7 @@
       color: var(--dark-gray);
       padding: 14px 18px;
       border-radius: 14px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.108);
       font-size: 0.92rem;
       width: 260px;
       display: none;
@@ -1314,11 +1314,11 @@
 
 
     <div class="whatsapp-container">
-        <a href="https://whatsapp.com/channel/0029Vb6zj022UPB9g0gL463B" target="_blank" class="whatsapp-btn">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-        <div class="whatsapp-banner" id="whatsappBanner">
-          <p>Join our WhatsApp community for the latest updates!</p>
+        <a href="https://whatsapp.com/channel/0029Vb6zj022UPB9g0gL463B" target="_blank" class="whatsapp-btn" rel="noopener noreferrer">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+                  <div class="whatsapp-banner" id="whatsappBanner">
+          <p>Join Our WhatsApp Channel!</p>
           <span class="close-banner">&times;</span>
         </div>
       </div>
@@ -1419,7 +1419,7 @@
       e.preventDefault();
       banner.style.display = 'flex';
       setTimeout(() => {
-        window.open('https://chat.whatsapp.com/YOUR_GROUP_LINK', '_blank');
+        window.open('https://whatsapp.com/channel/0029Vb6zj022UPB9g0gL463B', '_blank');
       }, 500);
     });
 
