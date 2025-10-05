@@ -1,90 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 Not Found | E-Cell BVEC</title>
-  <link href="https://fonts.cdnfonts.com/css/gt-walsheim-trial" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meet the Developers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     :root {
-      --primary: #000d32;
-      --secondary: #fff48e;
-      --white: #ffffff;
-      --gray-50: #f9fafb;
-      --font-primary: 'GT Walsheim Trial', sans-serif;
+      --primary: #001d9f;
+      --dark: #111827;
+      --gray: #6b7280;
+      --light: #f9fafb;
+      --font: 'Poppins', sans-serif;
     }
+
     body {
-      margin:0;
-      font-family: var(--font-primary);
-      background: var(--gray-50);
+      margin: 0;
+      font-family: var(--font);
+      background: var(--light);
+      color: var(--dark);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
       color: var(--primary);
-      height: 100vh;
+      margin-bottom: 2rem;
+    }
+
+    .dev-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      width: 100%;
+      max-width: 1100px;
+    }
+
+    .dev-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      padding: 2rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    .dev-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .dev-card img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      border: 3px solid var(--primary);
+    }
+
+    .dev-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .dev-card h4 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .dev-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .dev-socials {
       display: flex;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
+      gap: 1rem;
     }
-    .container {
-      max-width: 500px;
-      width: 100%;
-    }
-    h1 {
-      font-size: 9rem;
-      margin: 0;
-      font-weight: 900;
-      letter-spacing: -0.1em;
-      color: var(--primary);
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 0.3em;
-      margin-bottom: 1.5em;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1rem;
-      margin-bottom: 2.5em;
-      color: #444;
-      line-height: 1.4;
-    }
-    .btn-home {
-      text-decoration: none;
-      font-weight: 700;
+
+    .dev-socials a {
+      color: #fff;
       background: var(--primary);
-      color: var(--white);
-      padding: 0.7em 3em;
-      border-radius: 30px;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 16px rgb(0 13 50 / 0.3);
-      transition: background-color 0.3s ease;
-      display: inline-block;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
     }
-    .btn-home:hover,
-    .btn-home:focus {
-      background: var(--secondary);
-      color: var(--primary);
-      box-shadow: 0 8px 20px rgb(255 244 142 / 0.6);
-      outline: none;
+
+    .dev-socials a:hover {
+      background: #000000;
+      transform: scale(1.1);
     }
-    /* Responsive */
-    @media (max-width: 460px) {
+
+    @media (max-width: 768px) {
       h1 {
-        font-size: 6.5rem;
+        font-size: 1.7rem;
       }
-      h2 {
-        font-size: 1.5rem;
+
+      .dev-card {
+        padding: 1.5rem;
       }
     }
   </style>
 </head>
+
 <body>
-  <div class="container" role="main" aria-labelledby="heading404">
-    <h1 id="heading404" aria-hidden="true">404</h1>
-    <h2>Oops! Page Not Found</h2>
-    <p>Sorry, the page you’re looking for doesn’t exist yet. It’s currently under development and will be available soon.</p>
-    
-    <a href="index.html" class="btn-home" role="button" aria-label="Return to home page">Back to Home</a>
+  <h1>Meet the Developers</h1>
+
+  <div class="dev-container">
+
+    <!-- Developer 1 -->
+    <div class="dev-card">
+      <img src="img/TechFalre.png" alt="Anupam Saha">
+      <h3>Anupam Saha</h3>
+      <h4>President & Frontend / UI Developer</h4>
+      <p>President of BVEC Code Club and lead designer for the website. Passionate about crafting user-friendly and visually appealing digital experiences.</p>
+      <div class="dev-socials">
+        <a href="https://linkedin.com/in/anupam-saha" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/919999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://anupamsaha.dev" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>
+    </div>
+
+    <!-- Developer 2 -->
+    <div class="dev-card">
+      <img src="img/TechFalre.png" alt="Abhishek Majumdar">
+      <h3>Abhishek Majumdar</h3>
+      <h4>Backend Developer</h4>
+      <p>Member of BVEC Code Club and developer focused on backend architecture and database management for the website’s dynamic features.</p>
+      <div class="dev-socials">
+        <a href="https://linkedin.com/in/abhishek-majumdar" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://wa.me/918888888888" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>
+    </div>
+
+    <!-- Developer 3 
+    <div class="dev-card">
+      <img src="developer3.jpg" alt="Developer 3">
+      <h3>[Developer Name]</h3>
+      <h4>Technical & Design Support</h4>
+      <p>Contributed to the technical integration, deployment setup, and responsive layout adjustments ensuring seamless performance across devices.</p>
+      <div class="dev-socials">
+        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>-->
+    </div>
   </div>
 </body>
 </html>
