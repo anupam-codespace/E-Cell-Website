@@ -428,6 +428,47 @@
             color: yellowgreen;
         }
 
+        .hero-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    text-align: center;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.2rem 5.5rem;
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 50px;
+    transition: var(--transition);
+    letter-spacing: 0.05em;
+    font-size: 0.9rem;
+    font-family: var(--font-primary);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: rgb(0, 0, 0);
+    border: 1px solid var(--white);
+    box-shadow: 0 8px 20px rgba(30, 59, 138, 0.212);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #001d9f 0%, #000000d6 100%);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
+}
+
+
         .marquee-wrap {
   overflow: hidden;
   background: #fff;
@@ -857,6 +898,131 @@
                 grid-template-columns: 1fr;
             }
         }
+
+
+            /* Floating WhatsApp Button */
+    .whatsapp-container {
+      position: fixed;
+      bottom: 22px;
+      right: 22px;
+      z-index: 2000;
+    }
+
+    .whatsapp-btn {
+      width: 62px;
+      height: 62px;
+      background: var(--primary-green);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 30px;
+      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .whatsapp-btn::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      background: radial-gradient(circle, rgba(255,255,255,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .whatsapp-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-btn:hover::after {
+      opacity: 1;
+    }
+
+    /* Banner Popup */
+    .whatsapp-banner {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      background: #fff;
+      color: var(--dark-gray);
+      padding: 14px 18px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      font-size: 0.92rem;
+      width: 260px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      animation: fadeInUp 0.4s ease forwards;
+      border: 1px solid #e5e7eb;
+    }
+
+    .whatsapp-banner p {
+      margin: 0;
+      line-height: 1.4;
+      font-weight: 500;
+      font-size: 0.9rem;
+      flex: 1;
+      padding-right: 8px;
+    }
+
+    .close-banner {
+      cursor: pointer;
+      color: #6b7280;
+      font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .close-banner:hover {
+      color: var(--dark-gray);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .whatsapp-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 26px;
+      }
+
+      .whatsapp-banner {
+        width: 230px;
+        bottom: 70px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .whatsapp-btn {
+        width: 52px;
+        height: 52px;
+        font-size: 24px;
+      }
+
+      .whatsapp-banner {
+        width: 210px;
+        font-size: 0.85rem;
+      }
+    }
+
     </style>
 </head>
 <body>
@@ -1055,7 +1221,7 @@
                     <img src="img/TechFalre.png" alt="Pitching Contest Poster" loading="lazy" />
                 </div>
                 <div class="event-card-content">
-                    <h3>Pitching Contest</h3>
+                    <h3>Idea-Flare</h3>
                     <p>Turn your startup ideas into compelling pitches presented to an expert panel.</p>
                     <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
@@ -1065,7 +1231,7 @@
                     <img src="img/TechFalre.png" alt="RoboSoccer Event Poster" loading="lazy" />
                 </div>
                 <div class="event-card-content">
-                    <h3>RoboSoccer</h3>
+                    <h3>Science-Flare</h3>
                     <p>Program your robot to play soccer and compete for the championship trophy.</p>
                     <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
@@ -1076,7 +1242,7 @@
                     <img src="img/TechFalre.png" alt="Hackathon Event Poster" loading="lazy" />
                 </div>
                 <div class="event-card-content">
-                    <h3>Hackathon</h3>
+                    <h3>Code-Flare</h3>
                     <p>Collaborate intensively to develop innovative software solutions to real challenges.</p>
                     <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
@@ -1087,7 +1253,7 @@
                     <img src="img/TechFalre.png" alt="CAD Design Competition Poster" loading="lazy" />
                 </div>
                 <div class="event-card-content">
-                    <h3>CAD Design</h3>
+                    <h3>Draft & Craft</h3>
                     <p>Showcase your creative 3D modeling and design projects for expert evaluation.</p>
                     <a href="https://linktr.ee/TechFlare_events" class="event-btns">Register Now!</a>
                 </div>
@@ -1137,10 +1303,24 @@
                     <a href="https://www.linkedin.com/in/roshan-karki-a27bb622b/" target="_blank" aria-label="LinkedIn Shree Hari"><i class="fab fa-linkedin"></i></a>
                 </div>
             </article>
-            
             <!-- Repeat other coordinators as above -->
+            <div class="hero-buttons">
+                <a href="https://linktr.ee/TechFlare_events" class="btn btn-secondary">More</a>
+            </div>
         </div>
     </section>
+
+
+
+    <div class="whatsapp-container">
+        <a href="https://whatsapp.com/channel/0029Vb6zj022UPB9g0gL463B" target="_blank" class="whatsapp-btn">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="whatsapp-banner" id="whatsappBanner">
+          <p>Join our WhatsApp community for the latest updates!</p>
+          <span class="close-banner">&times;</span>
+        </div>
+      </div>
 
 
 
@@ -1228,6 +1408,29 @@
                 overviewText.scrollIntoView({behavior: 'smooth'});
             }
         }
+
+
+        const whatsappBtn = document.querySelector('.whatsapp-btn');
+    const banner = document.getElementById('whatsappBanner');
+    const closeBtn = document.querySelector('.close-banner');
+
+    whatsappBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      banner.style.display = 'flex';
+      setTimeout(() => {
+        window.open('https://chat.whatsapp.com/YOUR_GROUP_LINK', '_blank');
+      }, 500);
+    });
+
+    closeBtn.addEventListener('click', () => {
+      banner.style.display = 'none';
+    });
+
+    // Optional: Auto show banner after 3s
+    setTimeout(() => {
+      banner.style.display = 'flex';
+    }, 3000);
+
     </script>
 </body>
 </html>
