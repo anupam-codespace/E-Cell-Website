@@ -3,170 +3,211 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meet the Developers</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <title>E-Cell BVEC | Developers</title>
+  <meta name="description" content="E-Cell BVEC - Empowering innovators and entrepreneurs through mentorship and practical experiences.">
+  <meta name="keywords" content="E-Cell, BVEC, Entrepreneurship, Startup, Innovation, Students">
+
+  <!-- Favicon -->
+  <link rel="icon" href="img/E-Cell - Black Bg.png" type="image/png">
+
+  <!-- Google Fonts: GT Walsheim Pro (fallback included) -->
+  <link href="https://fonts.cdnfonts.com/css/gt-walsheim-trial" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
+    /* ===== CSS VARIABLES ===== */
     :root {
-      --primary: #001d9f;
-      --dark: #111827;
-      --gray: #6b7280;
-      --light: #f9fafb;
-      --font: 'Poppins', sans-serif;
+      --primary: #0d1b4c;
+      --accent: #10b981cf;
+      --white: #ffffff;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-500: #6b7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --transition: 0.3s ease;
+      --font-primary: 'GT Walsheim Pro', 'GT Walsheim Trial', sans-serif;
     }
 
+    /* ===== RESET & BASE ===== */
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      margin: 0;
-      font-family: var(--font);
-      background: var(--light);
-      color: var(--dark);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 3rem 1rem;
-      min-height: 100vh;
+      font-family: var(--font-primary);
+      line-height: 1.6;
+      color: var(--gray-700);
+      background: var(--gray-100);
+      font-weight: 400;
+    }
+    a { text-decoration: none; }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
 
+    /* ===== HEADING ===== */
     h1 {
-      font-size: 2rem;
-      font-weight: 600;
+      font-size: 2.5rem;
+      font-weight: 700;
       text-align: center;
       color: var(--primary);
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+    h1::after {
+      content: '';
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+      display: block;
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
     }
 
+    /* ===== DEVELOPER GRID ===== */
     .dev-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2rem;
-      width: 100%;
-      max-width: 1100px;
     }
 
+    /* ===== DEVELOPER CARD ===== */
     .dev-card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-      padding: 2rem;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
       text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border: 1px solid #e5e7eb;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform var(--transition), box-shadow var(--transition);
     }
-
+    .dev-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(135deg, #0d1b4c, #3b82f6, #10b981cf);
+      opacity: 0.05;
+      transform: rotate(25deg);
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
     .dev-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
     }
+    .dev-card:hover::before { opacity: 0.15; }
 
     .dev-card img {
-      width: 110px;
-      height: 110px;
+      width: 120px;
+      height: 120px;
       object-fit: cover;
       border-radius: 50%;
+      border: 4px solid var(--primary);
       margin-bottom: 1rem;
-      border: 3px solid var(--primary);
+      transition: transform var(--transition);
     }
+    .dev-card:hover img { transform: scale(1.05); }
 
     .dev-card h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 600;
-      color: var(--dark);
+      color: var(--primary);
       margin-bottom: 0.3rem;
     }
-
     .dev-card h4 {
       font-size: 1rem;
       font-weight: 500;
-      color: var(--primary);
-      margin-bottom: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 1rem;
     }
-
     .dev-card p {
       font-size: 0.9rem;
-      color: var(--gray);
-      margin-bottom: 1.5rem;
+      color: var(--gray-700);
       line-height: 1.5;
+      margin-bottom: 1.5rem;
     }
 
+    /* ===== SOCIAL ICONS ===== */
     .dev-socials {
       display: flex;
       justify-content: center;
       gap: 1rem;
     }
-
     .dev-socials a {
-      color: #fff;
+      color: var(--white);
       background: var(--primary);
       border-radius: 50%;
-      width: 38px;
-      height: 38px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
+      transition: all var(--transition);
     }
-
     .dev-socials a:hover {
-      background: #000000;
-      transform: scale(1.1);
+      background: var(--accent);
+      transform: scale(1.2);
     }
 
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 1.7rem;
-      }
-
-      .dev-card {
-        padding: 1.5rem;
-      }
+      h1 { font-size: 2rem; }
+      .dev-card { padding: 1.5rem 1rem; }
     }
   </style>
 </head>
-
 <body>
-  <h1>Meet the Developers</h1>
+  <div class="container">
+    <h1>Meet the Developers</h1>
 
-  <div class="dev-container">
-
-    <!-- Developer 1 -->
-    <div class="dev-card">
-      <img src="img/TechFalre.png" alt="Anupam Saha">
-      <h3>Anupam Saha</h3>
-      <h4>President & Frontend / UI Developer</h4>
-      <p>President of BVEC Code Club and lead designer for the website. Passionate about crafting user-friendly and visually appealing digital experiences.</p>
-      <div class="dev-socials">
-        <a href="https://linkedin.com/in/anupam-saha" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://wa.me/919999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://anupamsaha.dev" target="_blank"><i class="fas fa-globe"></i></a>
+    <div class="dev-container">
+      <!-- Developer 1 -->
+      <div class="dev-card">
+        <img src="img/TechFlare.png" alt="Anupam Saha">
+        <h3>Anupam Saha</h3>
+        <h4>President & Frontend Developer</h4>
+        <p>Lead designer and president of BVEC Code Club. Specializes in crafting clean and user-friendly web experiences.</p>
+        <div class="dev-socials">
+          <a href="https://linkedin.com/in/anupam-saha" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919999999999" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="https://anupamsaha.dev" target="_blank"><i class="fas fa-globe"></i></a>
+        </div>
       </div>
-    </div>
 
-    <!-- Developer 2 -->
-    <div class="dev-card">
-      <img src="img/TechFalre.png" alt="Abhishek Majumdar">
-      <h3>Abhishek Majumdar</h3>
-      <h4>Backend Developer</h4>
-      <p>Member of BVEC Code Club and developer focused on backend architecture and database management for the website’s dynamic features.</p>
-      <div class="dev-socials">
-        <a href="https://linkedin.com/in/abhishek-majumdar" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://wa.me/918888888888" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+      <!-- Developer 2 -->
+      <div class="dev-card">
+        <img src="img/TechFlare.png" alt="Abhishek Majumdar">
+        <h3>Abhishek Majumdar</h3>
+        <h4>Backend Developer</h4>
+        <p>Expert in backend architecture and database management, ensuring smooth performance and dynamic functionality of the website.</p>
+        <div class="dev-socials">
+          <a href="https://linkedin.com/in/abhishek-majumdar" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/918888888888" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+        </div>
       </div>
-    </div>
 
-    <!-- Developer 3 
-    <div class="dev-card">
-      <img src="developer3.jpg" alt="Developer 3">
-      <h3>[Developer Name]</h3>
-      <h4>Technical & Design Support</h4>
-      <p>Contributed to the technical integration, deployment setup, and responsive layout adjustments ensuring seamless performance across devices.</p>
-      <div class="dev-socials">
-        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
-      </div>-->
+      <!-- Developer 3 -->
+      <div class="dev-card">
+        <img src="img/TechFlare.png" alt="Developer 3">
+        <h3>[Developer Name]</h3>
+        <h4>Technical & Design Support</h4>
+        <p>Assists in technical integration, deployment setup, and responsive layout adjustments for a smooth experience across devices.</p>
+        <div class="dev-socials">
+          <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" target="_blank"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
     </div>
   </div>
 </body>
