@@ -188,34 +188,75 @@
 
         /* ===== ABOUT CONTENT SECTIONS ===== */
         .about-section {
-            padding: 6rem 0;
-            background: var(--gray-50);
-        }
+    padding: 6rem 0;
+    background: var(--gray-50);
+}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            font-weight: 500; /* Medium */
-            color: var(--gray-900);
-            margin-bottom: 2rem;
-            text-transform: uppercase;
-            letter-spacing: -0.01em;
-            font-family: var(--font-primary);
-        }
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 500; /* Medium */
+    color: var(--gray-900);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    font-family: var(--font-primary);
+}
 
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--gray-600);
-            font-weight: 400; /* Regular */
-        }
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--gray-600);
+    font-weight: 400; /* Regular */
+}
+
+/* Responsive Styling */
+@media (max-width: 1024px) {
+    .section-title h2 {
+        font-size: 2rem;
+        margin-bottom: 1.75rem;
+    }
+    .about-content {
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 95%;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .section-title h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    .about-content {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        max-width: 90%;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .section-title h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1.25rem;
+    }
+    .about-content {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        max-width: 90%;
+        padding: 0 0.75rem;
+    }
+}
+
 
         /* ===== TEAM SECTION ===== */
         .team-section {
@@ -273,102 +314,8 @@
             font-weight: 400; /* Regular */
         }
 
-        /* ===== GALLERY SECTION ===== */
-        .gallery-section {
-            padding: 6rem 0;
-            background: var(--gray-50);
-        }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 1.2rem;
-            aspect-ratio: 16/9;
-            background: var(--gray-200);
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 0%, rgba(0, 13, 50, 0.3) 100%);
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover::after {
-            opacity: 1;
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            right: 20px;
-            color: var(--white);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .gallery-overlay h4 {
-            font-size: 1.2rem;
-            font-weight: 500; /* Medium */
-            margin-bottom: 0.5rem;
-            font-family: var(--font-primary);
-        }
-
-        .gallery-overlay p {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            font-weight: 400; /* Regular */
-        }
-
-        /* Placeholder for missing images */
-        .gallery-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gray-500);
-            font-size: 3rem;
-            background: var(--gray-100);
-        }
-
-/* ===== PERFECTLY ALIGNED FOOTER WITH PROPER FONT WEIGHTS ===== */
+        /* ===== PERFECTLY ALIGNED FOOTER WITH PROPER FONT WEIGHTS ===== */
 .footer {
     background: var(--gray-50);
     padding: 50px 0 0 0;
@@ -805,68 +752,65 @@
         </div>
     </section>
 
-<!-- Team Section -->
-<section class="team-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Our Team</h2>
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Team</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <h3>Overall Coordinator</h3>
+                    <p class="role">Leadership & Strategy</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Secretary</h3>
+                    <p class="role">Administration & Operations</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>UDGAM Convener</h3>
+                    <p class="role">Event Management</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Growth and PR Head</h3>
+                    <p class="role">Marketing & Public Relations</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Projects and Competition Head</h3>
+                    <p class="role">Project Management</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Product Head</h3>
+                    <p class="role">Product Development</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Disrupt Head</h3>
+                    <p class="role">Innovation & Disruption</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Design Head</h3>
+                    <p class="role">Creative & Visual Design</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>StartOps Head</h3>
+                    <p class="role">Startup Operations</p>
+                </div>
+                
+                <div class="team-card">
+                    <h3>Outreach Head</h3>
+                    <p class="role">Community Engagement</p>
+                </div>
+            </div>
         </div>
-        <div class="team-grid">
-            <div class="team-card">
-                <img src="img/team/overall_coordinator.jpg" alt="Overall Coordinator" class="team-photo" />
-                <h3>Overall Coordinator</h3>
-                <p class="role">Leadership & Strategy</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/secretary.jpg" alt="Secretary" class="team-photo" />
-                <h3>Secretary</h3>
-                <p class="role">Administration & Operations</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/udgam_convener.jpg" alt="UDGAM Convener" class="team-photo" />
-                <h3>UDGAM Convener</h3>
-                <p class="role">Event Management</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/growth_pr_head.jpg" alt="Growth and PR Head" class="team-photo" />
-                <h3>Growth and PR Head</h3>
-                <p class="role">Marketing & Public Relations</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/projects_head.jpg" alt="Projects and Competition Head" class="team-photo" />
-                <h3>Projects and Competition Head</h3>
-                <p class="role">Project Management</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/product_head.jpg" alt="Product Head" class="team-photo" />
-                <h3>Product Head</h3>
-                <p class="role">Product Development</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/disrupt_head.jpg" alt="Disrupt Head" class="team-photo" />
-                <h3>Disrupt Head</h3>
-                <p class="role">Innovation & Disruption</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/design_head.jpg" alt="Design Head" class="team-photo" />
-                <h3>Design Head</h3>
-                <p class="role">Creative & Visual Design</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/startops_head.jpg" alt="StartOps Head" class="team-photo" />
-                <h3>StartOps Head</h3>
-                <p class="role">Startup Operations</p>
-            </div>
-            <div class="team-card">
-                <img src="img/team/outreach_head.jpg" alt="Outreach Head" class="team-photo" />
-                <h3>Outreach Head</h3>
-                <p class="role">Community Engagement</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+    </section>
 
     <!-- Gallery Section 
     <section class="gallery-section">
