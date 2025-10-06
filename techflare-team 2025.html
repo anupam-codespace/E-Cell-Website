@@ -99,7 +99,7 @@
         .hero {
             background: linear-gradient(135deg, #001d9f 0%, #000000 100%);
             color: var(--white);
-            padding: 30px 0 30px;
+            padding: 30px 0 35px;
             text-align: center;
         }
 
@@ -224,8 +224,10 @@
             text-align: center;
             font-size: 2rem;
             color: var(--primary);
-            font-weight: 700;
+            font-weight: 500;
             margin-bottom: 2.4rem;
+            margin-top: 0rem;
+
         }
 
         .coordinator-grid {
@@ -236,7 +238,7 @@
 
         .coordinator-card {
             background: var(--white);
-            border-radius: 14px;
+            border-radius: 10px;
             padding: 1.6rem 1.4rem;
             box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
             text-align: center;
@@ -250,11 +252,11 @@
         }
 
         .coordinator-card img {
-            width: 96px;
-            height: 96px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--secondary);
+            border: 1px solid var(--secondary);
             margin-bottom: 0.5rem;
         }
 
@@ -288,7 +290,7 @@
 
         @media (max-width: 600px) {
             .coordinator-title {
-                font-size: 1.6rem;
+                font-size: 1.1rem;
             }
             .coordinator-grid {
                 grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
