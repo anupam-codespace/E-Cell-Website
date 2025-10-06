@@ -1669,22 +1669,22 @@
                             <div class="table-header-content">
                                 <h3 class="table-title">All Notices</h3>
                                 <div class="table-actions">
-                                    <div class="search-box">
+                                    <!--<div class="search-box">
                                         <input type="text" class="search-input" placeholder="Search notices..." id="noticeSearch">
                                         <i class="fas fa-search search-icon"></i>
-                                    </div>
-                                    <select class="form-control form-select" style="width: 140px;">
+                                    </div>-->
+                                    <!--<select class="form-control form-select" style="width: 140px;">
                                         <option>All Status</option>
                                         <option>Active</option>
                                         <option>Draft</option>
                                         <option>Archived</option>
-                                    </select>
-                                    <select class="form-control form-select" style="width: 120px;">
+                                    </select>-->
+                                    <!--<select class="form-control form-select" style="width: 120px;">
                                         <option>All Priority</option>
                                         <option>Urgent</option>
                                         <option>Important</option>
                                         <option>Normal</option>
-                                    </select>
+                                    </select>-->
                                 </div>
                             </div>
                         </div>
@@ -1693,9 +1693,6 @@
                                 <tr>
                                     <th>Title</th>
                                     <th>Date</th>
-                                    <th>Priority</th>
-                                    <th>Status</th>
-                                    <th>Views</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -2142,17 +2139,9 @@
 
                         <div class="form-group">
                             <label class="form-label">Paste the link</label>
-                            <input type="text" class="form-control focus-ring" id="noticeTitle" placeholder="Enter the link of the Document" required>
+                            <input type="url" class="form-control focus-ring" id="noticeTitle" placeholder="Enter the link of the Document" required>
                         </div>
-                        <!--<div class="form-group">
-                            <label class="form-label">Priority Level</label>
-                            <select class="form-control form-select focus-ring" id="noticePriority" required>
-                                <option value="normal">Normal</option>
-                                <option value="important">Important</option>
-                                <option value="urgent">Urgent</option>
-                            </select>
-                        </div>
-                    </div>
+                        
 
                     <div class="form-group">
                         <label class="form-label">Description</label>
@@ -2201,7 +2190,7 @@
                         </div>
                     </div>
                 </form>
-            </div>-->
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" onclick="closeModal('noticeModal')">Cancel</button>
                 <button type="submit" form="noticeForm" class="btn btn-primary">
@@ -2212,7 +2201,7 @@
         </div>
     </div>
 
-    <!-- Event Modal -->
+    <!-- Event Modal 
     <div id="eventModal" class="modal">
         <div class="modal-content" style="max-width: 40rem;">
             <div class="modal-header">
@@ -2306,9 +2295,9 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <!-- Gallery Modal -->
+    <!-- Gallery Modal 
     <div id="galleryModal" class="modal">
         <div class="modal-content" style="max-width: 40rem;">
             <div class="modal-header">
@@ -2354,7 +2343,6 @@
                         </div>
                         <div id="galleryPhotosPreview" style="display: none; margin-top: 1rem;">
                             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 0.5rem;" id="selectedPhotos">
-                                <!-- Preview thumbnails will be added here -->
                             </div>
                             <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--gray-200);">
                                 <p style="font-size: 0.8125rem; color: var(--gray-600);" id="photoCount">0 photos selected</p>
@@ -2389,9 +2377,9 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div>-->
 
-    <!-- User Modal -->
+    <!-- User Modal 
     <div id="userModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -2447,7 +2435,7 @@
                 </button>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <script>
         // Authentication Check
@@ -2466,104 +2454,64 @@
                 id: 1, 
                 title: "Workshop on Entrepreneurship & Innovation", 
                 date: "2025-09-01", 
-                priority: "important", 
-                description: "Join us for an intensive workshop on entrepreneurship fundamentals...", 
-                status: "active", 
-                views: 234,
+                description: "Join us for an intensive workshop on entrepreneurship fundamentals...",                
                 tags: ["workshop", "entrepreneurship", "innovation"]
             },
-            { 
-                id: 2, 
-                title: "E-Cell Membership Drive 2025", 
-                date: "2025-08-25", 
-                priority: "urgent", 
-                description: "Open registration for new members. Special benefits included...", 
-                status: "active", 
-                views: 189,
-                tags: ["membership", "registration"]
-            },
-            { 
-                id: 3, 
-                title: "Startup Pitch Competition", 
-                date: "2025-08-30", 
-                priority: "normal", 
-                description: "Submit your innovative business ideas for our annual competition...", 
-                status: "draft", 
-                views: 67,
-                tags: ["competition", "startup", "pitch"]
-            },
-            { 
-                id: 4, 
-                title: "Industry Mentorship Program", 
-                date: "2025-08-28", 
-                priority: "important", 
-                description: "Connect with industry experts and seasoned entrepreneurs...", 
-                status: "active", 
-                views: 156,
-                tags: ["mentorship", "industry", "guidance"]
-            },
-            { 
-                id: 5, 
-                title: "Event Postponement Notice", 
-                date: "2025-08-20", 
-                priority: "urgent", 
-                description: "Important update regarding the scheduled networking event...", 
-                status: "archived", 
-                views: 89,
-                tags: ["postponement", "update"]
-            }
+            
         ];
 
-        let events = [
-            { 
-                id: 1, 
-                title: "Tech Innovators Summit 2025", 
-                date: "2025-09-15", 
-                time: "14:00", 
-                location: "Main Auditorium", 
-                description: "Join industry leaders for insights on emerging technologies and innovation trends...", 
-                status: "upcoming", 
-                registrations: 87,
-                maxParticipants: 150,
-                type: "conference",
-                poster: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=400&fit=crop"
-            },
-            { 
-                id: 2, 
-                title: "Entrepreneur Networking Night", 
-                date: "2025-09-10", 
-                time: "18:00", 
-                location: "Conference Hall", 
-                description: "Connect with fellow entrepreneurs, investors, and industry professionals...", 
-                status: "upcoming", 
-                registrations: 45,
-                maxParticipants: 80,
-                type: "networking",
-                poster: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&h=400&fit=crop"
-            },
-            { 
-                id: 3, 
-                title: "Startup Bootcamp Weekend", 
-                date: "2025-09-20", 
-                time: "10:00", 
-                location: "Innovation Lab", 
-                description: "Intensive 3-day program for aspiring entrepreneurs to build and validate their startup ideas...", 
-                status: "draft", 
-                registrations: 0,
-                maxParticipants: 50,
-                type: "workshop",
-                poster: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=400&fit=crop"
-            }
-        ];
+/*
+let events = [
+    { 
+        id: 1, 
+        title: "Tech Innovators Summit 2025", 
+        date: "2025-09-15", 
+        time: "14:00", 
+        location: "Main Auditorium", 
+        description: "Join industry leaders for insights on emerging technologies and innovation trends...", 
+        status: "upcoming", 
+        registrations: 87,
+        maxParticipants: 150,
+        type: "conference",
+        poster: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=400&fit=crop"
+    },
+    { 
+        id: 2, 
+        title: "Entrepreneur Networking Night", 
+        date: "2025-09-10", 
+        time: "18:00", 
+        location: "Conference Hall", 
+        description: "Connect with fellow entrepreneurs, investors, and industry professionals...", 
+        status: "upcoming", 
+        registrations: 45,
+        maxParticipants: 80,
+        type: "networking",
+        poster: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&h=400&fit=crop"
+    },
+    { 
+        id: 3, 
+        title: "Startup Bootcamp Weekend", 
+        date: "2025-09-20", 
+        time: "10:00", 
+        location: "Innovation Lab", 
+        description: "Intensive 3-day program for aspiring entrepreneurs to build and validate their startup ideas...", 
+        status: "draft", 
+        registrations: 0,
+        maxParticipants: 50,
+        type: "workshop",
+        poster: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=400&fit=crop"
+    }
+];
 
-        let galleryImages = [
-            { id: 1, url: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=400&fit=crop", category: "events", caption: "Annual Tech Conference 2025", album: "Tech Events" },
-            { id: 2, url: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop", category: "workshops", caption: "Innovation Workshop Series", album: "Learning Sessions" },
-            { id: 3, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=400&fit=crop", category: "team", caption: "Team Building Session", album: "Team Activities" },
-            { id: 4, url: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&h=400&fit=crop", category: "achievements", caption: "Award Ceremony 2025", album: "Achievements" },
-            { id: 5, url: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=400&fit=crop", category: "events", caption: "Startup Showcase Event", album: "Startup Events" },
-            { id: 6, url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=400&fit=crop", category: "workshops", caption: "Leadership Training Program", album: "Training Programs" }
-        ];
+let galleryImages = [
+    { id: 1, url: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=400&h=400&fit=crop", category: "events", caption: "Annual Tech Conference 2025", album: "Tech Events" },
+    { id: 2, url: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=400&fit=crop", category: "workshops", caption: "Innovation Workshop Series", album: "Learning Sessions" },
+    { id: 3, url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=400&fit=crop", category: "team", caption: "Team Building Session", album: "Team Activities" },
+    { id: 4, url: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&h=400&fit=crop", category: "achievements", caption: "Award Ceremony 2025", album: "Achievements" },
+    { id: 5, url: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400&h=400&fit=crop", category: "events", caption: "Startup Showcase Event", album: "Startup Events" },
+    { id: 6, url: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&h=400&fit=crop", category: "workshops", caption: "Leadership Training Program", album: "Training Programs" }
+];
+*/
 
         // Navigation Functions
         function showSection(sectionName) {
@@ -2594,12 +2542,12 @@
                 case 'notices':
                     loadNotices();
                     break;
-                case 'events':
-                    loadEvents();
-                    break;
-                case 'gallery':
-                    loadGallery();
-                    break;
+                //case 'events':
+                    //loadEvents();
+                    //break;
+                //case 'gallery':
+                    //loadGallery();
+                    //break;
             }
 
             // Close mobile sidebar
@@ -2684,17 +2632,6 @@
                         </div>
                     </td>
                     <td>${formatDate(notice.date)}</td>
-                    <td>
-                        <span class="badge badge-${notice.priority === 'urgent' ? 'danger' : notice.priority === 'important' ? 'warning' : 'gray'}">
-                            ${notice.priority}
-                        </span>
-                    </td>
-                    <td>
-                        <span class="badge badge-${notice.status === 'active' ? 'success' : notice.status === 'draft' ? 'warning' : 'gray'}">
-                            ${notice.status}
-                        </span>
-                    </td>
-                    <td>${notice.views || 0}</td>
                     <td>
                         <div style="display: flex; gap: 0.25rem;">
                             <button class="btn btn-sm btn-secondary" onclick="editNotice(${notice.id})" title="Edit">
