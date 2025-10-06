@@ -106,33 +106,33 @@
         .hero {
             background: linear-gradient(135deg, #001d9f 0%, #000000 100%);
             color: var(--white);
-            padding: 40px 0 40px;
+            padding: 10px 0 40px;
             text-align: center;
+
         }
 
         
 
         .hero-title {
-            font-size: 4.0rem;
+            font-size: 5.0rem;
             font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            margin: 0 0 0px;
-            margin-bottom: -1rem;
+            letter-spacing: -0.05em;
+            margin: 0 0 30px;
+            margin-bottom: -1.5rem;
         }
 
         .hero-subtitle {
-            font-size: 1.7rem;
-            font-weight: 400;
+            font-size: 1.4rem;
+            font-weight: 300;
             opacity: 0.9;
             margin-top: 0;
             margin-bottom: 0;
         }
-
+        
         .linktree-container {
     text-align: center;
-    margin-top: 1rem;
-    padding: 0 1rem;
+    margin-top: 1.5rem;
+    padding: 0 0rem;
 }
 
 .linktree-btn {
@@ -140,7 +140,7 @@
     width: 100%;
     max-width: 300px;
     margin: 0.5rem auto;
-    padding: 0.8rem 1.5rem;
+    padding: 0.9rem 1rem;
     font-size: 0.7rem;
     font-weight: 500;
     text-transform: uppercase;
@@ -188,16 +188,16 @@
 
         @media (max-width: 600px) {
             .hero-title {
-                font-size: 2.3rem;
-                font-weight: 600;
-                letter-spacing: -0.00em;
-                margin: 0 0 0px;
+                font-size: 2.6rem;
+                font-weight: 500;
+                letter-spacing: -0.01em;
+                margin: 0 0 -10px;
             }
             .hero-subtitle {
-                font-size: 0.9rem;
+                font-size: 0.8rem;
                 font-weight: 400;
                 opacity: 0.9;
-                margin-top: 0;
+                margin-top: -0.06rem;
                 margin-bottom: -01rem;
             }
         }
@@ -293,11 +293,15 @@
             .events, .quotes-section {
                 padding: 2rem 0;
             }
-.linktree-container {
+            .linktree-container {
+    display: flex;
+    justify-content: center;   /* centers horizontally */
+    align-items: center;       /* centers vertically */
+    height: 10vh;             /* takes full viewport height */
     text-align: center;
-    margin-top: 1rem;
     padding: 0 1rem;
 }
+
 
 .linktree-btn {
     display: inline-block;
@@ -312,7 +316,7 @@
     font-family: var(--font-primary);
     color: #fff;
     text-decoration: none;
-    border-radius: 30px;
+    border-radius: 80px;
     background: var(--primary);
     border: 2px solid transparent;
     position: relative;
@@ -678,7 +682,7 @@
             <img src="img/E-Cell - Black Bg.png" alt="E-Cell BVEC Logo" />
         </div>-->
         <div>
-            <h1 id="heroTitle" class="hero-title">Events</h1>
+            <h1 id="heroTitle" class="hero-title">events</h1>
 <div class="hero-subtitle" aria-label="Events of E-Cell BVEC">
     Ongoing • Past Events  
 </div>
