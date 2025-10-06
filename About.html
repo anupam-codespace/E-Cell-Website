@@ -144,47 +144,80 @@
         }
     
 
-        /* ===== ABOUT PAGE HERO ===== */
-        .page-hero {
-            background: linear-gradient(135deg, #0022b9 0%, #420000 100%);
-            color: var(--white);
-            padding: 3rem 0 3rem;
-            text-align: center;
-            position: relative;
-            margin-top: 0px;
-        }
+/* ===== ABOUT PAGE HERO ===== */
+.page-hero {
+    background: linear-gradient(135deg, #0022b9 0%, #420000 100%);
+    color: var(--white);
+    padding: 3rem 0 3rem;
+    text-align: center;
+    position: relative;
+    margin-top: 0px;
+}
 
-        .page-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-        }
+.page-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.3);
+}
 
-        .page-hero-content {
-            position: relative;
-            z-index: 2;
-        }
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+}
 
-        .page-hero h1 {
-            font-size: 4rem;
-            font-weight: 500; /* Medium */
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: -0.02em;
-            font-family: var(--font-primary);
-        }
+.page-hero h1 {
+    font-size: 4rem;
+    font-weight: 500; /* Medium */
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    font-family: var(--font-primary);
+}
 
-        .page-hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-            font-weight: 400; /* Regular */
-        }
+.page-hero p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 400; /* Regular */
+}
+
+/* Responsive adjustments for tablets and mobiles */
+@media (max-width: 1024px) {
+    .page-hero h1 {
+        font-size: 3rem;
+    }
+    .page-hero p {
+        font-size: 1rem;
+        max-width: 90%;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-hero h1 {
+        font-size: 2rem;
+    }
+    .page-hero p {
+        font-size: 0.9rem;
+        max-width: 100%;
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .page-hero h1 {
+        font-size: 1.6rem;
+    }
+    .page-hero p {
+        font-size: 0.85rem;
+        padding: 0 0.75rem;
+    }
+}
 
         /* ===== ABOUT CONTENT SECTIONS ===== */
         .about-section {
