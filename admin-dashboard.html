@@ -1602,7 +1602,7 @@
                         </div>
                     </div>-->
 
-                    <!-- Action Cards -->
+                    <!-- Action Cards 
                     <div class="action-grid">
                         <div class="action-card" onclick="showSection('notices')">
                             <div class="action-icon">
@@ -1614,7 +1614,7 @@
                                 <i class="fas fa-arrow-right"></i>
                                 Manage Notices
                             </button>
-                        </div>
+                        </div>-->
 
                         <!--<div class="action-card" onclick="showSection('events')">
                             <div class="action-icon">
@@ -1641,50 +1641,6 @@
                         </div>
                     </div>-->
 
-                    <!-- Recent Activity -->
-                    <div class="card" style="margin-top: 2rem;">
-                        <div class="card-header">
-                            <h3 class="card-title">Recent Activity</h3>
-                            <p class="card-subtitle">Latest updates and changes to your content</p>
-                        </div>
-                        <div class="card-body">
-                            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: var(--border-radius);">
-                                    <div style="width: 2rem; height: 2rem; background: rgba(16, 185, 129, 0.1); color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <i class="fas fa-plus" style="font-size: 0.75rem;"></i>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <p style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.125rem;">New notice published</p>
-                                        <p style="font-size: 0.875rem; color: var(--gray-600);">"Workshop Registration Open" was published 2 hours ago</p>
-                                    </div>
-                                    <span style="font-size: 0.75rem; color: var(--gray-500);">2h ago</span>
-                                </div>
-
-                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: var(--border-radius);">
-                                    <div style="width: 2rem; height: 2rem; background: rgba(59, 130, 246, 0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <i class="fas fa-calendar" style="font-size: 0.75rem;"></i>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <p style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.125rem;">Event created</p>
-                                        <p style="font-size: 0.875rem; color: var(--gray-600);">"Tech Innovation Summit" scheduled for Sep 15</p>
-                                    </div>
-                                    <span style="font-size: 0.75rem; color: var(--gray-500);">5h ago</span>
-                                </div>
-
-                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: var(--border-radius);">
-                                    <div style="width: 2rem; height: 2rem; background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                        <i class="fas fa-images" style="font-size: 0.75rem;"></i>
-                                    </div>
-                                    <div style="flex: 1;">
-                                        <p style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.125rem;">Gallery updated</p>
-                                        <p style="font-size: 0.875rem; color: var(--gray-600);">12 new photos added to "Team Events" category</p>
-                                    </div>
-                                    <span style="font-size: 0.75rem; color: var(--gray-500);">1d ago</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Notices Section -->
                 <div id="noticesSection" class="content-section">
@@ -1696,14 +1652,14 @@
                                 <i class="fas fa-plus"></i>
                                 Add Notice
                             </button>
-                            <button class="btn btn-secondary">
+                            <!--<button class="btn btn-secondary">
                                 <i class="fas fa-filter"></i>
                                 Filter
                             </button>
                             <button class="btn btn-outline">
                                 <i class="fas fa-download"></i>
                                 Export
-                            </button>
+                            </button>-->
                         </div>
                     </div>
 
@@ -1749,8 +1705,52 @@
                         </table>
                     </div>
                 </div>
+                    <!-- Recent Activity -->
+                    <div class="card" style="margin-top: 2rem;">
+                        <div class="card-header">
+                            <h3 class="card-title">Recent Activity</h3>
+                            <p class="card-subtitle">Latest updates and changes to your content</p>
+                        </div>
+                        <div class="card-body">
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: var(--border-radius);">
+                                    <div style="width: 2rem; height: 2rem; background: rgba(16, 185, 129, 0.1); color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-plus" style="font-size: 0.75rem;"></i>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.125rem;">New notice published</p>
+                                        <p style="font-size: 0.875rem; color: var(--gray-600);">"Workshop Registration Open" was published 2 hours ago</p>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--gray-500);">2h ago</span>
+                                </div>
 
-                <!-- Events Section -->
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: var(--border-radius);">
+                                    <div style="width: 2rem; height: 2rem; background: rgba(59, 130, 246, 0.1); color: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-calendar" style="font-size: 0.75rem;"></i>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.125rem;">Event created</p>
+                                        <p style="font-size: 0.875rem; color: var(--gray-600);">"Tech Innovation Summit" scheduled for Sep 15</p>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--gray-500);">5h ago</span>
+                                </div>
+
+                                <div style="display: flex; align-items: center; gap: 1rem; padding: 0.75rem; background: var(--gray-50); border-radius: var(--border-radius);">
+                                    <div style="width: 2rem; height: 2rem; background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                        <i class="fas fa-images" style="font-size: 0.75rem;"></i>
+                                    </div>
+                                    <div style="flex: 1;">
+                                        <p style="font-weight: 600; color: var(--gray-900); margin-bottom: 0.125rem;">Gallery updated</p>
+                                        <p style="font-size: 0.875rem; color: var(--gray-600);">12 new photos added to "Team Events" category</p>
+                                    </div>
+                                    <span style="font-size: 0.75rem; color: var(--gray-500);">1d ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Events Section 
                 <div id="eventsSection" class="content-section">
                     <div class="content-header">
                         <h1 class="page-title">Event Management</h1>
@@ -1771,7 +1771,7 @@
                         </div>
                     </div>
 
-                    <!-- Events Table -->
+                    <!-- Events Table
                     <div class="table-container">
                         <div class="table-header">
                             <div class="table-header-content">
@@ -1802,13 +1802,12 @@
                                 </tr>
                             </thead>
                             <tbody id="eventsTableBody">
-                                <!-- Dynamic content will be inserted here -->
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div>-->
 
-                <!-- Gallery Section -->
+                <!-- Gallery Section
                 <div id="gallerySection" class="content-section">
                     <div class="content-header">
                         <h1 class="page-title">Gallery Management</h1>
@@ -1827,9 +1826,9 @@
                                 New Category
                             </button>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <!-- Gallery Controls -->
+                    <!-- Gallery Controls
                     <div class="card" style="margin-bottom: 2rem;">
                         <div class="card-body">
                             <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
@@ -1860,15 +1859,14 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <!-- Gallery Grid -->
+                    <!-- Gallery Grid 
                     <div class="gallery-grid" id="galleryGrid">
-                        <!-- Dynamic content will be inserted here -->
                     </div>
-                </div>
+                </div>-->
 
-                <!-- Analytics Section -->
+                <!-- Analytics Section 
                 <div id="analyticsSection" class="content-section">
                     <div class="content-header">
                         <h1 class="page-title">Analytics</h1>
@@ -1883,9 +1881,9 @@
                                 Date Range
                             </button>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <!-- Analytics Stats -->
+                    <!-- Analytics Stats 
                     <div class="stats-grid">
                         <div class="stat-card">
                             <div class="stat-header">
@@ -1950,9 +1948,9 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>-->
 
-                    <!-- Analytics Charts Placeholder -->
+                    <!-- Analytics Charts Placeholder 
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Traffic Overview</h3>
@@ -1968,18 +1966,18 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
-                <!-- Settings Section -->
+                <!-- Settings Section 
                 <div id="settingsSection" class="content-section">
                     <div class="content-header">
                         <h1 class="page-title">Settings</h1>
                         <p class="page-subtitle">Configure your system preferences and website settings.</p>
-                    </div>
+                    </div>-->
 
                     <div style="display: grid; gap: 2rem;">
-                        <!-- General Settings -->
-                        <div class="card">
+                        <!-- General Settings 
+                        <div-- class="card">
                             <div class="card-header">
                                 <h3 class="card-title">General Settings</h3>
                                 <p class="card-subtitle">Basic website configuration</p>
@@ -2002,9 +2000,7 @@
                                         <label class="form-label">Timezone</label>
                                         <select class="form-control form-select">
                                             <option>Asia/Kolkata (UTC+5:30)</option>
-                                            <option>Asia/Dubai (UTC+4:00)</option>
-                                            <option>Europe/London (UTC+0:00)</option>
-                                            <option>America/New_York (UTC-5:00)</option>
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -2015,9 +2011,9 @@
                                     Save Changes
                                 </button>
                             </div>
-                        </div>
+                        </div-->
 
-                        <!-- Security Settings -->
+                        <!-- Security Settings 
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Security Settings</h3>
@@ -2056,9 +2052,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
 
-                <!-- Users Section -->
+                <!-- Users Section
                 <div id="usersSection" class="content-section">
                     <div class="content-header">
                         <h1 class="page-title">User Management</h1>
@@ -2069,9 +2065,9 @@
                                 Add User
                             </button>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <!-- Users Table -->
+                    <!-- Users Table 
                     <div class="table-container">
                         <div class="table-header">
                             <div class="table-header-content">
@@ -2119,7 +2115,7 @@
                     </div>
                 </div>
             </div>
-        </main>
+        </main>-->
     </div>
 
     <!-- Notice Modal -->
