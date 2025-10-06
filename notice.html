@@ -1,90 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>404 Not Found | E-Cell BVEC</title>
-  <link href="https://fonts.cdnfonts.com/css/gt-walsheim-trial" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #000d32;
-      --secondary: #fff48e;
-      --white: #ffffff;
-      --gray-50: #f9fafb;
-      --font-primary: 'GT Walsheim Trial', sans-serif;
-    }
-    body {
-      margin:0;
-      font-family: var(--font-primary);
-      background: var(--gray-50);
-      color: var(--primary);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .container {
-      max-width: 500px;
-      width: 100%;
-    }
-    h1 {
-      font-size: 9rem;
-      margin: 0;
-      font-weight: 900;
-      letter-spacing: -0.1em;
-      color: var(--primary);
-    }
-    h2 {
-      font-size: 1.8rem;
-      margin-top: 0.3em;
-      margin-bottom: 1.5em;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1rem;
-      margin-bottom: 2.5em;
-      color: #444;
-      line-height: 1.4;
-    }
-    .btn-home {
-      text-decoration: none;
-      font-weight: 700;
-      background: var(--primary);
-      color: var(--white);
-      padding: 0.7em 3em;
-      border-radius: 30px;
-      font-size: 1.1rem;
-      box-shadow: 0 6px 16px rgb(0 13 50 / 0.3);
-      transition: background-color 0.3s ease;
-      display: inline-block;
-    }
-    .btn-home:hover,
-    .btn-home:focus {
-      background: var(--secondary);
-      color: var(--primary);
-      box-shadow: 0 8px 20px rgb(255 244 142 / 0.6);
-      outline: none;
-    }
-    /* Responsive */
-    @media (max-width: 460px) {
-      h1 {
-        font-size: 6.5rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices | E-Cell BVEC</title>
+    <link rel="icon" href="img/E-Cell - Black Bg.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1f2937;
+            --white: #ffffff;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-500: #6b7280;
+            --gray-800: #1f2937;
+            --accent: #3b82f6;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--primary);
+            margin: 0;
+        }
+        .header {
+            background: var(--white);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--primary);
+        }
+        .header-logo img {
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+        .header-logo h1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .notice-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .notice-item {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+        .notice-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .notice-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .notice-meta {
+            font-size: 0.875rem;
+            color: var(--gray-500);
+            margin-bottom: 1rem;
+        }
+        .notice-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 500;
+        }
+    </style>
 </head>
 <body>
-  <div class="container" role="main" aria-labelledby="heading404">
-    <h1 id="heading404" aria-hidden="true">404</h1>
-    <h2>Oops! Page Not Found</h2>
-    <p>Sorry, the page you’re looking for doesn’t exist yet. It’s currently under development and will be available soon.</p>
-    
-    <a href="index.html" class="btn-home" role="button" aria-label="Return to home page">Back to Home</a>
-  </div>
+    <header class="header">
+        <a href="index.html" class="header-logo">
+            <img src="img/E-Cell_-_Black_Bg-removebg-preview.png" alt="E-Cell BVEC">
+            <h1>E-Cell BVEC</h1>
+        </a>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">All Notices</h1>
+        <div id="noticeList" class="notice-list">
+            <!-- Notices will be loaded here -->
+        </div>
+    </div>
+
+    <script type="module">
+        // Firebase SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_vtXA-2BGUUZlWjVFUP167ipLBNHOgEU",
+            authDomain: "e-cell-website-8806f.firebaseapp.com",
+            projectId: "e-cell-website-8806f",
+            storageBucket: "e-cell-website-8806f.firebasestorage.app",
+            messagingSenderId: "94446502749",
+            appId: "1:94446502749:web:42536687a191a6a8291eb4",
+            measurementId: "G-PC81224LM0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function loadNotices() {
+            const noticeList = document.getElementById('noticeList');
+            noticeList.innerHTML = '<p>Loading notices...</p>';
+
+            try {
+                const noticesRef = collection(db, "notices");
+                const q = query(noticesRef, orderBy("date", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    noticeList.innerHTML = '<p>No notices available at the moment.</p>';
+                    return;
+                }
+
+                noticeList.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const notice = doc.data();
+                    const noticeEl = document.createElement('div');
+                    noticeEl.className = 'notice-item';
+                    noticeEl.innerHTML = `
+                        <div class="notice-title">${notice.title}</div>
+                        <div class="notice-meta">Published on: ${formatDate(notice.date)}</div>
+                        <a href="${notice.link}" target="_blank" class="notice-link">
+                            View Document
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                                <path d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+                            </svg>
+                        </a>
+                    `;
+                    noticeList.appendChild(noticeEl);
+                });
+            } catch (error) {
+                console.error("Error loading notices: ", error);
+                noticeList.innerHTML = '<p>Could not load notices. Please try again later.</p>';
+            }
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { day: '2-digit', month: 'long', year: 'numeric' });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadNotices);
+    </script>
 </body>
 </html>

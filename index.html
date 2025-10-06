@@ -849,7 +849,7 @@
   scrollbar-color: var(--secondary) var(--primary);
 }
 
-.notice-link {
+.notice-item-clickable {
   color: var(--secondary) !important;
   text-decoration: underline;
   font-weight: 500;
@@ -861,7 +861,7 @@
   cursor: pointer;
 }
 
-.notice-link:hover {
+.notice-item-clickable:hover {
   background: rgba(255,255,255,0.12);
 }
 
@@ -874,6 +874,76 @@
   }
 }
 
+/* ===== NOTICE MODAL ===== */
+.notice-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1002;
+    display: none; /* Hidden by default */
+    align-items: center;
+    justify-content: center;
+}
+
+.notice-modal-overlay.active {
+    display: flex;
+}
+
+.notice-modal-card {
+    background: var(--white);
+    color: var(--gray-800);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.notice-modal-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notice-modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.notice-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gray-500);
+    cursor: pointer;
+}
+
+.notice-modal-body {
+    padding: 1.5rem;
+    overflow-y: auto;
+    line-height: 1.7;
+}
+
+.notice-modal-date {
+    font-size: 0.9rem;
+    color: var(--gray-500);
+    margin-bottom: 1rem;
+}
+
+.notice-modal-content {
+    white-space: pre-wrap; /* Preserve whitespace and newlines */
+}
+
+.notice-modal-footer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--gray-200);
+    text-align: right;
+}
 
 
 
@@ -1323,13 +1393,11 @@
                 <ul class="nav-links" id="navLinks">
                     <li><a href="#home">Home</a></li>
                     <li><a href="events.html">Initiatives</a></li>
-                    <li><a href="techflare-event.html">TechFalre</a></li>
+                    <li><a href="techflare-event.html">TechFlare</a></li>
                     <li><a href="Gallery.html">Gallery</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <!--<li class="mobile-close">
-                        <button class="mobile-menu-close" aria-label="Close Menu"><i class="fas fa-times"></i></button>
-                    </li>-->
-                  </ul>
+                    <li><a href="notice.html">Notice</a></li>
+                </ul>
                   
                 
                 <!-- Mobile Menu Button - Right Aligned, White -->
@@ -1587,10 +1655,27 @@
     <div class="container">
       <h2>Club Notice</h2>
       <div class="notice-box" id="noticeBox">
-        <!-- Notices will be dynamically loaded from admin dashboard -->
+        <!-- Notices will be dynamically loaded -->
       </div>
     </div>
 </section>
+
+<!-- Notice Modal -->
+<div class="notice-modal-overlay" id="noticeModalOverlay">
+    <div class="notice-modal-card">
+        <div class="notice-modal-header">
+            <h3 class="notice-modal-title" id="noticeModalTitle"></h3>
+            <button class="notice-modal-close" id="noticeModalClose">&times;</button>
+        </div>
+        <div class="notice-modal-body">
+            <p class="notice-modal-date" id="noticeModalDate"></p>
+            <p class="notice-modal-content" id="noticeModalContent"></p>
+        </div>
+        <div class="notice-modal-footer">
+            <a href="#" class="btn btn-primary" id="noticeModalLink" target="_blank" rel="noopener noreferrer">View Attachment</a>
+        </div>
+    </div>
+</div>
 
 
 
@@ -1674,10 +1759,109 @@
         
     </footer>
 
-    <!-- JavaScript with Improved Menu Closing -->
-    <script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_vtXA-2BGUUZlWjVFUP167ipLBNHOgEU",
+            authDomain: "e-cell-website-8806f.firebaseapp.com",
+            projectId: "e-cell-website-8806f",
+            storageBucket: "e-cell-website-8806f.firebasestorage.app",
+            messagingSenderId: "94446502749",
+            appId: "1:94446502749:web:42536687a191a6a8291eb4",
+            measurementId: "G-PC81224LM0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let notices = [];
+
+        // Load and display notices from Firestore
+        async function loadNotices() {
+            const noticeBox = document.getElementById('noticeBox');
+            noticeBox.innerHTML = '<p style="color: rgba(255,255,255,0.7); text-align: center; padding: 1rem;">Loading notices...</p>';
+
+            try {
+                const noticesRef = collection(db, "notices");
+                const q = query(noticesRef, orderBy("date", "desc"), limit(5)); // Get latest 5
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    noticeBox.innerHTML = '<p style="color: rgba(255,255,255,0.7); text-align: center; padding: 1rem;">No notices available at the moment.</p>';
+                    return;
+                }
+
+                noticeBox.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const notice = { id: doc.id, ...doc.data() };
+                    notices.push(notice);
+
+                    const noticeEl = document.createElement('div');
+                    noticeEl.className = 'notice-item-clickable';
+                    noticeEl.setAttribute('role', 'button');
+                    noticeEl.setAttribute('tabindex', '0');
+                    
+                    const formattedDate = formatNoticeDate(notice.date);
+                    noticeEl.innerHTML = `${notice.title} <span style="font-size: 0.85em; opacity: 0.9;">(${formattedDate})</span>`;
+                    
+                    noticeEl.addEventListener('click', () => showNoticeModal(notice));
+                    noticeBox.appendChild(noticeEl);
+                });
+            } catch (error) {
+                console.error("Error loading notices: ", error);
+                noticeBox.innerHTML = '<p style="color: rgba(255,255,255,0.7); text-align: center; padding: 1rem;">Could not load notices.</p>';
+            }
+        }
+
+        function formatNoticeDate(dateString) {
+            const date = new Date(dateString);
+            const options = { day: '2-digit', month: 'short', year: 'numeric' };
+            return date.toLocaleDateString('en-US', options);
+        }
+
+        // Modal functions
+        const noticeModalOverlay = document.getElementById('noticeModalOverlay');
+        const noticeModalTitle = document.getElementById('noticeModalTitle');
+        const noticeModalDate = document.getElementById('noticeModalDate');
+        const noticeModalContent = document.getElementById('noticeModalContent');
+        const noticeModalLink = document.getElementById('noticeModalLink');
+        const noticeModalClose = document.getElementById('noticeModalClose');
+
+        function showNoticeModal(notice) {
+            noticeModalTitle.textContent = notice.title;
+            noticeModalDate.textContent = `Published on: ${formatNoticeDate(notice.date)}`;
+            noticeModalContent.textContent = notice.content || 'No additional details provided.';
+            
+            if (notice.link) {
+                noticeModalLink.href = notice.link;
+                noticeModalLink.style.display = 'inline-flex';
+            } else {
+                noticeModalLink.style.display = 'none';
+            }
+
+            noticeModalOverlay.classList.add('active');
+        }
+
+        function closeNoticeModal() {
+            noticeModalOverlay.classList.remove('active');
+        }
+
+        noticeModalClose.addEventListener('click', closeNoticeModal);
+        noticeModalOverlay.addEventListener('click', (e) => {
+            if (e.target === noticeModalOverlay) {
+                closeNoticeModal();
+            }
+        });
+
+
         document.addEventListener('DOMContentLoaded', function() {
-            // Loading Screen Animation with Black Background
+            loadNotices();
+
+            // Existing script content...
             const loadingScreen = document.getElementById('loading-screen');
             const loadingPercentage = document.getElementById('loading-percentage');
             
@@ -1699,89 +1883,9 @@
                 }
             }, 50);
 
-            // Quote Slider Functionality
             const quotes = [
-            { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
-    { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" },
-    { text: "Don't be afraid to give up the good to go for the great.", author: "John D. Rockefeller" },
-    { text: "I find that the harder I work, the more luck I seem to have.", author: "Thomas Jefferson" },
-    { text: "Opportunities don't happen, you create them.", author: "Chris Grosser" },
-    { text: "Success usually comes to those who are too busy to be looking for it.", author: "Henry David Thoreau" },
-    { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
-    { text: "The future depends on what we do in the present.", author: "Mahatma Gandhi" },
-    { text: "It does not matter how slowly you go as long as you do not stop.", author: "Confucius" },
-    { text: "Everything you've ever wanted is on the other side of fear.", author: "George Addair" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
-    { text: "Do not wait to strike till the iron is hot, but make it hot by striking.", author: "William Butler Yeats" },
-    { text: "Whether you think you can, or you think you can't – you're right.", author: "Henry Ford" },
-    { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-    { text: "I am not a product of my circumstances. I am a product of my decisions.", author: "Stephen R. Covey" },
-    { text: "You must be the change you wish to see in the world.", author: "Mahatma Gandhi" },
-    { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
-    { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", author: "Zig Ziglar" },
-    { text: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
-    { text: "The best way to predict the future is to invent it.", author: "Alan Kay" },
-    { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" },
-    { text: "I have not failed. I've just found 10,000 ways that won't work.", author: "Thomas Edison" },
-    { text: "A person who never made a mistake never tried anything new.", author: "Albert Einstein" },
-    { text: "It's not about ideas. It's about making ideas happen.", author: "Scott Belsky" },
-    { text: "The secret of getting ahead is getting started.", author: "Mark Twain" },
-    { text: "The only place where success comes before work is in the dictionary.", author: "Vidal Sassoon" },
-    { text: "Do one thing every day that scares you.", author: "Eleanor Roosevelt" },
-    { text: "The road to success and the road to failure are almost exactly the same.", author: "Colin R. Davis" },
-    { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
-    { text: "Hardships often prepare ordinary people for an extraordinary destiny.", author: "C.S. Lewis" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is how high you bounce when you hit bottom.", author: "George S. Patton" },
-    { text: "The only way to achieve the impossible is to believe it is possible.", author: "Charles Kingsleigh" },
-    { text: "The best revenge is massive success.", author: "Frank Sinatra" },
-    { text: "I never dreamed about success. I worked for it.", author: "Estee Lauder" },
-    { text: "Success is not the absence of failure; it's the persistence through failure.", author: "Aisha Tyler" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success.", author: "Albert Schweitzer" },
-    { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
-    { text: "Success is not measured by what you accomplish, but by the opposition you have encountered.", author: "Orison Swett Marden" },
-    { text: "Success is not in what you have, but who you are.", author: "Bo Bennett" },
-    { text: "Success is not the key to happiness. Happiness is the key to success."},
+                { text: "Success is walking from failure to failure with no loss of enthusiasm.", author: "Winston Churchill" },
+                { text: "The way to get started is to quit talking and begin doing.", author: "Walt Disney" },
             ];
 
             let currentQuoteIndex = 0;
@@ -1789,7 +1893,6 @@
             const quoteAuthor = document.querySelector('.hero-quotes__author');
             const pagination = document.querySelector('.hero-quotes__pagination');
 
-            // Create pagination dots
             quotes.forEach((_, index) => {
                 const dot = document.createElement('div');
                 dot.className = 'hero-quotes__dot';
@@ -1807,7 +1910,6 @@
                     quoteAuthor.textContent = `- ${quotes[index].author}`;
                     quoteText.style.opacity = '1';
                     
-                    // Update pagination
                     document.querySelectorAll('.hero-quotes__dot').forEach((dot, i) => {
                         dot.classList.toggle('active', i === index);
                     });
@@ -1819,31 +1921,14 @@
                 showQuote(currentQuoteIndex);
             }
 
-            // Auto advance quotes every 5 seconds
             setTimeout(() => {
                 setInterval(nextQuote, 5000);
             }, 3000);
 
-            // Hero Title Text Changing Animation
             const heroQuotes = [
-    "Empowering Minds, Shaping Futures",
-    "Innovate Today, Inspire Tomorrow",
-    "Dream, Create, Transform the World",
-    "Leading Ideas into Brilliant Action",
-    "Unlocking Potential, Driving Change",
-    "Where Passion Meets Innovation Daily",
-    "Creating Leaders for a Better World",
-    "Transforming Dreams into Reality Now",
-    "Igniting Minds, Fueling Ambition",
-    "Inspiring Change, One Step Ahead",
-    "Building Skills, Shaping New Paths",
-    "Turning Visions into Tangible Impact",
-    "Empower, Innovate, Achieve Together",
-    "Where Ideas Blossom into Action",
-    "Nurturing Talent, Leading Tomorrow",
-    "Building Tomorrow's Changemakers"
-];
-
+                "Empowering Minds, Shaping Futures",
+                "Building Tomorrow's Changemakers"
+            ];
 
             let heroQuoteIndex = 0;
             const heroTitle = document.querySelector('.hero-title');
@@ -1857,105 +1942,47 @@
                 }, 300);
             }
 
-            // Initial text change and set interval
             setTimeout(() => {
                 setTimeout(changeHeroText, 1000);
                 setInterval(changeHeroText, 5000);
             }, 3000);
 
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
 
+            function closeMenu() {
+                navLinks.classList.remove('active');
+                if (mobileMenuBtn.querySelector('i')) {
+                    mobileMenuBtn.querySelector('i').classList.remove('fa-times');
+                    mobileMenuBtn.querySelector('i').classList.add('fa-bars');
+                }
+            }
 
+            mobileMenuBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                navLinks.classList.toggle('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
 
-// Mobile Menu Toggle with Close Button
-const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.getElementById('navLinks');
-const closeMenuBtn = document.getElementById('closeMenuBtn'); // Close (X) button inside menu
+            navLinks.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', closeMenu);
+            });
 
-function closeMenu() {
-    navLinks.classList.remove('active');
-    if (mobileMenuBtn.querySelector('i')) {
-        mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-        mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-    }
-}
+            document.addEventListener('click', function (event) {
+                if (navLinks.classList.contains('active') &&
+                    !navLinks.contains(event.target) &&
+                    !mobileMenuBtn.contains(event.target)) {
+                    closeMenu();
+                }
+            });
 
-// Toggle menu on hamburger click
-mobileMenuBtn.addEventListener('click', function (e) {
-    e.stopPropagation(); // prevent outside click trigger
-    navLinks.classList.toggle('active');
-    const icon = mobileMenuBtn.querySelector('i');
-    if (navLinks.classList.contains('active')) {
-        icon.classList.remove('fa-bars');
-        icon.classList.add('fa-times');
-    } else {
-        icon.classList.remove('fa-times');
-        icon.classList.add('fa-bars');
-    }
-});
-
-// Close menu when clicking close button
-if (closeMenuBtn) {
-    closeMenuBtn.addEventListener('click', closeMenu);
-}
-
-// Close menu when clicking navigation links
-navLinks.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-});
-
-// Close menu when clicking outside
-document.addEventListener('click', function (event) {
-    if (navLinks.classList.contains('active') &&
-        !navLinks.contains(event.target) &&
-        !mobileMenuBtn.contains(event.target)) {
-        closeMenu();
-    }
-});
-
-
-
-
-
-// Load and display notices from admin dashboard
-function loadNotices() {
-    const noticeBox = document.getElementById('noticeBox');
-    const notices = JSON.parse(localStorage.getItem('notices')) || [];
-    
-    noticeBox.innerHTML = '';
-    
-    if (notices.length === 0) {
-        noticeBox.innerHTML = '<p style="color: rgba(255,255,255,0.7); text-align: center; padding: 1rem;">No notices available at the moment.</p>';
-        return;
-    }
-    
-    notices.forEach(notice => {
-        const noticeLink = document.createElement('a');
-        noticeLink.href = notice.link;
-        noticeLink.target = '_blank';
-        noticeLink.rel = 'noopener noreferrer';
-        noticeLink.className = 'notice-link';
-        
-        const formattedDate = formatNoticeDate(notice.date);
-        noticeLink.innerHTML = `${notice.title} <span style="font-size: 0.85em; opacity: 0.9;">(${formattedDate})</span>`;
-        
-        noticeBox.appendChild(noticeLink);
-    });
-}
-
-function formatNoticeDate(dateString) {
-    const date = new Date(dateString);
-    const options = { day: '2-digit', month: 'short', year: 'numeric' };
-    return date.toLocaleDateString('en-US', options);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    loadNotices();
-});
-
-
-
-
-            // Smooth scrolling for navigation links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
@@ -1969,10 +1996,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             });
 
-          
-
-            
-            // Add animation to cards
             const observerOptions = {
                 threshold: 0.1,
                 rootMargin: '0px 0px -50px 0px'
@@ -1987,7 +2010,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }, observerOptions);
 
-            // Observe cards for animations
             document.querySelectorAll('.event-card').forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
@@ -1995,12 +2017,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 observer.observe(card);
             });
         });
-
-
-
-
-
-        
     </script>
 </body>
 </html>

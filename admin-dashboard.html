@@ -495,6 +495,7 @@
             </div>
             <div class="modal-body">
                 <form id="noticeForm">
+                    <input type="hidden" id="noticeId">
                     <div class="form-group">
                         <label class="form-label">Notice Title *</label>
                         <input type="text" class="form-control" id="noticeTitle" required placeholder="Enter notice title">
@@ -504,8 +505,12 @@
                         <input type="date" class="form-control" id="noticeDate" required>
                     </div>
                     <div class="form-group">
-                        <label class="form-label">Document Link *</label>
-                        <input type="url" class="form-control" id="noticeLink" required placeholder="https://example.com/document.pdf">
+                        <label class="form-label">Document Link</label>
+                        <input type="url" class="form-control" id="noticeLink" placeholder="https://example.com/document.pdf">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Notice Content</label>
+                        <textarea class="form-control" id="noticeContent" rows="4" placeholder="Enter the full notice content here..."></textarea>
                     </div>
                 </form>
             </div>
@@ -519,20 +524,56 @@
         </div>
     </div>
 
-    <script>
-        let notices = JSON.parse(localStorage.getItem('notices')) || [];
-        let editingId = null;
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/12.3.0/firebase-firestore.js";
 
-        function loadNotices() {
+        const firebaseConfig = {
+            apiKey: "AIzaSyC_vtXA-2BGUUZlWjVFUP167ipLBNHOgEU",
+            authDomain: "e-cell-website-8806f.firebaseapp.com",
+            projectId: "e-cell-website-8806f",
+            storageBucket: "e-cell-website-8806f.firebasestorage.app",
+            messagingSenderId: "94446502749",
+            appId: "1:94446502749:web:42536687a191a6a8291eb4",
+            measurementId: "G-PC81224LM0"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let notices = [];
+
+        async function loadNotices() {
+            const tbody = document.getElementById('noticesTable');
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 3rem;">Loading...</td></tr>';
+
+            try {
+                const noticesRef = collection(db, "notices");
+                const q = query(noticesRef, orderBy("date", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                notices = [];
+                querySnapshot.forEach((doc) => {
+                    notices.push({ id: doc.id, ...doc.data() });
+                });
+
+                renderNotices(notices);
+            } catch (error) {
+                console.error("Error loading notices: ", error);
+                tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 3rem; color: var(--danger);">Error loading notices.</td></tr>';
+            }
+        }
+
+        function renderNotices(noticesToRender) {
             const tbody = document.getElementById('noticesTable');
             tbody.innerHTML = '';
-            
-            if (notices.length === 0) {
+
+            if (noticesToRender.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="4" style="text-align: center; padding: 3rem; color: var(--gray-500);">No notices yet. Create your first notice to get started!</td></tr>';
                 return;
             }
-            
-            notices.forEach(notice => {
+
+            noticesToRender.forEach(notice => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>
@@ -542,13 +583,13 @@
                     <td><span class="badge badge-success">Active</span></td>
                     <td>
                         <div style="display: flex; gap: 0.25rem;">
-                            <button class="btn btn-sm btn-secondary" onclick="editNotice(${notice.id})" title="Edit">
+                            <button class="btn btn-sm btn-secondary" onclick="window.editNotice('${notice.id}')" title="Edit">
                                 <i class="fas fa-edit"></i>
                             </button>
                             <a href="${notice.link}" target="_blank" class="btn btn-sm btn-primary" title="View Document">
                                 <i class="fas fa-external-link-alt"></i>
                             </a>
-                            <button class="btn btn-sm btn-danger" onclick="deleteNotice(${notice.id})" title="Delete">
+                            <button class="btn btn-sm btn-danger" onclick="window.deleteNotice('${notice.id}')" title="Delete">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
@@ -558,72 +599,78 @@
             });
         }
 
-        function openModal() {
+        window.openModal = function() {
             document.getElementById('noticeModal').classList.add('active');
             document.body.style.overflow = 'hidden';
             document.getElementById('noticeDate').valueAsDate = new Date();
         }
 
-        function closeModal() {
+        window.closeModal = function() {
             document.getElementById('noticeModal').classList.remove('active');
             document.body.style.overflow = 'auto';
             document.getElementById('noticeForm').reset();
-            editingId = null;
+            document.getElementById('noticeId').value = '';
             document.querySelector('.modal-title').textContent = 'Add New Notice';
         }
 
-        document.getElementById('noticeForm').addEventListener('submit', function(e) {
+        document.getElementById('noticeForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            const noticeId = document.getElementById('noticeId').value;
             const noticeData = {
-                id: editingId || Date.now(),
                 title: document.getElementById('noticeTitle').value,
                 date: document.getElementById('noticeDate').value,
-                link: document.getElementById('noticeLink').value
+                link: document.getElementById('noticeLink').value,
+                content: document.getElementById('noticeContent').value
             };
-            
-            if (editingId) {
-                const index = notices.findIndex(n => n.id === editingId);
-                notices[index] = noticeData;
-                showToast('Notice updated successfully', 'success');
-            } else {
-                notices.unshift(noticeData);
-                showToast('Notice created successfully', 'success');
+
+            try {
+                if (noticeId) {
+                    const noticeRef = doc(db, "notices", noticeId);
+                    await updateDoc(noticeRef, noticeData);
+                    showToast('Notice updated successfully', 'success');
+                } else {
+                    await addDoc(collection(db, "notices"), noticeData);
+                    showToast('Notice created successfully', 'success');
+                }
+                loadNotices();
+                closeModal();
+            } catch (error) {
+                console.error("Error saving notice: ", error);
+                showToast('Error saving notice', 'danger');
             }
-            
-            localStorage.setItem('notices', JSON.stringify(notices));
-            loadNotices();
-            closeModal();
         });
 
-        function editNotice(id) {
+        window.editNotice = function(id) {
             const notice = notices.find(n => n.id === id);
             if (notice) {
+                document.getElementById('noticeId').value = notice.id;
                 document.getElementById('noticeTitle').value = notice.title;
                 document.getElementById('noticeDate').value = notice.date;
                 document.getElementById('noticeLink').value = notice.link;
-                editingId = id;
+                document.getElementById('noticeContent').value = notice.content || '';
                 document.querySelector('.modal-title').textContent = 'Edit Notice';
                 openModal();
             }
         }
 
-        function deleteNotice(id) {
+        window.deleteNotice = async function(id) {
             if (confirm('Are you sure you want to delete this notice?')) {
-                notices = notices.filter(n => n.id !== id);
-                localStorage.setItem('notices', JSON.stringify(notices));
-                loadNotices();
-                showToast('Notice deleted successfully', 'success');
+                try {
+                    await deleteDoc(doc(db, "notices", id));
+                    loadNotices();
+                    showToast('Notice deleted successfully', 'success');
+                } catch (error) {
+                    console.error("Error deleting notice: ", error);
+                    showToast('Error deleting notice', 'danger');
+                }
             }
         }
 
-        function searchNotices() {
+        window.searchNotices = function() {
             const query = document.getElementById('searchInput').value.toLowerCase();
-            const rows = document.querySelectorAll('#noticesTable tr');
-            rows.forEach(row => {
-                const text = row.textContent.toLowerCase();
-                row.style.display = text.includes(query) ? '' : 'none';
-            });
+            const filteredNotices = notices.filter(notice => notice.title.toLowerCase().includes(query));
+            renderNotices(filteredNotices);
         }
 
         function formatDate(dateString) {
@@ -636,7 +683,7 @@
             toast.className = `toast toast-${type} show`;
             toast.innerHTML = `
                 <div class="toast-icon">
-                    <i class="fas fa-check"></i>
+                    <i class="fas ${type === 'success' ? 'fa-check' : 'fa-times'}"></i>
                 </div>
                 <div class="toast-content">
                     <div class="toast-title">${type.charAt(0).toUpperCase() + type.slice(1)}</div>
@@ -650,7 +697,7 @@
             }, 3000);
         }
 
-        function logout() {
+        window.logout = function() {
             if (confirm('Are you sure you want to logout?')) {
                 window.location.href = 'admin.html';
             }
